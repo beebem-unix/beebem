@@ -1,10 +1,10 @@
-AC_INIT
+AC_INIT([beebem],[0.0.13])
 
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
 
-AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(beebem,0.0.13)
+AC_CONFIG_HEADERS(config.h)
+AM_INIT_AUTOMAKE
 
 AC_PROG_CC
 AC_PROG_CXX
@@ -204,6 +204,7 @@ echo "--------------------------------------------------------------------"
 AC_SUBST(CFLAGS)
 AC_SUBST(LIBS)
 
-AC_OUTPUT(Makefile doc/Makefile m4/Makefile src/Makefile src/gui/Makefile data/Makefile)
+AC_CONFIG_FILES([Makefile doc/Makefile m4/Makefile src/Makefile src/gui/Makefile data/Makefile])
+AC_OUTPUT
 
 #echo ""; echo "(end)"

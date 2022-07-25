@@ -1,7 +1,3 @@
-config.log
-Makefile
-config.h
-config.status
 data/Makefile
 doc/Makefile
 m4/Makefile
@@ -9,4 +5,13 @@ src/.deps/
 src/Makefile
 src/gui/.deps/
 src/gui/Makefile
+autom4te.cache
+config.h
+config.log
+config.status
 stamp-h1
+Makefile
+*~
+*.o
+*.a
+src/beebem
