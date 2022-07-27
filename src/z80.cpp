@@ -24,12 +24,12 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
 #	include <config.h>
 #endif
 
-char *perl_params =
-    "combine=0,"
-    "optab=0,"
-    "cb_inline=1,"
-    "dfd_inline=1,"
-    "ed_inline=1";
+//constexpr char perl_params[] =
+//    "combine=0,"
+//    "optab=0,"
+//    "cb_inline=1,"
+//    "dfd_inline=1,"
+//    "ed_inline=1";
 
 #include "main.h"
 #include "z80mem.h"
@@ -1831,7 +1831,6 @@ simz80(FASTREG PC)
 			break;
 		case 0xCB:			/* CB prefix */
 			adr = IX + (signed char) GetBYTE_pp(PC);
-			adr = adr;
 			switch ((op = GetBYTE(PC)) & 7) {
 			case 0: ++PC; acu = hreg(BC); break;
 			case 1: ++PC; acu = lreg(BC); break;
@@ -2891,7 +2890,6 @@ simz80(FASTREG PC)
 			break;
 		case 0xCB:			/* CB prefix */
 			adr = IY + (signed char) GetBYTE_pp(PC);
-			adr = adr;
 			switch ((op = GetBYTE(PC)) & 7) {
 			case 0: ++PC; acu = hreg(BC); break;
 			case 1: ++PC; acu = lreg(BC); break;

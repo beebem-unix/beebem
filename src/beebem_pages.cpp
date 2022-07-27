@@ -1,3 +1,4 @@
+#include "attr.h"
 #include "main.h"
 #include <gui/gui.h>
 #include "beebem_pages.h"
@@ -446,11 +447,9 @@ int Open_GTK_File_Selector(char *filename_ptr)
 	return(got_file);
 }
 
-static void RunDisc(EG_Widget *widget_ptr, void *user_ptr)
+static void RunDisc(ATTR_UNUSED EG_Widget *widget_ptr, void *user_ptr)
 {
 	EG_Window *window_ptr = (EG_Window*) user_ptr;
-	EG_Widget *tmp;
-	tmp = widget_ptr;
 
 	EG_Window_Hide(window_ptr);
 	NoMenuShown();
@@ -465,11 +464,9 @@ static void RunDisc(EG_Widget *widget_ptr, void *user_ptr)
 	mainWin->HandleCommand(IDM_RUNDISC);
 }
 
-static void SaveState(EG_Widget *widget_ptr, void *user_ptr)
+static void SaveState(ATTR_UNUSED EG_Widget *widget_ptr, void *user_ptr)
 {
 	EG_Window *window_ptr = (EG_Window*) user_ptr;
-	EG_Widget *tmp;
-	tmp = widget_ptr;
 
 	EG_Window_Hide(window_ptr);
 	NoMenuShown();
@@ -487,11 +484,9 @@ static void SaveState(EG_Widget *widget_ptr, void *user_ptr)
 //	SDL_Delay(3000);
 }
 
-static void LoadState(EG_Widget *widget_ptr, void *user_ptr)
+static void LoadState(EG_Widget ATTR_UNUSED *widget_ptr, void *user_ptr)
 {
 	EG_Window *window_ptr = (EG_Window*) user_ptr;
-	EG_Widget *tmp;
-	tmp = widget_ptr;
 
 	EG_Window_Hide(window_ptr);
 	NoMenuShown();
@@ -806,11 +801,11 @@ void SetFullScreenTickbox(int state)
 
 static void Main_Button_Reset(EG_Widget *widget_ptr, void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
+	//EG_Widget *tmp;
+	//void *tmp2;
 
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
+	//tmp = widget_ptr;
+	//tmp2 = user_ptr;
 
 	EG_Window_Hide(gui.win_menu_ptr);
 
@@ -834,11 +829,11 @@ static void Main_Button_Reset(EG_Widget *widget_ptr, void *user_ptr)
 
 static void Main_Button_Okay(EG_Widget *widget_ptr, void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
+	//EG_Widget *tmp;
+	//void *tmp2;
 
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
+	// tmp = widget_ptr;
+	// tmp2 = user_ptr;
 
 	EG_Window_Hide(gui.win_menu_ptr);
 
@@ -864,11 +859,11 @@ static void Main_Button_Okay(EG_Widget *widget_ptr, void *user_ptr)
 
 static void Main_Tick_FullScreen(EG_Widget *widget_ptr, void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
+	//EG_Widget *tmp;
+	//void *tmp2;
 
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
+	//tmp = widget_ptr;
+	//tmp2 = user_ptr;
 
 	// [TODO] Flush sound.
 
@@ -883,11 +878,11 @@ static void Main_Tick_FullScreen(EG_Widget *widget_ptr, void *user_ptr)
 
 static void Main_Button_Quit(EG_Widget *widget_ptr, void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
+	//EG_Widget *tmp;
+	//void *tmp2;
 
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
+	//tmp = widget_ptr;
+	//tmp2 = user_ptr;
 
 	Quit();
 	Main_Button_Okay(gui.widget_okay_ptr, &gui);
@@ -895,11 +890,11 @@ static void Main_Button_Quit(EG_Widget *widget_ptr, void *user_ptr)
 
 static void Main_Button_System(EG_Widget *widget_ptr, void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
+	//EG_Widget *tmp;
+	//void *tmp2;
 
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
+	//tmp = widget_ptr;
+	//tmp2 = user_ptr;
 
 	EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
@@ -910,11 +905,11 @@ static void Main_Button_System(EG_Widget *widget_ptr, void *user_ptr)
 
 static void Main_Button_Screen(EG_Widget *widget_ptr, void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
+        //EG_Widget *tmp;
+        //void *tmp2;
 
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
+        //tmp = widget_ptr;
+        //tmp2 = user_ptr;
 
         EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
@@ -925,11 +920,11 @@ static void Main_Button_Screen(EG_Widget *widget_ptr, void *user_ptr)
 
 static void Main_Button_Sound(EG_Widget *widget_ptr, void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
+        //EG_Widget *tmp;
+        //void *tmp2;
 
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
+        //tmp = widget_ptr;
+        //tmp2 = user_ptr;
 
         EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
@@ -940,11 +935,11 @@ static void Main_Button_Sound(EG_Widget *widget_ptr, void *user_ptr)
 
 static void Main_Button_ROMs(EG_Widget *widget_ptr, void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
+        //EG_Widget *tmp;
+        //void *tmp2;
 
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
+        //tmp = widget_ptr;
+        //tmp2 = user_ptr;
 
         EG_Window_Hide(gui.win_menu_ptr);
 
@@ -954,14 +949,8 @@ static void Main_Button_ROMs(EG_Widget *widget_ptr, void *user_ptr)
         SetActiveWindow(gui.win_roms_ptr);
 }
 
-static void Main_Button_Speed(EG_Widget *widget_ptr, void *user_ptr)
+static void Main_Button_Speed(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
-
         EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
 	ReCenterWindow(gui.win_speed_ptr);
@@ -969,14 +958,8 @@ static void Main_Button_Speed(EG_Widget *widget_ptr, void *user_ptr)
         SetActiveWindow(gui.win_speed_ptr);
 }
 
-static void Main_Button_About(EG_Widget *widget_ptr, void *user_ptr)
+static void Main_Button_About(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
-
         EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
 //        EG_Window_Show(gui.win_about_ptr);
@@ -993,14 +976,8 @@ static void Main_Button_About(EG_Widget *widget_ptr, void *user_ptr)
 	EG_Window_Show(gui.win_menu_ptr);
 }
 
-static void Main_Button_Devices(EG_Widget *widget_ptr, void *user_ptr)
+static void Main_Button_Devices(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
-
         EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
 	ReCenterWindow(gui.win_devices_ptr);
@@ -1008,14 +985,8 @@ static void Main_Button_Devices(EG_Widget *widget_ptr, void *user_ptr)
         SetActiveWindow(gui.win_devices_ptr);
 }
 
-static void Main_Button_Disks(EG_Widget *widget_ptr, void *user_ptr)
+static void Main_Button_Disks(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
-
         EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
 	ReCenterWindow(gui.win_disks_ptr);
@@ -1023,14 +994,8 @@ static void Main_Button_Disks(EG_Widget *widget_ptr, void *user_ptr)
         SetActiveWindow(gui.win_disks_ptr);
 }
 
-static void Main_Button_Tapes(EG_Widget *widget_ptr, void *user_ptr)
+static void Main_Button_Tapes(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
-
         EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
 	ReCenterWindow(gui.win_tapes_ptr);
@@ -1038,14 +1003,8 @@ static void Main_Button_Tapes(EG_Widget *widget_ptr, void *user_ptr)
         SetActiveWindow(gui.win_tapes_ptr);
 }
 
-static void Main_Button_Keyboard(EG_Widget *widget_ptr, void *user_ptr)
+static void Main_Button_Keyboard(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
-
         EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
 	ReCenterWindow(gui.win_keyboard_ptr);
@@ -1053,13 +1012,8 @@ static void Main_Button_Keyboard(EG_Widget *widget_ptr, void *user_ptr)
         SetActiveWindow(gui.win_keyboard_ptr);
 }
 
-static void Main_Button_AMX(EG_Widget *widget_ptr, void *user_ptr)
+static void Main_Button_AMX(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
         EG_Window_Hide(gui.win_menu_ptr);
 	SDL_Delay(100);
 	ReCenterWindow(gui.win_amx_ptr);
@@ -1289,46 +1243,26 @@ static void Destroy_Main(void)
  */
 
 
-static void Disks_AcornDFS(EG_Widget *widget_ptr, void *user_ptr)
+static void Disks_AcornDFS(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	mainWin->LoadFDC("Acorn", true);
 //	EG_Label_SetCaption(gui.widget_fdc_label, "Acorn");
 }
 
-static void Disks_WatfordDFS(EG_Widget *widget_ptr, void *user_ptr)
+static void Disks_WatfordDFS(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
-
 	mainWin->LoadFDC("Watford", true);
 //	EG_Label_SetCaption(gui.widget_fdc_label, "Watford");
 }
 
-static void Disks_OpusDFS(EG_Widget *widget_ptr, void *user_ptr)
+static void Disks_OpusDFS(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
-
 	mainWin->LoadFDC("Opus", true);
 //	EG_Label_SetCaption(gui.widget_fdc_label, "Opus");
 }
 
-static void Disks_NativeDFS(EG_Widget *widget_ptr, void *user_ptr)
+static void Disks_NativeDFS(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-        EG_Widget *tmp;
-        void *tmp2;
-        tmp = widget_ptr;
-        tmp2 = user_ptr;
-
 //	EG_Label_SetCaption(gui.widget_fdc_label, "None");
 	mainWin->HandleCommand(ID_8271);
 }
@@ -1413,13 +1347,8 @@ static void System_Change_Model(EG_Widget *widget_ptr, void *user_ptr)
 }
 
 
-static void System_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void System_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	EG_Window_Hide(gui.win_system_ptr);
 	SDL_Delay(100);
 	EG_Window_Show(gui.win_menu_ptr);
@@ -1615,13 +1544,8 @@ static void Destroy_System(void)
  */
 
 
-static void Screen_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void Screen_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	EG_Window_Hide(gui.win_screen_ptr);
 	SDL_Delay(100);
 	EG_Window_Show(gui.win_menu_ptr);
@@ -2108,13 +2032,8 @@ static void Destroy_Video(void)
  */
 
 
-static void Sound_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void Sound_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	EG_Window_Hide(gui.win_sound_ptr);
 	SDL_Delay(100);
 	EG_Window_Show(gui.win_menu_ptr);
@@ -2288,13 +2207,8 @@ static void Destroy_Sound(void)
  */
 
 
-static void ROMs_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void ROMs_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	EG_Window_Hide(gui.win_roms_ptr);
 	SDL_Delay(100);
 	EG_Window_Show(gui.win_menu_ptr);
@@ -2373,13 +2287,8 @@ static void Destroy_ROMs(void)
  */
 
 
-static void Speed_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void Speed_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	EG_Window_Hide(gui.win_speed_ptr);
 	SDL_Delay(100);
 	EG_Window_Show(gui.win_menu_ptr);
@@ -2576,13 +2485,8 @@ static void Destroy_About(void)
  *	=	=	=	=	=	=	=	=	=
  */
 
-static void Devices_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void Devices_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 //	int count = 0;
 
 	EG_Window_Hide(gui.win_devices_ptr);
@@ -2737,13 +2641,8 @@ static void Destroy_Devices(void)
  *	=	=	=	=	=	=	=	=	=
  */
 
-static void Tapes_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void Tapes_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	EG_Window_Hide(gui.win_tapes_ptr);
 	SDL_Delay(100);
 	EG_Window_Show(gui.win_menu_ptr);
@@ -2880,13 +2779,8 @@ static void Destroy_Tapes(void)
  *	=	=	=	=	=	=	=	=	=
  */
 
-static void Disks_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void Disks_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	EG_Window_Hide(gui.win_disks_ptr);
 	SDL_Delay(100);
 	EG_Window_Show(gui.win_menu_ptr);
@@ -2943,13 +2837,8 @@ static void Destroy_Disks(void)
  *	=	=	=	=	=	=	=	=	=
  */
 
-static void Keyboard_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void Keyboard_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	EG_Window_Hide(gui.win_keyboard_ptr);
 	SDL_Delay(100);
 	EG_Window_Show(gui.win_menu_ptr);
@@ -2958,13 +2847,8 @@ static void Keyboard_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
 
 
 
-static void Disks_SaveRegistry(EG_Widget *widget_ptr, void *user_ptr)
+static void Disks_SaveRegistry(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	mainWin->SavePreferences();
 
 #ifdef WITH_DEBUG_OUTPUT
@@ -3239,13 +3123,8 @@ static void Destroy_Keyboard(void)
  *	=	=	=	=	=	=	=	=	=
  */
 
-static void AMX_Button_Back(EG_Widget *widget_ptr, void *user_ptr)
+static void AMX_Button_Back(ATTR_UNUSED EG_Widget *widget_ptr, ATTR_UNUSED void *user_ptr)
 {
-	EG_Widget *tmp;
-	void *tmp2;
-	tmp = widget_ptr;
-	tmp2 = user_ptr;
-
 	EG_Window_Hide(gui.win_amx_ptr);
 	SDL_Delay(100);
 	EG_Window_Show(gui.win_menu_ptr);

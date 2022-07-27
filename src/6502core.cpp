@@ -32,6 +32,7 @@
 #include <stdlib.h>
 
 #include "6502core.h"
+#include "attr.h"
 #include "beebmem.h"
 #include "beebsound.h"
 #include "disc8271.h"
@@ -732,7 +733,7 @@ INLINE static void RORInstrHandler_Acc(void) {
 INLINE static void SBCInstrHandler(int16 operand) {
   /* NOTE! Not sure about C and V flags */
   int TmpResultV,TmpResultC;
-  unsigned char nhn,nln;
+  //unsigned char nhn,nln;
   if (!GETDFLAG) {
     TmpResultV=(signed char)Accumulator-(signed char)operand-(1-GETCFLAG);
     TmpResultC=Accumulator-operand-(1-GETCFLAG);
@@ -743,7 +744,7 @@ INLINE static void SBCInstrHandler(int16 operand) {
     int ZFlag=0,NFlag=0,CFlag=1,VFlag=0;
     int TmpResult,TmpCarry=0;
     int ln,hn,oln,ohn;
-	nhn=(Accumulator>>4)&15; nln=Accumulator & 15;
+	//nhn=(Accumulator>>4)&15; nln=Accumulator & 15;
 
     /* Z flag determined from 2's compl result, not BCD result! */
     TmpResult=Accumulator-operand-(1-GETCFLAG);
@@ -2363,7 +2364,7 @@ void Save6502UEF(FILE *SUEF) {
 }
 
 void Load6502UEF(FILE *SUEF) {
-	int Dlong;
+	ATTR_UNUSED int Dlong;
 	ProgramCounter=fget16(SUEF);
 	Accumulator=fgetc(SUEF);
 	XReg=fgetc(SUEF);

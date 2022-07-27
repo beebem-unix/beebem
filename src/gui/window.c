@@ -264,26 +264,26 @@ unsigned long EG_Window_GetID(EG_Window *window_ptr)
 
 void EG_Window_Diagnositc_DumpChildren(EG_Window *window_ptr)
 {
-	SDL_Rect clipping;
-	long i;
-	EG_Widget *tmp_widget_ptr;;
-
-      CHECK_EG_WINDOW_IS_VALID_VOID(window_ptr);
-
-	printf("Window '%s' child widgets:\n", EG_Window_GetName(window_ptr));
-
-
-	for (i=0; i<window_ptr->count; i++){
-		tmp_widget_ptr = window_ptr->widget_ptr[i];
-
-		clipping = EG_Widget_GetDimension(tmp_widget_ptr);
-
+//	SDL_Rect clipping;
+//	long i;
+//	EG_Widget *tmp_widget_ptr;;
+//
+//      CHECK_EG_WINDOW_IS_VALID_VOID(window_ptr);
+//
+//	printf("Window '%s' child widgets:\n", EG_Window_GetName(window_ptr));
+//
+//
+//	for (i=0; i<window_ptr->count; i++){
+//		tmp_widget_ptr = window_ptr->widget_ptr[i];
+//
+//		clipping = EG_Widget_GetDimension(tmp_widget_ptr);
+//
 //		printf("%8X|%10s|%d|%d|(%03d %03d %03d %03d)\n"
 //		 , tmp_widget_ptr, EG_Widget_GetName(tmp_widget_ptr), (unsigned int) EG_Widget_GetCanGetFocusToggle(tmp_widget_ptr)
 //		 , EG_Window_ThisWidgetHasFocus(tmp_widget_ptr) 
 //		 , clipping.x, clipping.y, clipping.w, clipping.h
 //		);
-        }
+//        }
 }
 
 
@@ -630,7 +630,7 @@ static EG_BOOL MoveFocus(EG_Window *window_ptr, int direction)
 /* Public functions:
  */
 
-EG_Window* EG_Window_Create(char *name_ptr, SDL_Surface *surface_ptr
+EG_Window* EG_Window_Create(const char *name_ptr, SDL_Surface *surface_ptr
  , SDL_Color background_color, SDL_Rect dimension)
 {
 	EG_Window *window_ptr = NULL;

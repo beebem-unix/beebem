@@ -1008,7 +1008,7 @@ void BeebReadRoms(void) {
 	char RomNameBuf[80];
 	char *RomName=RomNameBuf;
 	unsigned char isrom;
-	unsigned char Shortener=1;
+	//unsigned char Shortener=1;
 
 	if( GetLocation_roms_cfg(TmpPath, 256) == NULL ){
 		qFATAL("Could not determine roms config file location.");
@@ -1097,7 +1097,7 @@ void BeebReadRoms(void) {
 				strcat(fullname, RomName);
 			}
 
-			isrom=1; RomWritable[romslot]=0; Shortener=1;
+			isrom=1; RomWritable[romslot]=0; //Shortener=1;
 
 			if (strncasecmp(RomName,"EMPTY",5)==0) { 
 				RomWritable[romslot]=0; isrom=0; 

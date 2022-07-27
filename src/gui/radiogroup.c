@@ -112,12 +112,12 @@ static void Callback_Destroy(EG_Widget *widget_ptr)
 static EG_BOOL Callback_Paint(EG_Widget *widget_ptr, SDL_Rect area)
 {
         EG_RadioGroup *radiogroup_ptr;
-	SDL_Rect *tmp_area;
+	//SDL_Rect *tmp_area;
 	int i;
 
 	/* Loose compiler warning.
 	 */
-	tmp_area = &area;
+	//tmp_area = &area;
 
 	/* If asked to paint, paint the children.
 	 */
@@ -232,12 +232,12 @@ static void Callback_Attach(EG_Widget *widget_ptr, EG_StringHash attach_to_type
 {
 	EG_RadioGroup *radiogroup_ptr;
 	EG_Window *window_ptr;
-	EG_StringHash tmp_attach_to_type;
+	//EG_StringHash tmp_attach_to_type;
 	int i;
 
 	/* Loose compiler warning.
 	 */
-	tmp_attach_to_type = attach_to_type;
+	//tmp_attach_to_type = attach_to_type;
 
 	/* We only need to add the buttons to the window when attaching, we do
 	 * nothing when detatching.

@@ -55,6 +55,8 @@ typedef Uint8* PBYTE;
 typedef int HKEY;
 typedef char* LPSTR;
 typedef char* LPTSTR;
+typedef const char* LPCSTR;
+typedef const char* LPCTSTR;
 
 // This is not right, but we dont use it anyway.
 #define HKEY_CURRENT_USER 		0

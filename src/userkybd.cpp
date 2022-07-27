@@ -58,13 +58,13 @@ void	ShowKeyUp( void );
 COLORREF GetKeyColour( UINT ctrlID );
 HWND	PromptForInput( HWND hwndParent, UINT ctrlID );
 void	GetKeysUsed( LPSTR Keys );
-LPSTR	KeyName( UINT Key );
+LPCSTR	KeyName( UINT Key );
 
 
 // Colour used to highlight the selected key.
 //--static COLORREF Highlight	= 0x00FF0080;	// Purple.
 //--static COLORREF FunctionKey = 0x000000FF;	// Red
-//--static COLORREF NormalKey	= 0x00000000;	// Black
+static COLORREF NormalKey	= 0x00000000;	// Black
 
 
 //--COLORREF OldColour;		// Holds bkCOlor of non-highlighted key.
@@ -153,6 +153,7 @@ BOOL	WaitingForKey = FALSE;	// True while waiting for a key to be pressed.
 BOOL UserKeyboardDialog( HWND      hwndParent )
 
 {
+    return false;
 //--    FARPROC pfnDlg;
 //--    BOOL    fResult;
 //--
@@ -400,6 +401,7 @@ void SetBBCKeyForVKEY( int Key )
 
 COLORREF GetKeyColour( UINT ctrlID )
 {
+    return NormalKey;
 //--	switch ( ctrlID )
 //--	{
 //--	case IDK_F0:
@@ -463,6 +465,7 @@ COLORREF GetKeyColour( UINT ctrlID )
 
 HWND PromptForInput( HWND hwndParent, UINT ctrlID )
 {
+    return 0;
 //--	int Error;
 //--	HWND Success;
 //--	WNDCLASS  wc;
@@ -618,8 +621,9 @@ void GetKeysUsed( LPSTR Keys )
 
 /****************************************************************************/
 
-LPSTR KeyName( UINT Key )
+LPCSTR KeyName( UINT Key )
 {
+    return "";
 //--	static CHAR Character[2]; // Used to return single characters.
 //--
 //--	switch( Key )

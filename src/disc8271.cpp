@@ -133,7 +133,7 @@ typedef struct  {
   int NParams; /* Number of parameters to follow */
   CommandFunc ToCall; /* Called after all paameters have arrived */
   CommandFunc IntHandler; /* Called when interrupt requested by command is about to happen */
-  char *Ident; /* Mainly for debugging */
+  const char *Ident; /* Mainly for debugging */
 } PrimaryCommandLookupType; 
 
 /*--------------------------------------------------------------------------*/

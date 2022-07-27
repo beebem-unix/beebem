@@ -303,8 +303,8 @@ void fill_audio(void *udata, Uint8 *stream, int len)
 {
 	Uint8 *p;
 
-	void *tmp_udata;
-	tmp_udata = udata;
+	//void *tmp_udata;
+	//tmp_udata = udata;
 
 	/* Only play if we have data left */
 	if (HowManyBytesLeftInSDLSoundBuffer() == 0)
@@ -628,11 +628,11 @@ int InitialiseSDL(int argc, char *argv[])
 {
 	char video_hardware[1024];
 	Uint32 flags;
-	int tmp_argc;
-	char **tmp_argv;
+	//int tmp_argc;
+	//char **tmp_argv;
 
-	tmp_argv=argv;
-	tmp_argc = argc;
+	//tmp_argv=argv;
+	//tmp_argc = argc;
 
 
         /* Initialize SDL and handle failures.
@@ -641,11 +641,11 @@ int InitialiseSDL(int argc, char *argv[])
                         fprintf(stderr, "Unable to initialise SDL: %s\n"
                          , SDL_GetError());
                         return false;
-                }       
-           
-         /* Cleanup SDL when exiting.
-         */
-         atexit(SDL_Quit);
+        }
+
+        /* Cleanup SDL when exiting.
+        */
+        atexit(SDL_Quit);
 
 
 	/* If we are using X11 set Caps lock so it's immediately released.

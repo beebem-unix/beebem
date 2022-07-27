@@ -17,9 +17,9 @@
 int MessageBox(HWND hwnd, const char *message_p, const char *title_p, int type)
 {
 	int ret = 1, selected, icon_type=0;
-	HWND tmp_hwnd;
+	//HWND tmp_hwnd;
 
-	tmp_hwnd = hwnd;
+	//tmp_hwnd = hwnd;
 
 	// [TODO] Add support for default button, BeebEm doesn't use it anyway.
 	selected = 1;

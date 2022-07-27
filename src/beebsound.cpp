@@ -29,6 +29,7 @@
 
 #include "beebsound.h"
 
+#include "attr.h"
 #include <iostream>
 #include <fstream>
 #include "windows.h"
@@ -828,7 +829,7 @@ void SoundReset(void) {
 /* Called in sysvia.cc when a write is made to the 76489 sound chip         */
 void Sound_RegWrite(int value) {
   int trigger = 0;
-  unsigned char VolChange;
+  ATTR_UNUSED unsigned char VolChange;
 
   if (!SoundEnabled)
     return;

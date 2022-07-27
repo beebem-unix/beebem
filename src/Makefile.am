@@ -14,8 +14,8 @@ AM_CPPFLAGS     = @GTK_CFLAGS@ -I@top_srcdir@/src/gui -I@top_srcdir@/src/
 LDADD           = @GTK_LIBS@ @top_srcdir@/src/gui/libeg.a
 
 
-CXX = @CXX@ -Wall -DDATA_DIR=\"$(pkgdatadir)\" 
-CC = @CC@ -Wall -DDATA_DIR=\"$(pkgdatadir)\"
+CXX = @CXX@ -Wno-deprecated-declarations -Wall -Werror -Wno-format-security -DDATA_DIR=\"$(pkgdatadir)\" 
+CC = @CC@ -Wno-deprecated-declarations -Wall -Werror -Wno-format-security -DDATA_DIR=\"$(pkgdatadir)\"
 
 bin_PROGRAMS   = beebem
 beebem_SOURCES =main.cpp log.c sdl.cpp windows.cpp beebem_pages.cpp \

@@ -454,7 +454,8 @@ int main(int argc, char *argv[]){
 			case SDL_KEYDOWN:
 			case SDL_KEYUP:
 				{
-					int pressed=0, col=0, row=0;
+					//int pressed=0;
+          int col=0, row=0;
 			
 
 					if (event.key.keysym.sym == SDLK_F12 || event.key.keysym.sym == SDLK_F11 || event.key.keysym.sym == SDLK_MENU){
@@ -466,7 +467,8 @@ int main(int argc, char *argv[]){
 
 
 
-					pressed = col = row = 0;
+					//pressed =
+          col = row = 0;
 
 					/* Handle shift booting:
 					 */

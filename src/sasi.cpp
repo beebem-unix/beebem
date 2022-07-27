@@ -164,7 +164,7 @@ int data = 0xff;
 		data = 0x01;
 
 		if (sasi.sel == false) data |= 0x80;
-		if (sasi.req = false) data |= 0x40;
+		if (sasi.req == false) data |= 0x40;
 		if (sasi.cd == true) data |= 0x20;
 		if (sasi.io == true) data |= 0x10;
 		if (sasi.irq) data |= 0x08;
@@ -642,17 +642,17 @@ bool SASIDiscFormat(unsigned char *buf)
 
 {
 	char buff[256];
-	int record;
+	//int record;
 	
 	if (SASIDisc[sasi.lun] != NULL) {
 		fclose(SASIDisc[sasi.lun]);
 	}
 	
-	record = buf[1] & 0x1f;
-	record <<= 8;
-	record |= buf[2];
-	record <<= 8;
-	record |= buf[3];
+	//record = buf[1] & 0x1f;
+	//record <<= 8;
+	//record |= buf[2];
+	//record <<= 8;
+	//record |= buf[3];
 	
 //->	sprintf(buff, "%s/discims/sasi%d.dat", RomPath, sasi.lun);
 //++
@@ -709,14 +709,14 @@ void SASIRezero(void)
 void SASIVerify(void)
 {
 	bool status;
-	int sector, blocks;
+	//int sector, blocks;
 	
-	sector = sasi.cmd[1] & 0x1f;
-	sector <<= 8;
-	sector |= sasi.cmd[2];
-	sector <<= 8;
-	sector |= sasi.cmd[3];
-	blocks = sasi.cmd[4];
+	// sector = sasi.cmd[1] & 0x1f;
+	// sector <<= 8;
+	// sector |= sasi.cmd[2];
+	// sector <<= 8;
+	// sector |= sasi.cmd[3];
+	// blocks = sasi.cmd[4];
 
 //	fprintf(stderr, "Verifying sector %d, blocks %d\n", sector, blocks);
 

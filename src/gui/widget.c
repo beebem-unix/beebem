@@ -61,10 +61,10 @@ static void Callback_Destroy(EG_Widget *widget_ptr)
  */
 static EG_BOOL Callback_SDL_Event(EG_Widget *widget_ptr, SDL_Event *event_ptr)
 {
-	EG_Widget *tmp;
-	SDL_Event *tmp_e_ptr;
+	//EG_Widget *tmp;
+	//SDL_Event *tmp_e_ptr;
 
-	tmp = widget_ptr; tmp_e_ptr = event_ptr;
+	//tmp = widget_ptr; tmp_e_ptr = event_ptr;
 
 	EG_Log(EG_LOG_WARNING, dL"EG_Widget Callback_Event function called", dR);
 
@@ -78,9 +78,9 @@ static EG_BOOL Callback_Paint(EG_Widget *widget_ptr, SDL_Rect area)
 {
 	/* Loose compiler warnings
 	 */
-	EG_Widget *tmp;
-	SDL_Rect *area_ptr;
-	tmp = widget_ptr; area_ptr = &area;
+	//EG_Widget *tmp;
+	//SDL_Rect *area_ptr;
+	//tmp = widget_ptr; area_ptr = &area;
 
 	EG_Log(EG_LOG_WARNING, dL"EG_Widget Callback_Paint function called"
 	 , dR);
@@ -92,9 +92,9 @@ static EG_BOOL Callback_Visible(EG_Widget *widget_ptr, EG_BOOL visible)
 {
 	/* Loose compiler warnings
 	 */
-	EG_Widget *tmp;
-	EG_BOOL tmp_v;
-	tmp = widget_ptr; tmp_v = visible;
+	//EG_Widget *tmp;
+	//EG_BOOL tmp_v;
+	//tmp = widget_ptr; tmp_v = visible;
 
 	EG_Log(EG_LOG_WARNING, dL"EG_Widget Callback_Visible called", dR);
 
@@ -105,9 +105,9 @@ static EG_BOOL Callback_Enabled(EG_Widget *widget_ptr, EG_BOOL enabled)
 {
 	/* Loose compiler warnings
 	 */
-	EG_Widget *tmp;
-	EG_BOOL tmp_e;
-	tmp = widget_ptr; tmp_e = enabled;
+	//EG_Widget *tmp;
+	//EG_BOOL tmp_e;
+	//tmp = widget_ptr; tmp_e = enabled;
 
 	EG_Log(EG_LOG_WARNING, dL"EG_Widget Callback_Enabled called", dR);
 
@@ -116,8 +116,8 @@ static EG_BOOL Callback_Enabled(EG_Widget *widget_ptr, EG_BOOL enabled)
 
 static EG_BOOL Callback_GotFocus(EG_Widget *widget_ptr)
 {
-	EG_Widget *tmp;
-	tmp = widget_ptr;
+	//EG_Widget *tmp;
+	//tmp = widget_ptr;
 
 	EG_Log(EG_LOG_WARNING, dL"EG_Widget Callback_GotFocus called", dR);
 
@@ -126,18 +126,18 @@ static EG_BOOL Callback_GotFocus(EG_Widget *widget_ptr)
 
 static void Callback_LostFocus(EG_Widget *widget_ptr)
 {
-	EG_Widget *tmp;
-	tmp = widget_ptr;
+	//EG_Widget *tmp;
+	//tmp = widget_ptr;
 
 	EG_Log(EG_LOG_WARNING, dL"EG_Widget Callback_LostFocus called", dR);
 }
 
 static EG_BOOL Callback_Stopped(EG_Widget *widget_ptr, EG_BOOL stopped)
 {
-	EG_Widget *tmp;
-	EG_BOOL tmp_e;
-	tmp = widget_ptr;
-	tmp_e = stopped;
+	//EG_Widget *tmp;
+	//EG_BOOL tmp_e;
+	//tmp = widget_ptr;
+	//tmp_e = stopped;
 
 	EG_Log(EG_LOG_WARNING, dL"EG_Widget Callback_Stopped called", dR);
 	
@@ -152,15 +152,15 @@ static EG_BOOL Callback_Stopped(EG_Widget *widget_ptr, EG_BOOL stopped)
 static void Callback_Attach(EG_Widget *widget_ptr
  , EG_StringHash attach_to_type, void *attach_to_ptr, EG_BOOL attached)
 {
-	EG_Widget *tmp_widget_ptr;
-	EG_StringHash tmp_attach_to_type;
-	void *tmp_attach_to_ptr;
-	EG_BOOL tmp_attached;
+	//EG_Widget *tmp_widget_ptr;
+	//EG_StringHash tmp_attach_to_type;
+	//void *tmp_attach_to_ptr;
+	//EG_BOOL tmp_attached;
 
-	tmp_widget_ptr = widget_ptr;
-	tmp_attach_to_type = attach_to_type;
-	tmp_attach_to_ptr = attach_to_ptr;
-	tmp_attached = attached;
+	//tmp_widget_ptr = widget_ptr;
+	//tmp_attach_to_type = attach_to_type;
+	//tmp_attach_to_ptr = attach_to_ptr;
+	//tmp_attached = attached;
 
 	EG_Log(EG_LOG_WARNING, dL"EG_Widget Callback_Attached called", dR);
 }

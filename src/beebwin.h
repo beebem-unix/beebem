@@ -96,7 +96,7 @@ class BeebWin  {
 	void SetDiscWriteProtects(void);
 	void SetRomMenu(void);				// LRW  Added for individual ROM/Ram
 	void SelectFDC(void);
-	void LoadFDC(char *DLLName, bool save);
+	void LoadFDC(const char *DLLName, bool save);
 	void KillDLLs(void);
 	void UpdateLEDMenu(HMENU hMenu);
 	void SetDriveControl(unsigned char value);
@@ -359,15 +359,15 @@ class BeebWin  {
 	int			m_MenuIdWinSize;
 	int			m_XWinSize;
 	int			m_YWinSize;
-	int			m_XWinPos;
-	int			m_YWinPos;
+	//int			m_XWinPos;
+	//int			m_YWinPos;
 	BOOL		m_ShowSpeedAndFPS;
 	int			m_MenuIdSampleRate;
 	int			m_MenuIdVolume;
-	int			m_DiscTypeSelection;
+	//int			m_DiscTypeSelection;
 	int			m_MenuIdTiming;
 	int			m_FPSTarget;
-	JOYCAPS		m_JoystickCaps;
+	//JOYCAPS		m_JoystickCaps;
 	int			m_MenuIdSticks;
 	BOOL		m_HideCursor;
 	BOOL		m_FreezeWhenInactive;
@@ -393,7 +393,7 @@ class BeebWin  {
 	HGDIOBJ 	m_hOldObj;
 	HDC 		m_hDCBitmap;
 	HGDIOBJ 	m_hBitmap;
-	bmiData 	m_bmi;
+	//bmiData 	m_bmi;
 	char		m_szTitle[100];
 
 	int			m_ScreenRefreshCount;
@@ -419,27 +419,27 @@ class BeebWin  {
 	char *		m_CommandLineFileName;
 
 	// AVI vars
-	bmiData 	m_Avibmi;
+	//bmiData 	m_Avibmi;
 	HBITMAP		m_AviDIB;
 	HDC 		m_AviDC;
-	char*		m_AviScreen;
-	int			m_AviFrameSkip;
-	int			m_AviFrameSkipCount;
+	//char*		m_AviScreen;
+	//int			m_AviFrameSkip;
+	//int			m_AviFrameSkipCount;
 	int			m_MenuIdAviResolution;
 	int			m_MenuIdAviSkip;
 
 	// DirectX stuff
 	BOOL					m_DXInit;
-	LPDIRECTDRAW			m_DD;			// DirectDraw object
-	LPDIRECTDRAW2			m_DD2;			// DirectDraw object
-	LPDIRECTDRAWSURFACE		m_DDSPrimary;	// DirectDraw primary surface
-	LPDIRECTDRAWSURFACE2	m_DDS2Primary;	// DirectDraw primary surface
-	LPDIRECTDRAWSURFACE		m_DDSOne;		// Offscreen surface 1
-	LPDIRECTDRAWSURFACE2	m_DDS2One;		// Offscreen surface 1
-	LPDIRECTDRAWSURFACE     m_BackBuffer;   // Full Screen Back Buffer
-	LPDIRECTDRAWSURFACE2	m_BackBuffer2;  // DD2 of the above
+	//LPDIRECTDRAW			m_DD;			// DirectDraw object
+	//LPDIRECTDRAW2			m_DD2;			// DirectDraw object
+	//LPDIRECTDRAWSURFACE		m_DDSPrimary;	// DirectDraw primary surface
+	//LPDIRECTDRAWSURFACE2	m_DDS2Primary;	// DirectDraw primary surface
+	//LPDIRECTDRAWSURFACE		m_DDSOne;		// Offscreen surface 1
+	//LPDIRECTDRAWSURFACE2	m_DDS2One;		// Offscreen surface 1
+	//LPDIRECTDRAWSURFACE     m_BackBuffer;   // Full Screen Back Buffer
+	//LPDIRECTDRAWSURFACE2	m_BackBuffer2;  // DD2 of the above
 	BOOL					m_DDS2InVideoRAM;
-	LPDIRECTDRAWCLIPPER		m_Clipper;		// clipper for primary
+	//LPDIRECTDRAWCLIPPER		m_Clipper;		// clipper for primary
 
 	// Text to speech variables
 //--	ISpVoice *m_SpVoice;
@@ -456,9 +456,9 @@ class BeebWin  {
 	int m_SpeechBufPos;
 
 	// Text view variables
-	HWND m_hTextView;
+	//HWND m_hTextView;
 	static const int MAX_TEXTVIEW_SCREEN_LEN = 128*32;
-	char m_TextViewScreen[MAX_TEXTVIEW_SCREEN_LEN+1];
+	//char m_TextViewScreen[MAX_TEXTVIEW_SCREEN_LEN+1];
 
 	BOOL InitClass(void);
 	void UpdateOptiMenu(void);

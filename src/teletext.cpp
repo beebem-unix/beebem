@@ -33,7 +33,7 @@ int txtChnl = -1;
 
 unsigned char row[16][43];
 
-void TeleTextLog(char *text, ...)
+void TeleTextLog(const char *text, ...)
 {
 FILE *f;
 va_list argptr;

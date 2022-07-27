@@ -855,13 +855,13 @@ void Verify(void)
 
 void Translate(void)
 {
-	int record;
+	// int record;
 	
-	record = scsi.cmd[1] & 0x1f;
-	record <<= 8;
-	record |= scsi.cmd[2];
-	record <<= 8;
-	record |= scsi.cmd[3];
+	// record = scsi.cmd[1] & 0x1f;
+	// record <<= 8;
+	// record |= scsi.cmd[2];
+	// record <<= 8;
+	// record |= scsi.cmd[3];
 
 	scsi.buffer[0] = scsi.cmd[3];
 	scsi.buffer[1] = scsi.cmd[2];

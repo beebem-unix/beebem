@@ -256,13 +256,13 @@ AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
 AWK = @AWK@
-CC = @CC@ -Wall -DDATA_DIR=\"$(pkgdatadir)\"
+CC = @CC@ -Wno-deprecated-declarations -Wall -Werror -Wno-format-security -DDATA_DIR=\"$(pkgdatadir)\"
 CCDEPMODE = @CCDEPMODE@
 CFLAGS = @CFLAGS@
 CPPFLAGS = @CPPFLAGS@
 CSCOPE = @CSCOPE@
 CTAGS = @CTAGS@
-CXX = @CXX@ -Wall -DDATA_DIR=\"$(pkgdatadir)\" 
+CXX = @CXX@ -Wno-deprecated-declarations -Wall -Werror -Wno-format-security -DDATA_DIR=\"$(pkgdatadir)\" 
 CXXDEPMODE = @CXXDEPMODE@
 CXXFLAGS = @CXXFLAGS@
 CYGPATH_W = @CYGPATH_W@

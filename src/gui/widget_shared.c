@@ -92,11 +92,11 @@ EG_BOOL EG_Callback_Generic_SDL_Event(EG_Widget *widget_ptr, SDL_Event *event_pt
 	/* Loose GNU CC -Wall -W compiler warnings.
 	 */
 
-	EG_Widget *tmp_widget;
-	SDL_Event *tmp_event;
+	//EG_Widget *tmp_widget;
+	//SDL_Event *tmp_event;
 
-	tmp_widget = widget_ptr;
-	tmp_event = event_ptr;
+	//tmp_widget = widget_ptr;
+	//tmp_event = event_ptr;
 
 	/* Call users event callback.
 	 */
@@ -117,11 +117,11 @@ EG_BOOL EG_Callback_Generic_Visible_NoSupport(EG_Widget *widget_ptr
 	/* Loose GNU CC -Wall -W compiler warnings.
 	 */
 
-	EG_Widget *tmp_widget_ptr;
-	EG_BOOL tmp_is_visible;
+	//EG_Widget *tmp_widget_ptr;
+	//EG_BOOL tmp_is_visible;
 
-	tmp_widget_ptr = widget_ptr;
-	tmp_is_visible = is_visible;
+	//tmp_widget_ptr = widget_ptr;
+	//tmp_is_visible = is_visible;
 
 	return(EG_FALSE);
 }
@@ -166,11 +166,11 @@ EG_BOOL EG_Callback_Generic_Enabled_NoSupport(EG_Widget *widget_ptr, EG_BOOL is_
 	/* Loose GNU CC -Wall -W compiler warnings.
 	 */
 
-	EG_Widget *tmp_widget_ptr;
-	EG_BOOL tmp;
+	//EG_Widget *tmp_widget_ptr;
+	//EG_BOOL tmp;
 
-	tmp_widget_ptr = widget_ptr;
-	tmp = is_enabled;
+	//tmp_widget_ptr = widget_ptr;
+	//tmp = is_enabled;
 
         return(EG_FALSE);
 }
@@ -191,9 +191,9 @@ EG_BOOL EG_Callback_Generic_GotFocus_NoSupport(EG_Widget *widget_ptr)
 	/* Loose GNU CC -Wall -W compiler warnings.
 	 */
 
-	EG_Widget *tmp_widget_ptr;
+	//EG_Widget *tmp_widget_ptr;
 
-	tmp_widget_ptr = widget_ptr;
+	//tmp_widget_ptr = widget_ptr;
 
 	return(EG_FALSE);
 }
@@ -241,8 +241,8 @@ void EG_Callback_Generic_LostFocus_NoSupport(EG_Widget *widget_ptr)
 	/* Loose GNU CC -Wall -W compiler warnings.
 	 */
 
-	EG_Widget *tmp_ptr;
-	tmp_ptr = widget_ptr;
+	//EG_Widget *tmp_ptr;
+	//tmp_ptr = widget_ptr;
 }
 void EG_Callback_Generic_LostFocus(EG_Widget *widget_ptr)
 {
@@ -253,8 +253,8 @@ void EG_Callback_Generic_LostFocus(EG_Widget *widget_ptr)
 //		EG_Log( EG_LOG_WARNING, dL"Failed to render widget '%s'\n"
 //		 , dR, EG_Widget_GetName(widget_ptr) );
 
-	EG_Widget *tmp_ptr;
-	tmp_ptr = widget_ptr;
+	//EG_Widget *tmp_ptr;
+	//tmp_ptr = widget_ptr;
 
 	/* Call users event callback.
 	 */
@@ -284,15 +284,15 @@ void EG_Callback_Generic_Attach(EG_Widget *widget_ptr
 	/* Loose GNU CC -Wall -W compiler warnings.
 	 */
 
-	EG_Widget *tmp_widget_ptr;
-	EG_StringHash tmp_attach_to_type;
-	void *tmp_attach_to_ptr;
-	EG_BOOL tmp_attached;
+	// EG_Widget *tmp_widget_ptr;
+	// EG_StringHash tmp_attach_to_type;
+	// void *tmp_attach_to_ptr;
+	// EG_BOOL tmp_attached;
 
-	tmp_widget_ptr = widget_ptr;
-	tmp_attach_to_type = attach_to_type;
-	tmp_attach_to_ptr = attach_to_ptr;
-	tmp_attached = attached;
+	// tmp_widget_ptr = widget_ptr;
+	// tmp_attach_to_type = attach_to_type;
+	// tmp_attach_to_ptr = attach_to_ptr;
+	// tmp_attached = attached;
 }
 
 

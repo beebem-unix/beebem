@@ -1079,7 +1079,7 @@ INLINE static void RORInstrHandler_Acc(void) {
 INLINE static void SBCInstrHandler(int16 operand) {
   /* NOTE! Not sure about C and V flags */
   int TmpResultV,TmpResultC;
-  unsigned char nhn,nln;
+  //unsigned char nhn,nln;
   if (!GETDFLAG) {
     TmpResultV=(signed char)Accumulator-(signed char)operand-(1-GETCFLAG);
     TmpResultC=Accumulator-operand-(1-GETCFLAG);
@@ -1090,7 +1090,7 @@ INLINE static void SBCInstrHandler(int16 operand) {
     int ZFlag=0,NFlag=0,CFlag=1,VFlag=0;
     int TmpResult,TmpCarry=0;
     int ln,hn,oln,ohn;
-	nhn=(Accumulator>>4)&15; nln=Accumulator & 15;
+	//nhn=(Accumulator>>4)&15; nln=Accumulator & 15;
 
     /* Z flag determined from 2's compl result, not BCD result! */
     TmpResult=Accumulator-operand-(1-GETCFLAG);
@@ -2645,7 +2645,7 @@ void LoadTubeUEF(FILE *SUEF) {
 }
 
 void Load65C02UEF(FILE *SUEF) {
-	int Dlong;
+	//int Dlong;
 	TubeProgramCounter=fget16(SUEF);
 	Accumulator=fgetc(SUEF);
 	XReg=fgetc(SUEF);
@@ -2653,7 +2653,7 @@ void Load65C02UEF(FILE *SUEF) {
 	StackReg=fgetc(SUEF);
 	PSR=fgetc(SUEF);
 	//TotalTubeCycles=fget32(SUEF);
-	Dlong=fget32(SUEF);
+	//Dlong=fget32(SUEF);
 	TubeintStatus=fgetc(SUEF);
 	TubeNMIStatus=fgetc(SUEF);
 	tube_NMILock=fgetc(SUEF);

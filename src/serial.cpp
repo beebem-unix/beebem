@@ -91,8 +91,8 @@ int map_time[MAX_MAP_LINES];
 bool TapeControlEnabled = false;
 bool TapePlaying = true;
 bool TapeRecording = false;
-static HWND hwndTapeControl;
-static HWND hwndMap;
+//static HWND hwndTapeControl;
+//static HWND hwndMap;
 extern HWND hCurrentDialog;
 void TapeControlOpenFile(char *file_name);
 void TapeControlUpdateCounter(int tape_time);
@@ -105,7 +105,7 @@ unsigned char SerialPort;
 //--HANDLE hSerialPort=NULL; // Serial port handle
 //--DCB dcbSerialPort; // Serial port device control block
 char nSerialPort[5]; // Serial port name
-char *pnSerialPort=nSerialPort;
+const char *pnSerialPort=nSerialPort;
 unsigned char SerialPortOpen=0; // Indicates status of serial port (on the host)
 unsigned int SerialBuffer=0,SerialWriteBuffer=0;
 DWORD BytesIn,BytesOut;
@@ -230,7 +230,7 @@ void Write_ACIA_Tx_Data(unsigned char Data) {
 }
 
 void Write_SERPROC(unsigned char Data) {
-	unsigned int HigherRate;
+	//unsigned int HigherRate;
 	if (DebugEnabled) {
 		char info[200];
 		sprintf(info, "Serial: Write serial ULA %02X", (int)Data);
@@ -255,8 +255,8 @@ void Write_SERPROC(unsigned char Data) {
 	// Note, the PC serial port (or at least win32) does not allow different transmit/receive rates
 	// So we will use the higher of the two
 	if (SerialChannel==RS423) {
-		HigherRate=Tx_Rate;
-		if (Rx_Rate>Tx_Rate) HigherRate=Rx_Rate;
+		//HigherRate=Tx_Rate;
+		//if (Rx_Rate>Tx_Rate) HigherRate=Rx_Rate;
 //--		GetCommState(hSerialPort,&dcbSerialPort);
 //--		dcbSerialPort.BaudRate=HigherRate;
 //--		dcbSerialPort.DCBlength=sizeof(dcbSerialPort);
@@ -586,7 +586,7 @@ void InitThreads(void) {
 }
 
 void StatThread(void *lpParam) {
-	DWORD dwOvRes=0;
+	//DWORD dwOvRes=0;
 	do {
 //->		if ((!TouchScreenEnabled) &&
 //++
@@ -632,7 +632,7 @@ void SerialThread(void *lpParam) {
 	// New Serial port thread - 7:35pm 16/10/2001 GMT
 	// This sorta runs as a seperate process in effect, checking
 	// enable status, and doing the monitoring.
-	DWORD spResult;
+	//DWORD spResult;
 	do {
 //--		if ((!bSerialStateChanged) && (SerialPortEnabled) && (!TouchScreenEnabled) && (bWaitingForData)) {
 //--			spResult=WaitForSingleObject(olSerialPort.hEvent,INFINITE); // 10ms to respond
@@ -664,7 +664,7 @@ void SerialThread(void *lpParam) {
 }
 
 void InitSerialPort(void) {
-	BOOL bPortStat;
+	//BOOL bPortStat;
 	// Initialise COM port
 	if ( (SerialPortEnabled) && (!TouchScreenEnabled) ) {
 		if (SerialPort==1) pnSerialPort="Com1";
@@ -804,7 +804,7 @@ bool map_file(char *file_name)
 	uef_setclock(TapeClockSpeed);
 
 	file = uef_open(file_name);
-	if (file == NULL)
+	if (file == 0)
 	{
 		return(false);
 	}
@@ -967,7 +967,7 @@ void TapeControlCloseDialog()
 
 void TapeControlOpenFile(char *UEFName)
 {
-	int i;
+	//int i;
 
 	if (TapeControlEnabled) 
 	{

@@ -1,5 +1,5 @@
-CXX = @CXX@ -Wall -DDATA_DIR=\"$(pkgdatadir)\"
-CC = @CC@ -Wall -DDATA_DIR=\"$(pkgdatadir)\"
+CXX = @CXX@ -Wall -Werror -Wno-format-security -DDATA_DIR=\"$(pkgdatadir)\"
+CC = @CC@ -Wall -Werror -Wno-format-security -DDATA_DIR=\"$(pkgdatadir)\"
 
 # INCLUDES = -I@top_srcdir@/src -I@top_srcdir@/src/gui
 AM_CPPFLAGS = -I@top_srcdir@/src
@@ -9,9 +9,8 @@ libeg_a_SOURCES = gui.h \
                 sdl.c sdl.h \
                 functions.c functions.h \
                 \
-		types.h log.h line.h \
-		log.c \
-		\
+                types.h log.h line.h log.c \
+                \
                 messagebox.c messagebox.h messagebox_private.h \
                 window.c window.h window_private.h \
                 widget.c widget.h widget_private.h \

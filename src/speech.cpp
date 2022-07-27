@@ -417,7 +417,7 @@ void tms5220_update(unsigned char *buff, int length)
 		else
 		{
 			if (buffer - buff != len)
-				fprintf(stderr, "Here for some reason - mismatch in num of samples = %d, %d\n", len, buffer - buff);
+				fprintf(stderr, "Here for some reason - mismatch in num of samples = %d, %ld\n", len, buffer - buff);
 			tms5220_process(info->chip, sample_data, 0);
 			return;
 		}
@@ -464,7 +464,7 @@ void tms5220_update(unsigned char *buff, int length)
 	info->curr_sample = curr;
 
 	if (buffer - buff != len)
-		fprintf(stderr, "At end of update - mismatch in num of samples = %d, %d\n", len, buffer - buff);
+		fprintf(stderr, "At end of update - mismatch in num of samples = %d, %ld\n", len, buffer - buff);
 }
 
 /**********************************************************************************************
@@ -536,7 +536,7 @@ void tms5220_reset_chip(struct tms5220 *chip)
 	
 }
 
-void logerror(char *text, ...)
+void logerror(const char *text, ...)
 {
 va_list argptr;
 	
@@ -1021,8 +1021,9 @@ static int parse_frame(struct tms5220 *tms, int the_first_frame)
     /* clear out the new frame */
     tms->new_energy = 0;
     tms->new_pitch = 0;
-    for (i = 0; i < 10; i++)
+    for (i = 0; i < 10; i++) {
         tms->new_k[i] = 0;
+	}
 	
     /* if the previous frame was a stop frame, don't do anything */
 	if ((! the_first_frame) && (tms->old_energy == (energytable[15] >> 6)))

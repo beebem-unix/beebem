@@ -88,8 +88,8 @@ void LoadUEFState(char *StateName) {
 	char errmsg[256];
 	char UEFId[10];
 //--	int CompletionBits=0; // These bits should be filled in
-//## Unused.
-	long RPos=0,FLength,CPos;
+	//long RPos=0;
+	long FLength,CPos;
 	unsigned int Block,Length;
 	int Version;
 	strcpy(UEFId,"BlankFile");
@@ -111,7 +111,7 @@ void LoadUEFState(char *StateName) {
 		Version=fget16(UEFState);
 		sprintf(errmsg,"UEF Version %x",Version);
 		//MessageBox(GETHWND,errmsg,"BeebEm",MB_OK);
-		RPos=ftell(UEFState);
+		//RPos=ftell(UEFState);
 
 		while (ftell(UEFState)<FLength) {
 			Block=fget16(UEFState);

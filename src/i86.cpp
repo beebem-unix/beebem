@@ -5,6 +5,7 @@
 /* 26.March 2000 PeT changed set_irq_line */
 
 
+#include "attr.h"
 #include "windows.h"
 #include <stdio.h>
 #include <string.h>
@@ -156,7 +157,8 @@ struct i86_timing
 
 	void *	check2;											/* marker to make sure we line up */
 };
-//-> [INCLUDED i86time.cpp]
+
+//-> [INCLUDED i86time.cpp]
 /* these come from the Intel 80186 datasheet */
 static const struct i86_timing i186_cycles =
 {
@@ -1441,8 +1443,8 @@ static void PREFIX86(_ds)(void)    /* Opcode 0x3e */
 
 static void PREFIX86(_aas)(void)    /* Opcode 0x3f */
 {
-	unsigned ALcarry=1;
-	if (I.regs.b[AL]>0xf9) ALcarry=2;
+	//unsigned ALcarry=1;
+	//if (I.regs.b[AL]>0xf9) ALcarry=2;
 
 	if (AF || ((I.regs.b[AL] & 0xf) > 9))
     {
@@ -3377,7 +3379,7 @@ static void PREFIX186(_pusha)(void)    /* Opcode 0x60 */
 
 static void PREFIX186(_popa)(void)    /* Opcode 0x61 */
 {
-	 unsigned tmp;
+	ATTR_UNUSED unsigned tmp;
 
 	ICOUNT -= cycles.popa;
 	POP(I.regs.w[DI]);
@@ -3638,7 +3640,7 @@ int le, i;
 
 int i186_execute(int num_cycles)
 {
-static int lastInt = 0;
+//static int lastInt = 0;
 
 	/* adjust for any interrupts that came in */
 	i86_ICount = num_cycles;
@@ -3663,7 +3665,7 @@ static int lastInt = 0;
         if (TubeintStatus == 0)
             set_irq_line(INPUT_LINE_IRQ4, CLEAR_LINE);
         
-        lastInt = TubeintStatus;
+        //lastInt = TubeintStatus;
 
 // DRQ and DMA transfer
         
@@ -3832,7 +3834,8 @@ char path[256];
     i86_init();
 	//printf("calling i86_reset()\n");
     i86_reset();
-	//printf("calling ResetTube()\n");
+
+	//printf("calling ResetTube()\n");
     R1Status=0;
     ResetTube();
 
