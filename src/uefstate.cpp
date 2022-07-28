@@ -8,6 +8,8 @@
 #include "config.h"
 #endif
 
+#include "uefstate.h"
+
 #include "6502core.h"
 #include "beebmem.h"
 #include "beebsound.h"
@@ -19,6 +21,7 @@
 #include "tube.h"
 #include "via.h"
 #include "video.h"
+
 #include <stdio.h>
 
 FILE *UEFState;

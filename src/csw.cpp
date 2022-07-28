@@ -8,19 +8,20 @@
  */
 
 #include "csw.h"
-#include "main.h"
-#include "zlib.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 #include "6502core.h"
 #include "beebsound.h"
 #include "beebwin.h"
 #include "debug.h"
+#include "main.h"
 #include "serial.h"
 #include "uef.h"
 #include "uefstate.h"
+#include "zlib.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 FILE *csw_file;
 unsigned char file_buf[BUFFER_LEN];
@@ -219,8 +220,8 @@ int csw_poll(int clock) {
       csw_tonecount++;
       if (csw_tonecount > 20) /* Arbitary figure */
       {
-        //->					WriteLog("Detected tone at %d\n",
-        //csw_pulsecount);
+        //->					WriteLog("Detected tone at
+        //%d\n", csw_pulsecount);
         //++
         pDEBUG(dL "Detected tone at %d.", dR, csw_pulsecount);
         //<-
@@ -240,7 +241,7 @@ int csw_poll(int clock) {
                 0x14)) /* Not in tone any more - data start bit */
     {
       //->				WriteLog("Entered data at %d\n",
-      //csw_pulsecount);
+      // csw_pulsecount);
       //++
       pDEBUG(dL "Entered data at %d.", dR, csw_pulsecount);
       //<-
@@ -305,8 +306,8 @@ int csw_poll(int clock) {
 
       if (csw_pulselen <= 0x0d) /* Back in tone again */
       {
-        //->						WriteLog("Back in tone again at
-        //%d\n", csw_pulsecount);
+        //->						WriteLog("Back in tone again
+        //at %d\n", csw_pulsecount);
         //++
         pDEBUG(dL "Back in tone again at %d.", dR, csw_pulsecount);
         //<-

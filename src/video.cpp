@@ -31,10 +31,7 @@
 #include "config.h"
 #endif
 
-#include <fstream>
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
+#include "video.h"
 
 #include "6502core.h"
 #include "beebmem.h"
@@ -45,7 +42,11 @@
 #include "sysvia.h"
 #include "teletext.h"
 #include "uefstate.h"
-#include "video.h"
+
+#include <fstream>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 
 #ifdef BEEB_DOTIME
 #include <sys/times.h>

@@ -28,16 +28,14 @@
 #include "config.h"
 #endif
 
-//-- #ifdef WIN32
 /* Always compile sound code - it is switched on and off using SoundEnabled */
 //-- #define SOUNDSUPPORT
 #include "windows.h"
-//-- #endif
+
+#include <stdio.h>
 
 #define MUTED 0
 #define UNMUTED 1
-
-#include <stdio.h>
 
 extern int
     SoundDefault; // Default sound state (enabled/disabled via sound menu)

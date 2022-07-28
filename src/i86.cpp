@@ -4,21 +4,19 @@
  ****************************************************************************/
 /* 26.March 2000 PeT changed set_irq_line */
 
-#include "attr.h"
-#include "windows.h"
-#include <stdio.h>
-#include <string.h>
-
-#include "beebmem.h"
-#include "main.h"
-#include "tube.h"
-
-
 #define LSB_FIRST
 
 #include "i86.h"
-#include "osd_cpu.h"
 
+#include "attr.h"
+#include "beebmem.h"
+#include "main.h"
+#include "osd_cpu.h"
+#include "tube.h"
+#include "windows.h"
+
+#include <stdio.h>
+#include <string.h>
 
 /*************************************
  *
@@ -3516,7 +3514,8 @@ void i86_reset(void) {
   cycles = i186_cycles;
 }
 
-void i86_exit(void) { /* nothing to do ? */ }
+void i86_exit(void) { /* nothing to do ? */
+}
 
 /* ASG 971222 -- added these interface functions */
 

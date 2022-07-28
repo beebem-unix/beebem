@@ -20,12 +20,10 @@ Offset  Description                 Access
 #include "beebmem.h"
 #include "main.h"
 #include "scsi.h"
+#include "user_config.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-
-//+>
-#include "user_config.h"
-//<+
 
 enum phase_t {
   busfree,
@@ -398,13 +396,13 @@ void Execute(void) {
   //		fprintf(stderr, "Execute 0x%02x, Param 1=0x%02x, Param 2=0x%02x,
   // Param 3=0x%02x, Param 4=0x%02x, Param 5=0x%02x, Phase = %d, PC = 0x%04x\n",
   //				scsi.cmd[0], scsi.cmd[1], scsi.cmd[2],
-  //scsi.cmd[3],
+  // scsi.cmd[3],
   // scsi.cmd[4], scsi.cmd[5], scsi.phase, ProgramCounter); 	} else {
   //		fprintf(stderr, "Execute 0x%02x, Param 1=0x%02x, Param 2=0x%02x,
   // Param 3=0x%02x, Param 4=0x%02x, Param 5=0x%02x, Param 6=0x%02x, Param
   // 7=0x%02x, Param 8=0x%02x, Param 9=0x%02x, Phase = %d, PC = 0x%04x\n",
   //				scsi.cmd[0], scsi.cmd[1], scsi.cmd[2],
-  //scsi.cmd[3], scsi.cmd[4], scsi.cmd[5], scsi.cmd[6], scsi.cmd[7],
+  // scsi.cmd[3], scsi.cmd[4], scsi.cmd[5], scsi.cmd[6], scsi.cmd[7],
   // scsi.cmd[8], scsi.cmd[9], scsi.phase, ProgramCounter);
   //	}
 

@@ -8,15 +8,17 @@
 #include "config.h"
 #endif
 
+#include "debug.h"
+
 #include "6502core.h"
 #include "beebemrc.h"
 #include "beebmem.h"
-#include "debug.h"
 #include "main.h"
 #include "tube.h"
 #include "windows.h"
 #include "z80.h"
 #include "z80mem.h"
+
 #include <ctype.h>
 #include <string.h>
 

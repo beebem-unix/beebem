@@ -25,19 +25,14 @@
 
 #include "sdl.h"
 
+#include "beebem_pages.h"
+#include "beebwin.h"
 #include "line.h"
 #include "log.h"
+#include "main.h" // Remove this once command line stuff fixed
 #include "types.h"
 
-// Remove this once command line stuff fixed
-#include "main.h"
-
-// For PaletteType
-#include "beebwin.h"
-
 #include <string.h>
-
-#include "beebem_pages.h"
 
 // The SDL sound support code is nasty :-(
 //
@@ -178,7 +173,7 @@ int GetBytesFromSDLSoundBuffer(int len) {
       // fall back on. 			while (SDLSoundBufferBytesHave > (
       // (unsigned long)samples
       //* 2)){ 				SDLSoundBufferOffset_OUT++;
-      //if (SDLSoundBufferOffset_OUT >= SOUND_BUFFER_SIZE)
+      // if (SDLSoundBufferOffset_OUT >= SOUND_BUFFER_SIZE)
       // SDLSoundBufferOffset_OUT = (unsigned long) 0;
       //				SDLSoundBufferBytesHave--;
       //			}
@@ -990,13 +985,14 @@ void RenderLine(int line, int isTeletext, int xoffset) {
       if (cfg_EmulateCrtTeletext == 0 || (line & 1) == 1 ||
           disable_grille_for_teletext == 1) {
         //#endif
-        //				src.x=36; src.y=line; src.w=SDL_WINDOW_WIDTH
+        //				src.x=36; src.y=line;
+        //src.w=SDL_WINDOW_WIDTH
         //-
         //(36 + 124); src.h=1; 				dst.x= (36+124) / 2;
-        //dst.y=line +6; dst.w=SDL_WINDOW_WIDTH - (36 + 124); dst.h=1;
+        // dst.y=line +6; dst.w=SDL_WINDOW_WIDTH - (36 + 124); dst.h=1;
 
         //				src.x=0; src.y=line;
-        //src.w=SDL_WINDOW_WIDTH; src.h=1; 				dst.x=0;
+        // src.w=SDL_WINDOW_WIDTH; src.h=1; 				dst.x=0;
         // dst.y=line; dst.w=SDL_WINDOW_WIDTH; dst.h=1;
         src.x = 0;
         src.y = line;

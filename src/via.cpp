@@ -27,12 +27,14 @@
 #include "config.h"
 #endif
 
+#include "via.h"
+
 #include "debug.h"
 #include "sysvia.h"
 #include "uefstate.h"
 #include "uservia.h"
-#include "via.h"
 #include "viastate.h"
+
 #include <fstream>
 #include <iostream>
 #include <stdio.h>

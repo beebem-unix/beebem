@@ -1,8 +1,8 @@
 //#include "include/gui.h"
 
-#include <SDL.h>
-
 #include "types.h"
+
+#include <SDL.h>
 
 #ifdef __cplusplus
 extern "C" {

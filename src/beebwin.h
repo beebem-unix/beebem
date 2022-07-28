@@ -26,12 +26,13 @@
 #include "config.h"
 #endif
 
-#include "windows.h"
-#include <stdlib.h>
-#include <string.h>
-//-- #include <ddraw.h>
 #include "port.h"
 #include "video.h"
+#include "windows.h"
+
+//-- #include <ddraw.h>
+#include <stdlib.h>
+#include <string.h>
 
 /* Used in message boxes */
 #define GETHWND (mainWin == NULL ? NULL : mainWin->GethWnd())

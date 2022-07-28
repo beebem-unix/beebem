@@ -11,7 +11,6 @@
 
 #include "gui/functions.h"
 #include "gui/gui.h"
-
 #include "user_config.h"
 
 #include <stdio.h>

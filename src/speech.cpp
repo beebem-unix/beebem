@@ -10,25 +10,21 @@ Based on code written by Frank Palazzolo and others
 #include "config.h"
 #endif
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <time.h>
-
 #include "6502core.h"
 #include "beebmem.h"
 #include "beebsound.h"
 #include "beebwin.h"
 #include "debug.h"
 #include "main.h"
+#include "speech.h"
 #include "sysvia.h"
+#include "user_config.h"
 #include "via.h"
 #include "viastate.h"
 
-#include "speech.h"
-
-//+>
-#include "user_config.h"
-//<+
+#include <stdarg.h>
+#include <stdio.h>
+#include <time.h>
 
 /* TMS5220 ROM Tables */
 

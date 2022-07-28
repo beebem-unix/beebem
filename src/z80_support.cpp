@@ -2,16 +2,15 @@
 #include "config.h"
 #endif
 
-#include <stdio.h>
-#include <string.h>
-
 #include "beebmem.h"
 #include "debug.h"
 #include "main.h"
+#include "tube.h"
 #include "z80.h"
 #include "z80mem.h"
 
-#include "tube.h"
+#include <stdio.h>
+#include <string.h>
 
 extern int trace;
 

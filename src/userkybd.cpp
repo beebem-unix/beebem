@@ -25,10 +25,12 @@
 #include "config.h"
 #endif
 
+#include "userkybd.h"
+
 #include "beebemrc.h"
 #include "main.h"
-#include "userkybd.h"
 #include "windows.h"
+
 #include <stdio.h>
 #include <string.h>
 

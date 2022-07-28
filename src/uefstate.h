@@ -5,6 +5,8 @@
 #include "config.h"
 #endif
 
+#include <stdio.h>
+
 void fput32(unsigned int word32, FILE *fileptr);
 void fput16(unsigned int word16, FILE *fileptr);
 unsigned int fget32(FILE *fileptr);

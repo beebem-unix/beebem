@@ -26,12 +26,8 @@
 #include "config.h"
 #endif
 
-#include <fstream>
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "6502core.h"
+
 #include "atodconv.h"
 #include "attr.h"
 #include "beebmem.h"
@@ -51,11 +47,12 @@
 #include "z80.h"
 #include "z80mem.h"
 
-//--#ifdef WIN32
+#include <fstream>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
 #define INLINE inline
-//--#else
-//--#define INLINE
-//--#endif
 
 int CPUDebug = 0;
 int BeginDump = 0;

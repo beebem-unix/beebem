@@ -4,6 +4,7 @@
  */
 
 #include "hardware.h"
+
 #include "log.h"
 #include "windows.h"
 

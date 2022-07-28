@@ -7,9 +7,6 @@
  *
  */
 
-#include <stdio.h>
-#include <windows.h>
-
 #include "6502core.h"
 #include "atodconv.h"
 #include "beebsound.h"
@@ -22,6 +19,9 @@
 #include "uef.h"
 #include "uefstate.h"
 #include "uservia.h"
+#include "windows.h"
+
+#include <stdio.h>
 
 #define TS_BUFF_SIZE 128
 #define TS_DELAY 8192 // Cycles to wait for data to be TX'd or RX'd

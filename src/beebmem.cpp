@@ -25,37 +25,34 @@
 #include "config.h"
 #endif
 
+#include "beebmem.h"
+
+#include "6502core.h"
+#include "atodconv.h"
+#include "debug.h" //Rob added for INTON/OFF reporting only
+#include "disc1770.h"
+#include "disc8271.h"
+#include "econet.h" //Rob
+#include "main.h"
+#include "sasi.h"
+#include "scsi.h"
+#include "serial.h"
+#include "sysvia.h"
+#include "teletext.h"
+#include "tube.h"
+#include "uefstate.h"
+#include "user_config.h"
+#include "uservia.h"
+#include "video.h"
+#include "z80.h"
+#include "z80mem.h"
+
 #include <ctype.h>
 #include <fstream>
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
-#include "6502core.h"
-#include "atodconv.h"
-#include "beebmem.h"
-#include "disc1770.h"
-#include "disc8271.h"
-#include "main.h"
-#include "serial.h"
-#include "sysvia.h"
-#include "tube.h"
-#include "uservia.h"
-#include "video.h"
-//-- #include "include/errno.h"
-#include "debug.h"  //Rob added for INTON/OFF reporting only
-#include "econet.h" //Rob
-#include "sasi.h"
-#include "scsi.h"
-#include "teletext.h"
-#include "uefstate.h"
-#include "z80.h"
-#include "z80mem.h"
-
-//+>
-#include "user_config.h"
-//<+
 
 /* Each Rom now has a Ram/Rom flag */
 int RomWritable[16] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
@@ -1066,7 +1063,7 @@ void BeebReadRoms(void) {
   // isrom=0; }
   //--		if (strncmp(RomName+(strlen(RomName)-5),":RAM",4)==0) {
   //--			// Writable ROM (don't ask, Mark De Weger should be
-  //happy now
+  // happy now
   //;) Hi Mark! )
   //--			RomWritable[romslot]=1; // Make it writable
   //--			isrom=1; // Make it a ROM still

@@ -26,26 +26,24 @@
 #include "config.h"
 #endif
 
-#include <fstream>
-#include <iostream>
-#include <stdio.h>
-#include <stdlib.h>
+#include "tube.h"
 
 #include "6502core.h"
 #include "beebmem.h"
 #include "debug.h"
 #include "main.h"
-#include "tube.h"
 #include "uefstate.h"
+#include "user_config.h"
+#include "windows.h"
 #include "z80.h"
 #include "z80mem.h"
 
-//>++
-#include "user_config.h"
-//<--
+#include <fstream>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 
 //-- #ifdef WIN32
-#include "windows.h"
 #define INLINE inline
 //-- #else
 //-- #define INLINE

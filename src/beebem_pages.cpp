@@ -1,26 +1,18 @@
 #include "beebem_pages.h"
+
 #include "attr.h"
+#include "beebem.h"
+#include "beebemrc.h"
+#include "beebsound.h"
 #include "beebwin.h"
+#include "fake_registry.h"
 #include "gui/gui.h"
 #include "main.h"
-
-#include "beebemrc.h"
-#include "beebwin.h"
-
-#include "fake_registry.h"
-
-#include "beebem.h"
-#include "beebsound.h"
-
 #include "windows.h"
 
 #include <gtk/gtk.h>
-
+#include <iostream>
 #include <stdint.h>
-
-// [TODO] This shouldn't really be here.
-#define SCREEN_WIDTH 640
-#define SCREEN_HEIGHT 512
 
 /* -------------------
  */
@@ -41,9 +33,6 @@ static long about_lines = 0;
 
 /* -------------------
  */
-
-//#define MENU_COLORS CalcColor(191+32, 191+32, 0)
-//#define TITLE_COLORS CalcColor(191+32, 64, 32)
 
 static EG_BOOL Make_Main(SDL_Surface *dst_ptr);
 static void Destroy_Main(void);
@@ -202,8 +191,8 @@ static void ReCenterWindow(EG_Window *window_ptr) {
 static WindowsMenuItemBridge *CreateWindowsMenuItem(int win_id,
                                                     EG_Widget *widget_ptr) {
   if (win_menu_count >= MAX_WINDOWS_MENU_ITEMS) {
-    printf("*** SDL GUI to Windows Menu bridge: exceeded max menu"
-           "items. (inc MAX_WINDOWS_MENU_ITEMS)\n");
+    std::cerr << "*** SDL GUI to Windows Menu bridge: exceeded max menu"
+                 "items. (inc MAX_WINDOWS_MENU_ITEMS)\n";
     exit(2);
   }
 
@@ -779,13 +768,8 @@ void SetFullScreenTickbox(int state) {
  *	=	=	=	=	=	=	=	=	=
  */
 
-static void Main_Button_Reset(EG_Widget *widget_ptr, void *user_ptr) {
-  // EG_Widget *tmp;
-  // void *tmp2;
-
-  // tmp = widget_ptr;
-  // tmp2 = user_ptr;
-
+static void Main_Button_Reset(ATTR_UNUSED EG_Widget *widget_ptr,
+                              ATTR_UNUSED void *user_ptr) {
   EG_Window_Hide(gui.win_menu_ptr);
 
   // [TODO] If 'reset BBC' ticked do it!
@@ -804,13 +788,8 @@ static void Main_Button_Reset(EG_Widget *widget_ptr, void *user_ptr) {
   mainWin->HandleCommand(ID_FILE_RESET);
 }
 
-static void Main_Button_Okay(EG_Widget *widget_ptr, void *user_ptr) {
-  // EG_Widget *tmp;
-  // void *tmp2;
-
-  // tmp = widget_ptr;
-  // tmp2 = user_ptr;
-
+static void Main_Button_Okay(ATTR_UNUSED EG_Widget *widget_ptr,
+                             ATTR_UNUSED void *user_ptr) {
   EG_Window_Hide(gui.win_menu_ptr);
 
   // [TODO] If 'reset BBC' ticked do it!
@@ -826,7 +805,7 @@ static void Main_Button_Okay(EG_Widget *widget_ptr, void *user_ptr) {
   //	EG_RadioGroup_Select(gui.widget_no_reset_ptr);
   //	EG_Button_GetFocus(gui.widget_okay_ptr);
 
-  /* Use this opertunity to dump some sound.
+  /* Use this opportunity to dump some sound.
    */
   CatchupSound();
   SetSound(UNMUTED);
@@ -834,13 +813,8 @@ static void Main_Button_Okay(EG_Widget *widget_ptr, void *user_ptr) {
     mainWin->ResetTiming();
 }
 
-static void Main_Tick_FullScreen(EG_Widget *widget_ptr, void *user_ptr) {
-  // EG_Widget *tmp;
-  // void *tmp2;
-
-  // tmp = widget_ptr;
-  // tmp2 = user_ptr;
-
+static void Main_Tick_FullScreen(ATTR_UNUSED EG_Widget *widget_ptr,
+                                 ATTR_UNUSED void *user_ptr) {
   // [TODO] Flush sound.
 
   (void)ToggleFullscreen();
@@ -852,24 +826,14 @@ static void Main_Tick_FullScreen(EG_Widget *widget_ptr, void *user_ptr) {
   SDL_Delay(200);
 }
 
-static void Main_Button_Quit(EG_Widget *widget_ptr, void *user_ptr) {
-  // EG_Widget *tmp;
-  // void *tmp2;
-
-  // tmp = widget_ptr;
-  // tmp2 = user_ptr;
-
+static void Main_Button_Quit(ATTR_UNUSED EG_Widget *widget_ptr,
+                             ATTR_UNUSED void *user_ptr) {
   Quit();
   Main_Button_Okay(gui.widget_okay_ptr, &gui);
 }
 
-static void Main_Button_System(EG_Widget *widget_ptr, void *user_ptr) {
-  // EG_Widget *tmp;
-  // void *tmp2;
-
-  // tmp = widget_ptr;
-  // tmp2 = user_ptr;
-
+static void Main_Button_System(ATTR_UNUSED EG_Widget *widget_ptr,
+                               ATTR_UNUSED void *user_ptr) {
   EG_Window_Hide(gui.win_menu_ptr);
   SDL_Delay(100);
   ReCenterWindow(gui.win_system_ptr);
@@ -877,13 +841,8 @@ static void Main_Button_System(EG_Widget *widget_ptr, void *user_ptr) {
   SetActiveWindow(gui.win_system_ptr);
 }
 
-static void Main_Button_Screen(EG_Widget *widget_ptr, void *user_ptr) {
-  // EG_Widget *tmp;
-  // void *tmp2;
-
-  // tmp = widget_ptr;
-  // tmp2 = user_ptr;
-
+static void Main_Button_Screen(ATTR_UNUSED EG_Widget *widget_ptr,
+                               ATTR_UNUSED void *user_ptr) {
   EG_Window_Hide(gui.win_menu_ptr);
   SDL_Delay(100);
   ReCenterWindow(gui.win_screen_ptr);
@@ -891,13 +850,8 @@ static void Main_Button_Screen(EG_Widget *widget_ptr, void *user_ptr) {
   SetActiveWindow(gui.win_screen_ptr);
 }
 
-static void Main_Button_Sound(EG_Widget *widget_ptr, void *user_ptr) {
-  // EG_Widget *tmp;
-  // void *tmp2;
-
-  // tmp = widget_ptr;
-  // tmp2 = user_ptr;
-
+static void Main_Button_Sound(ATTR_UNUSED EG_Widget *widget_ptr,
+                              ATTR_UNUSED void *user_ptr) {
   EG_Window_Hide(gui.win_menu_ptr);
   SDL_Delay(100);
   ReCenterWindow(gui.win_sound_ptr);
@@ -905,13 +859,8 @@ static void Main_Button_Sound(EG_Widget *widget_ptr, void *user_ptr) {
   SetActiveWindow(gui.win_sound_ptr);
 }
 
-static void Main_Button_ROMs(EG_Widget *widget_ptr, void *user_ptr) {
-  // EG_Widget *tmp;
-  // void *tmp2;
-
-  // tmp = widget_ptr;
-  // tmp2 = user_ptr;
-
+static void Main_Button_ROMs(ATTR_UNUSED EG_Widget *widget_ptr,
+                             ATTR_UNUSED void *user_ptr) {
   EG_Window_Hide(gui.win_menu_ptr);
 
   SDL_Delay(100);
@@ -998,8 +947,6 @@ static EG_BOOL Make_Main(SDL_Surface *dst_ptr) {
 
   SDL_Rect win, loc;
   SDL_Color col;
-
-  //	malloc(1024*10);
 
   /* Window
    */

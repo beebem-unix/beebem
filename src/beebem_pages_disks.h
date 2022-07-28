@@ -9,8 +9,8 @@
 #include "config.h"
 #endif
 
-#include "gui.h"
-#include "gui_widget_private.h"
+#include "gui/gui.h"
+#include "gui/widget_private.h"
 
 #ifdef __cplusplus
 extern "C" {

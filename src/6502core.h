@@ -27,6 +27,7 @@
 #endif
 
 #include "port.h"
+
 #include <stdio.h>
 
 void DumpRegs(void);

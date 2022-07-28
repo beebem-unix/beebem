@@ -28,6 +28,7 @@
 #endif
 
 #include "port.h"
+
 #include <stdio.h>
 
 extern unsigned char R1Status;

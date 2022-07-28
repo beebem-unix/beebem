@@ -21,18 +21,17 @@
 #include "econet.h"
 #include "main.h"
 #include "sysvia.h"
-#include "windows.h"
-#include <stdio.h>
-
-//+>
 #include "user_config.h"
+#include "windows.h"
 
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <netinet/in.h>
+#include <stdio.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <unistd.h>
+
 //#include <signal.h>
 //#include <stdio.h>
 //#include <fcntl.h>

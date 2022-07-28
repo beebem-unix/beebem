@@ -29,14 +29,16 @@ to cause problems as far as can be determined under normal use".
 #include "config.h"
 #endif
 
+#include "disc1770.h"
+
 #include "6502core.h"
 #include "beebemrc.h"
-#include "disc1770.h"
 #include "main.h"
 #include "uefstate.h"
 #include "windows.h"
 #include "z80.h"
 #include "z80mem.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -3,12 +3,12 @@
 #endif
 
 #include "tube.h"
+#include "z80.h"
+#include "z80mem.h"
+
 #include <memory.h>
 #include <stdio.h>
 #include <string.h>
-
-#include "z80.h"
-#include "z80mem.h"
 
 typedef unsigned char UBYTE;
 typedef const char *STR;

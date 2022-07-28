@@ -26,22 +26,19 @@
 #include "config.h"
 #endif
 
+#include "6502core.h"
+#include "beebmem.h"
+#include "disc1770.h"
+#include "disc8271.h"
+#include "main.h"
+#include "uefstate.h"
+#include "windows.h"
+
 #include <fstream>
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-#include "6502core.h"
-#include "disc8271.h"
-#include "uefstate.h"
-
-//--#ifdef WIN32
-#include "beebmem.h"
-#include "disc1770.h"
-#include "main.h"
-#include "windows.h"
-//--#endif
 
 extern int TorchTube;
 
@@ -165,7 +162,7 @@ static void NotImp(const char *NotImpCom) {
   MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
   //--#else
   //-- std::cerr << NotImpCom << " has not been implemented in disc8271 -
-  //sorry\n";
+  // sorry\n";
   //-- exit(0);
   //--#endif
 }; /* NotImp */
@@ -1295,7 +1292,7 @@ void LoadSimpleDiscImage(char *FileName, int DriveNum, int HeadNum,
     //--   std::cerr << "WARNING - Incorrect disc type selected(?) in drive " <<
     // DriveNum << "\n";
     //--   std::cerr << "This disc file looks like a double sided disc
-    //image.\n";
+    // image.\n";
     //--   std::cerr << "Check files before copying them.\n";
     //--#endif
   }
@@ -1364,7 +1361,7 @@ void LoadSimpleDSDiscImage(char *FileName, int DriveNum, int Tracks) {
     //--   std::cerr << "WARNING - Incorrect disc type selected(?) in drive " <<
     // DriveNum << "\n";
     //--   std::cerr << "This disc file looks like a single sided disc
-    //image.\n";
+    // image.\n";
     //--   std::cerr << "Check files before copying them.\n";
     //--#endif
   }
@@ -1394,7 +1391,7 @@ static void SaveTrackImage(int DriveNum, int HeadNum, int TrackNum) {
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
     //--    std::cerr << "Could not open disc file for write " <<
-    //FileNames[DriveNum]
+    // FileNames[DriveNum]
     //<< "\n";
     //--#endif
     return;
@@ -1508,10 +1505,10 @@ void DiscWriteEnable(int DriveNum, int WriteEnable) {
                  "BBC Emulator", MB_OK | MB_ICONWARNING);
       //--#else
       //--     std::cerr << "WARNING - Invalid Disc Catalogue in drive " <<
-      //DriveNum
+      // DriveNum
       //<< "\n";
       //--     std::cerr << "This disc image will get corrupted if files are
-      //written
+      // written
       // to it.\n";
       //--     std::cerr << "Copy all the files to a new image to fix it.\n";
       //--#endif
@@ -1665,7 +1662,7 @@ static void LoadStartupDisc(int DriveNum, char *DiscString) {
                  "BBC Emulator", MB_OK | MB_ICONERROR);
       //--#else
       //--       std::cerr << "BeebDiscLoad environment variable set wrong -
-      //the\n";
+      // the\n";
       //--       std::cerr << "first character is either S or D signifying\n";
       //--       std::cerr << "single or double sided\n";
       //--#endif

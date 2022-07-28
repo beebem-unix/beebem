@@ -6,12 +6,11 @@
 #include "config.h"
 #endif
 
-#include "log.h"
-
-#include "sdl.h"
-//#include "include/gui_functions.h"
+#include "beebem_pages_disks.h"
 
 #include "gui/gui.h"
+#include "log.h"
+#include "sdl.h"
 
 #include <SDL.h>
 

@@ -24,15 +24,13 @@
 #include "config.h"
 #endif
 
-#include <stdio.h>
+#include "atodconv.h"
 
 #include "6502core.h"
-#include "atodconv.h"
 #include "sysvia.h"
-
-//--#ifdef WIN32
 #include "windows.h"
-//--#endif
+
+#include <stdio.h>
 
 int JoystickEnabled = 0;
 

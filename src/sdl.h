@@ -5,10 +5,11 @@
 #include "config.h"
 #endif
 
-#include <SDL.h>
 
-#include "sdl.h"
+#include "gui/sdl.h"
 #include "types.h"
+
+#include <SDL.h>
 #include <stdlib.h>
 
 #define BEEBEM_VIDEO_CORE_SCREEN_WIDTH 800

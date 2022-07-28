@@ -30,22 +30,8 @@
 
 #include "beebsound.h"
 
-#include "attr.h"
-#include "windows.h"
-#include <fstream>
-#include <iostream>
-//-- #include <process.h>
-#include <math.h>
-
-#include <errno.h>
-//-- #include <windowsx.h>
-//-- #include <mmsystem.h>
-//-- #include <dsound.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
 #include "6502core.h"
+#include "attr.h"
 #include "avi.h"
 #include "beebmem.h"
 #include "beebwin.h"
@@ -53,6 +39,19 @@
 #include "port.h"
 #include "speech.h"
 #include "uefstate.h"
+#include "windows.h"
+
+#include <errno.h>
+#include <fstream>
+#include <iostream>
+#include <math.h>
+//-- #include <dsound.h>
+//-- #include <mmsystem.h>
+//-- #include <process.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+//-- #include <windowsx.h>
 
 //-- extern AVIWriter *aviWriter;
 
@@ -632,16 +631,17 @@ static void InitAudioDev(int sampleratein) {
   //--		dsect=1;
   //-- 		hr = DirectSoundCreate(NULL, &DSound, NULL);
   //--		if (hr != DS_OK) MessageBox(GETHWND,"Attempt to start
-  //DirectSound system failed","BeebEm",MB_ICONERROR|MB_OK);
+  // DirectSound system failed","BeebEm",MB_ICONERROR|MB_OK);
   //--		if(hr == DS_OK)
   //--		{
   //--			hr=DS_OK;
   //--			if (UsePrimaryBuffer) {
   //--				hr =
-  //DSound->SetCooperativeLevel(mainWin->GethWnd(), DSSCL_WRITEPRIMARY);
+  // DSound->SetCooperativeLevel(mainWin->GethWnd(), DSSCL_WRITEPRIMARY);
   //--				if (hr == DSERR_UNSUPPORTED) {
-  //--					MessageBox(GETHWND,"Use of Primary DirectSound
-  //Buffer unsupported on this system. Using Secondary DirectSound Buffer
+  //--					MessageBox(GETHWND,"Use of Primary
+  //DirectSound Buffer unsupported on this system. Using Secondary DirectSound
+  // Buffer
   // instead",
   //--						"BBC
   // Emulator",MB_OK|MB_ICONERROR);
@@ -662,7 +662,7 @@ static void InitAudioDev(int sampleratein) {
   //--		{
   //--			char  errstr[200];
   //--			sprintf(errstr,"Direct Sound initialisation failed on
-  //part %i\nFailure code %X",dsect,hr);
+  // part %i\nFailure code %X",dsect,hr);
   //--			MessageBox(GETHWND,errstr,"BBC
   // Emulator",MB_OK|MB_ICONERROR);
   //--			SoundReset();
@@ -1001,8 +1001,8 @@ void ClickRelay(unsigned char RState) {
 
 int GetVol(int vol) {
   if (SoundExponentialVolume) {
-    //		static int expVol[] = { 0,  2,  4,  6,  9, 12, 15, 19, 24, 30, 38,
-    //48, 60, 76,  95, 120 };
+    //		static int expVol[] = { 0,  2,  4,  6,  9, 12, 15, 19, 24, 30,
+    //38, 48, 60, 76,  95, 120 };
     static int expVol[] = {0,  11, 14, 17, 20, 24, 28,  33,
                            39, 46, 54, 63, 74, 87, 102, 120};
     if (vol >= 0 && vol <= 15)

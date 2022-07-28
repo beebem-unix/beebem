@@ -12,10 +12,12 @@ Offset  Description                 Access
 */
 
 #include "teletext.h"
+
 #include "6502core.h"
 #include "beebmem.h"
 #include "debug.h"
 #include "main.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 

@@ -25,22 +25,20 @@
 #include "config.h"
 #endif
 
-#include <fstream>
-#include <iostream>
-#include <stdio.h>
+#include "uservia.h"
 
 #include "6502core.h"
 #include "beebemrc.h"
 #include "debug.h"
+#include "main.h"
 #include "tube.h"
-#include "uservia.h"
 #include "via.h"
 #include "viastate.h"
-
-//--#ifdef WIN32
-#include "main.h"
 #include "windows.h"
-//--#endif
+
+#include <fstream>
+#include <iostream>
+#include <stdio.h>
 
 bool mBreakOutWindow = false;
 

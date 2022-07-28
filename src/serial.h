@@ -4,6 +4,9 @@
 #ifndef SERIAL_HEADER
 #define SERIAL_HEADER
 
+#include "port.h"
+#include "windows.h"
+
 #define TAPECYCLES 357 // 2000000/5600 - 5600 is normal tape speed
 
 extern CycleCountT TapeTrigger;

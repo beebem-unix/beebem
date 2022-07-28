@@ -29,6 +29,7 @@
 #endif
 
 #include "viastate.h"
+
 #include <stdio.h>
 
 void VIAReset(VIAState *ToReset);

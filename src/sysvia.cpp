@@ -26,11 +26,7 @@ keyboard emulation - David Alan Gilbert 30/10/94 */
 #include "config.h"
 #endif
 
-#include "windows.h"
-#include <fstream>
-#include <iostream>
-#include <stdio.h>
-#include <time.h>
+#include "sysvia.h"
 
 #include "6502core.h"
 #include "beebmem.h"
@@ -39,13 +35,14 @@ keyboard emulation - David Alan Gilbert 30/10/94 */
 #include "debug.h"
 #include "main.h"
 #include "speech.h"
-#include "sysvia.h"
 #include "via.h"
 #include "viastate.h"
-
-//--#ifdef WIN32
 #include "windows.h"
-//--#endif
+
+#include <fstream>
+#include <iostream>
+#include <stdio.h>
+#include <time.h>
 
 /* Clock stuff for Master 128 RTC */
 time_t SysTime;

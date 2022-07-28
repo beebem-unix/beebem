@@ -23,6 +23,38 @@
 #include "config.h"
 #endif
 
+#include "main.h"
+
+#include "6502core.h"
+#include "atodconv.h"
+#include "beebem_pages.h"
+#include "beebmem.h"
+#include "beebsound.h"
+#include "beebwin.h"
+#include "disc1770.h"
+#include "disc8271.h"
+#include "econet.h" //Rob
+#include "fake_registry.h"
+#include "gui/gui.h"
+#include "i86.h"
+#include "line.h" // SDL Stuff
+#include "log.h"
+#include "sasi.h"
+#include "scsi.h" // Dave: Needed for reset on break
+#include "sdl.h"
+#include "serial.h"
+#include "sysvia.h"
+#include "teletext.h"
+#include "tube.h"
+#include "uservia.h"
+#include "via.h"
+#include "video.h"
+#include "windows.h"
+#include "z80.h"
+#include "z80mem.h"
+
+#include <fstream>
+#include <iostream>
 #include <signal.h>
 #include <stdarg.h>
 #include <stdio.h>
@@ -35,42 +67,6 @@
 #include <pwd.h>
 #include <sys/types.h>
 #endif
-
-#include "windows.h"
-#include <fstream>
-#include <iostream>
-
-#include "6502core.h"
-#include "atodconv.h"
-#include "beebmem.h"
-#include "beebsound.h"
-#include "beebwin.h"
-#include "disc1770.h"
-#include "disc8271.h"
-#include "econet.h" //Rob
-#include "serial.h"
-#include "sysvia.h"
-#include "tube.h"
-#include "uservia.h"
-#include "via.h"
-#include "video.h"
-
-#include "sasi.h"
-#include "scsi.h" // Dave: Needed for reset on break
-
-#include "i86.h"
-#include "teletext.h"
-#include "z80.h"
-#include "z80mem.h"
-
-#include "line.h" // SDL Stuff
-#include "log.h"
-#include "sdl.h"
-
-#include "gui/gui.h"
-
-#include "beebem_pages.h"
-#include "fake_registry.h"
 
 // Can remove this (only needed to calc string hash)
 //#include <gui_functions.h>
@@ -295,10 +291,10 @@ int main(int argc, char *argv[]) {
     // mainWin->IsFrozen())
     //--		{
     //--			if(!GetMessage(&msg,    // message structure
-    //--							NULL,   // handle of
-    //window receiving the message
+    //--							NULL,   //
+    //handle of window receiving the message
     //--							0,      //
-    //lowest message to examine
+    // lowest message to examine
     //--							0))
     //--				break;              // Quit the app on
     // WM_QUIT
@@ -472,8 +468,8 @@ int main(int argc, char *argv[]) {
                 BeebKeyUp(row, col);
             }
 
-            //						/* Release Caps lock for X11
-            //after a short delay.
+            //						/* Release Caps lock for
+            // X11 after a short delay.
             //						 */
             //						if (event.key.keysym.sym
             //== SDLK_CAPSLOCK

@@ -32,11 +32,7 @@ to cause problems as far as can be determined under normal use".
 // order to use VC profiling.
 //#define PROFILING
 
-//->#include <windows.h>
-//++
-#include "windows.h"
-//<-
-#include <stdio.h>
+#include "serial.h"
 
 #include "6502core.h"
 #include "beebemrc.h"
@@ -45,10 +41,12 @@ to cause problems as far as can be determined under normal use".
 #include "csw.h"
 #include "debug.h"
 #include "main.h"
-#include "serial.h"
 #include "serialdevices.h"
 #include "uef.h"
 #include "uefstate.h"
+#include "windows.h"
+
+#include <stdio.h>
 
 #define CASSETTE 0 // Device in
 #define RS423 1    // use defines
@@ -198,9 +196,9 @@ void Write_ACIA_Control(unsigned char CReg) {
     //--		GetCommState(hSerialPort,&dcbSerialPort);
     //--		dcbSerialPort.ByteSize=Data_Bits;
     //--
-    //dcbSerialPort.StopBits=(Stop_Bits==1)?ONESTOPBIT:TWOSTOPBITS;
+    // dcbSerialPort.StopBits=(Stop_Bits==1)?ONESTOPBIT:TWOSTOPBITS;
     //--
-    //dcbSerialPort.Parity=(Parity==0)?NOPARITY:((Parity==1)?ODDPARITY:EVENPARITY);
+    // dcbSerialPort.Parity=(Parity==0)?NOPARITY:((Parity==1)?ODDPARITY:EVENPARITY);
     //--		dcbSerialPort.DCBlength=sizeof(dcbSerialPort);
     //--		SetCommState(hSerialPort,&dcbSerialPort);
     //--		// Check RTS
@@ -216,7 +214,7 @@ void Write_ACIA_Tx_Data(unsigned char Data) {
   }
 
   //	WriteLog("Serial: Write ACIA Tx %02X, SerialChannel = %d\n", (int)Data,
-  //SerialChannel);
+  // SerialChannel);
 
   intStatus &= ~(1 << serial);
   ResetACIAStatus(7);
@@ -245,7 +243,7 @@ void Write_ACIA_Tx_Data(unsigned char Data) {
         TouchScreenWrite(Data);
       } else {
         //--
-        //WriteFile(hSerialPort,&SerialWriteBuffer,1,&BytesOut,&olSerialWrite);
+        // WriteFile(hSerialPort,&SerialWriteBuffer,1,&BytesOut,&olSerialWrite);
       }
 
       SetACIAStatus(1);
@@ -391,7 +389,7 @@ void Serial_Poll(void) {
     if (TapeRecording) {
 
       //			if (trace == 1) WriteLog("Here -
-      //TapeRecording\n");
+      // TapeRecording\n");
 
       if (Cass_Relay == 1 && UEFOpen && TotalCycles >= TapeTrigger) {
         if (TxD > 0) {
@@ -431,8 +429,8 @@ void Serial_Poll(void) {
     } else // Playing or stopped
     {
       //			if (trace == 1) WriteLog("In Serial Poll -
-      //Cass_Relay = %d, UEFOpen = %d, TapeClock = %d, OldClock = %d\n",
-      //Cass_Relay, UEFOpen, TapeClock, OldClock);
+      // Cass_Relay = %d, UEFOpen = %d, TapeClock = %d, OldClock = %d\n",
+      // Cass_Relay, UEFOpen, TapeClock, OldClock);
 
       /*
        * 10/09/06
@@ -566,7 +564,7 @@ void Serial_Poll(void) {
     } else {
       if ((!bWaitingForStat) && (!bSerialStateChanged)) {
         //--
-        //WaitCommEvent(hSerialPort,&dwCommEvent,&olStatus);
+        // WaitCommEvent(hSerialPort,&dwCommEvent,&olStatus);
         bWaitingForStat = TRUE;
       }
       //--			if ((!bSerialStateChanged) && (bCharReady) &&
@@ -578,13 +576,13 @@ void Serial_Poll(void) {
       //--						bWaitingForData=TRUE;
       //--					} else {
       //--
-      //MessageBox(GETHWND,"Serial Port Error","BBC
-      //Emulator",MB_OK|MB_ICONERROR);
+      // MessageBox(GETHWND,"Serial Port Error","BBC
+      // Emulator",MB_OK|MB_ICONERROR);
       //--					}
       //--				} else {
       //--					if (BytesIn>0) {
       //--						HandleData((unsigned
-      //char)SerialBuffer);
+      // char)SerialBuffer);
       //--					} else {
       //--					 ClearCommError(hSerialPort,
       //&dwClrCommError,NULL);
@@ -603,17 +601,17 @@ void InitThreads(void) {
   //--	if ( (SerialPortEnabled) && (!TouchScreenEnabled) ) {
   InitSerialPort(); // Set up the serial port if its enabled.
   //--		if (olSerialPort.hEvent) { CloseHandle(olSerialPort.hEvent);
-  //olSerialPort.hEvent=NULL; }
+  // olSerialPort.hEvent=NULL; }
   //--		olSerialPort.hEvent=CreateEvent(NULL,TRUE,FALSE,NULL); // Create
-  //the serial port event signal
+  // the serial port event signal
   //--		if (olSerialWrite.hEvent) { CloseHandle(olSerialWrite.hEvent);
-  //olSerialWrite.hEvent=NULL; }
+  // olSerialWrite.hEvent=NULL; }
   //--		olSerialWrite.hEvent=CreateEvent(NULL,TRUE,FALSE,NULL); // Write
-  //event, not actually used.
+  // event, not actually used.
   //--		if (olStatus.hEvent) { CloseHandle(olStatus.hEvent);
-  //olStatus.hEvent=NULL; }
+  // olStatus.hEvent=NULL; }
   //--		olStatus.hEvent=CreateEvent(NULL,TRUE,FALSE,NULL); // Status
-  //event, for WaitCommEvent
+  // event, for WaitCommEvent
   //--	}
   bSerialStateChanged = FALSE;
 }
@@ -639,17 +637,17 @@ void StatThread(void *lpParam) {
       //--				if (dwCommEvent & EV_CTS) {
       //--					// CTS line change
       //--
-      //GetCommModemStatus(hSerialPort,&LineStat);
+      // GetCommModemStatus(hSerialPort,&LineStat);
       //--					if (LineStat & MS_CTS_ON)
-      //ResetACIAStatus(3); else SetACIAStatus(3); // Invert for CTS bit
+      // ResetACIAStatus(3); else SetACIAStatus(3); // Invert for CTS bit
       //--					if (LineStat & MS_CTS_ON)
-      //SetACIAStatus(1); else ResetACIAStatus(1); // Keep for TDRE bit
+      // SetACIAStatus(1); else ResetACIAStatus(1); // Keep for TDRE bit
       //--				}
       //--			}
       //--			bWaitingForStat=FALSE;
     } else {
       //->			Sleep(100); // Don't hog CPU if nothing
-      //happening
+      // happening
       //++
       SDL_Delay(100);
       //<-
@@ -675,19 +673,19 @@ void SerialThread(void *lpParam) {
   do {
     //--		if ((!bSerialStateChanged) && (SerialPortEnabled) &&
     //(!TouchScreenEnabled) && (bWaitingForData)) {
-    //--			spResult=WaitForSingleObject(olSerialPort.hEvent,INFINITE); //
-    //10ms to respond
+    //--
+    //spResult=WaitForSingleObject(olSerialPort.hEvent,INFINITE);
+    //// 10ms to respond
     //--			if (spResult==WAIT_OBJECT_0) {
     //--				if
     //(GetOverlappedResult(hSerialPort,&olSerialPort,&BytesIn,FALSE)) {
     //--					// sucessful read, screw any
-    //errors.
-    //--					if ((SerialChannel==RS423) && (BytesIn>0))
-    //HandleData((unsigned char)SerialBuffer);
+    // errors.
+    //--					if ((SerialChannel==RS423) &&
+    //(BytesIn>0)) HandleData((unsigned char)SerialBuffer);
     //--					if (BytesIn==0) {
     //--						bCharReady=FALSE;
-    //--						ClearCommError(hSerialPort,
-    //&dwClrCommError,NULL);
+    //-- ClearCommError(hSerialPort, &dwClrCommError,NULL);
     //--					}
     //--					bWaitingForData=FALSE;
     //--				}
@@ -697,7 +695,7 @@ void SerialThread(void *lpParam) {
     {
 
       //->			Sleep(100); // Don't hog CPU if nothing
-      //happening
+      // happening
       //++
       SDL_Delay(100);
       //<-
@@ -722,7 +720,7 @@ void InitSerialPort(void) {
     if (SerialPort == 4)
       pnSerialPort = "Com4";
     //--
-    //hSerialPort=CreateFile(pnSerialPort,GENERIC_READ|GENERIC_WRITE,0,0,OPEN_EXISTING,FILE_FLAG_OVERLAPPED,0);
+    // hSerialPort=CreateFile(pnSerialPort,GENERIC_READ|GENERIC_WRITE,0,0,OPEN_EXISTING,FILE_FLAG_OVERLAPPED,0);
     //--		if (hSerialPort==INVALID_HANDLE_VALUE) {
     MessageBox(GETHWND, "Could not open specified serial port", "BBC Emulator",
                MB_OK | MB_ICONERROR);
@@ -742,8 +740,8 @@ void InitSerialPort(void) {
     //--			dcbSerialPort.fOutX=FALSE;
     //--			dcbSerialPort.fDsrSensitivity=FALSE;
     //--			dcbSerialPort.fInX=FALSE;
-    //--			dcbSerialPort.fRtsControl=RTS_CONTROL_DISABLE; // Leave it low (do
-    //not send) for now
+    //--			dcbSerialPort.fRtsControl=RTS_CONTROL_DISABLE; // Leave it
+    //low (do not send) for now
     //--			dcbSerialPort.DCBlength=sizeof(dcbSerialPort);
     //--			bPortStat=SetCommState(hSerialPort,
     //&dcbSerialPort);
@@ -754,7 +752,7 @@ void InitSerialPort(void) {
     //--			ctSerialPort.WriteTotalTimeoutMultiplier=0;
     //--			SetCommTimeouts(hSerialPort,&ctSerialPort);
     //--			SetCommMask(hSerialPort,EV_CTS | EV_RXCHAR |
-    //EV_ERR);
+    // EV_ERR);
     //--		}
   }
   // serlog=fopen("/ser.log","wb");
@@ -958,7 +956,7 @@ bool map_file(char *file_name) {
 //*******************************************************************
 
 //--BOOL CALLBACK TapeControlDlgProc(HWND hwndDlg, UINT message, WPARAM wParam,
-//LPARAM lParam);
+// LPARAM lParam);
 
 //--void TapeControlOpenDialog(HINSTANCE hinst, HWND hwndMain)
 //--{
@@ -969,9 +967,8 @@ bool map_file(char *file_name) {
 //--	if (!IsWindow(hwndTapeControl))
 //--	{
 //--		hwndTapeControl = CreateDialog(hinst,
-//MAKEINTRESOURCE(IDD_TAPECONTROL),
-//--										NULL,
-//(DLGPROC)TapeControlDlgProc);
+// MAKEINTRESOURCE(IDD_TAPECONTROL),
+//-- NULL, (DLGPROC)TapeControlDlgProc);
 //--		hCurrentDialog = hwndTapeControl;
 //--		ShowWindow(hwndTapeControl, SW_SHOW);
 //--
@@ -1034,7 +1031,7 @@ void TapeControlUpdateCounter(int tape_time) {
 }
 
 //--BOOL CALLBACK TapeControlDlgProc(HWND hwndDlg, UINT message, WPARAM wParam,
-//LPARAM lParam)
+// LPARAM lParam)
 //--{
 //--	char str[256];
 //--	int s;
@@ -1058,15 +1055,15 @@ void TapeControlUpdateCounter(int tape_time) {
 //--				case IDC_TCMAP:
 //--					if (HIWORD(wParam) == LBN_SELCHANGE)
 //--					{
-//--						s = SendMessage(hwndMap, LB_GETCURSEL,
-//0, 0);
+//--						s = SendMessage(hwndMap,
+// LB_GETCURSEL, 0, 0);
 //--						if (s != LB_ERR && s >= 0 && s <
-//map_lines)
+// map_lines)
 //--						{
 //--							TapeClock=map_time[s];
 //--							OldClock=0;
 //--
-//TapeTrigger=TotalCycles+TAPECYCLES;
+// TapeTrigger=TotalCycles+TAPECYCLES;
 //--						}
 //--					}
 //--					return FALSE;
@@ -1095,59 +1092,55 @@ void TapeControlUpdateCounter(int tape_time) {
 //--						r = IDCANCEL;
 //--						if (UEFOpen)
 //--						{
-//--							sprintf(str, "Append to current
-//tape file:\n  %s", UEFTapeName);
+//--							sprintf(str, "Append to
+// current tape file:\n  %s", UEFTapeName);
 //--							r =
-//MessageBox(GETHWND,str,"BeebEm",MB_ICONWARNING|MB_OKCANCEL);
+// MessageBox(GETHWND,str,"BeebEm",MB_ICONWARNING|MB_OKCANCEL);
 //--							if (r == IDOK)
 //--							{
-//--								SendMessage(hwndMap,
-//LB_SETCURSEL, (WPARAM)map_lines-1, 0);
+//-- SendMessage(hwndMap, LB_SETCURSEL, (WPARAM)map_lines-1, 0);
 //--							}
 //--						}
 //--						else
 //--						{
 //--							// Query for new file
-//name
+// name
 //--							CloseUEF();
 //--
-//mainWin->NewTapeImage(UEFTapeName);
+// mainWin->NewTapeImage(UEFTapeName);
 //--							if (UEFTapeName[0])
 //--							{
 //--								r = IDOK;
 //--								FILE *fd =
-//fopen(UEFTapeName,"rb");
+// fopen(UEFTapeName,"rb");
 //--								if (fd != NULL)
 //--								{
 //-- fclose(fd);
-//--									sprintf(str, "File
-//already exists:\n  %s\n\nOverwrite file?", UEFTapeName);
+//-- sprintf(str, "File already exists:\n  %s\n\nOverwrite file?", UEFTapeName);
 //--									if
 //(MessageBox(GETHWND,str,"BeebEm",MB_YESNO|MB_ICONQUESTION) != IDYES)
-//--										r =
-//IDCANCEL;
+//-- r = IDCANCEL;
 //--								}
 //--
 //--								if (r == IDOK)
 //--								{
-//--									// Create
-//file
+//--									//
+// Create file
 //--									if
 //(uef_create(UEFTapeName))
 //--									{
 //--
-//UEFOpen=1;
+// UEFOpen=1;
 //--									}
 //--									else
 //--									{
-//--										sprintf(str,
-//"Error creating tape file:\n  %s", UEFTapeName);
 //--
-//MessageBox(GETHWND,str,"BeebEm",MB_ICONERROR|MB_OK);
-//--										UEFTapeName[0] =
-//0;
-//--										r =
-//IDCANCEL;
+// sprintf(str, "Error creating tape file:\n  %s", UEFTapeName);
+//--
+// MessageBox(GETHWND,str,"BeebEm",MB_ICONERROR|MB_OK);
+//--
+//UEFTapeName[0] = 0;
+//-- r = IDCANCEL;
 //--									}
 //--								}
 //--							}
@@ -1158,7 +1151,7 @@ void TapeControlUpdateCounter(int tape_time) {
 //--							TapeRecording=true;
 //--							TapePlaying=false;
 //--
-//TapeAudio.Enabled=Cass_Relay?TRUE:FALSE;
+// TapeAudio.Enabled=Cass_Relay?TRUE:FALSE;
 //--						}
 //--					}
 //--					return TRUE;
