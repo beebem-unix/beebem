@@ -8,7 +8,7 @@
  */
 
 #if HAVE_CONFIG_H
-#       include <config.h>
+#include <config.h>
 #endif
 
 #include <gui/log.h>
@@ -26,17 +26,13 @@
 
 #include <SDL.h>
 
-EG_Widget* EG_RadioButton_Create(const char *name_ptr, SDL_Color color
- , const char *caption_ptr, SDL_Rect dimension)
-{
-	EG_Widget *widget_ptr;
+EG_Widget *EG_RadioButton_Create(const char *name_ptr, SDL_Color color,
+                                 const char *caption_ptr, SDL_Rect dimension) {
+  EG_Widget *widget_ptr;
 
-	if ( (widget_ptr = EG_TickBox_Create(name_ptr, color, caption_ptr
-	 , dimension)) != NULL)
-		EG_TickBox_SetIcons(widget_ptr, 13, 12);
+  if ((widget_ptr =
+           EG_TickBox_Create(name_ptr, color, caption_ptr, dimension)) != NULL)
+    EG_TickBox_SetIcons(widget_ptr, 13, 12);
 
-	return(widget_ptr);
+  return (widget_ptr);
 }
-
-
-

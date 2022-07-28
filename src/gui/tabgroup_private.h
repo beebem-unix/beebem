@@ -1,4 +1,5 @@
-/* START OF tabgroup_private.h --------------------------------------------------
+/* START OF tabgroup_private.h
+ *--------------------------------------------------
  *
  *	A Tab Group widget.
  *
@@ -14,12 +15,11 @@
  *	---
  */
 
-
 #ifndef _DW_TABGROUP_PRIVATE_H_
 #define _DW_TABGROUP_PRIVATE_H_
 
 #if HAVE_CONFIG_H
-#       include <config.h>
+#include <config.h>
 #endif
 
 #include <gui/types.h>
@@ -33,7 +33,8 @@
 #ifdef EG_DEBUG
 #       define CHECK_EG_TABGROUP_IS_VALID(o, r) \
                 if (o == NULL){ \
-                        EG_Log(EG_LOG_WARNING, dL"EG_TabGroup pointer is NULL." \
+                        EG_Log(EG_LOG_WARNING, dL"EG_TabGroup pointer is NULL."
+\
                          , dR); \
                         return(r); \
                 } \
@@ -41,7 +42,8 @@
 
 #       define CHECK_EG_TABGROUP_IS_VALID_VOID(o) \
                 if (o == NULL){ \
-                        EG_Log(EG_LOG_WARNING, dL"EG_TabGroup pointer is NULL." \
+                        EG_Log(EG_LOG_WARNING, dL"EG_TabGroup pointer is NULL."
+\
                         , dR); \
                         return; \
                 } \
@@ -49,14 +51,16 @@
 #else
 #       define CHECK_EG_TABGROUP_IS_VALID(o, r) \
                 if (o == NULL){ \
-                        EG_Log(EG_LOG_WARNING, dL"EG_TabGroup pointer is NULL." \
+                        EG_Log(EG_LOG_WARNING, dL"EG_TabGroup pointer is NULL."
+\
                          , dR); \
                         return(r); \
                 }
 
 #       define CHECK_EG_TABGROUP_IS_VALID_VOID(o) \
                 if (o == NULL){ \
-                        EG_Log(EG_LOG_WARNING, dL"EG_TabGroup pointer is NULL." \
+                        EG_Log(EG_LOG_WARNING, dL"EG_TabGroup pointer is NULL."
+\
                         , dR); \
                         return; \
                 }
@@ -66,83 +70,84 @@
 /* Get EG_TabGroup struct.
  */
 
-#define EG_TABGROUP_GET_STRUCT_PTR(w, v, r)  \
-        if (w == NULL ){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget is NULL.", dR); \
-                return( r ); \
-        } \
-        if (EG_Widget_GetType( w ) != EG_Widget_Type_TabGroup){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget payload is not of type EG_TabGroup.", dR); \
-                return( r ); \
-        } \
-        if ( (v =EG_Widget_GetPayload( w )) == NULL){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget payload is NULL.", dR); \
-                return(r); \
-        } \
-        EG_ASSERT_MALLOC( v );
+#define EG_TABGROUP_GET_STRUCT_PTR(w, v, r)                                    \
+  if (w == NULL) {                                                             \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget is NULL.", dR);                         \
+    return (r);                                                                \
+  }                                                                            \
+  if (EG_Widget_GetType(w) != EG_Widget_Type_TabGroup) {                       \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget payload is not of type EG_TabGroup.",   \
+           dR);                                                                \
+    return (r);                                                                \
+  }                                                                            \
+  if ((v = EG_Widget_GetPayload(w)) == NULL) {                                 \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget payload is NULL.", dR);                 \
+    return (r);                                                                \
+  }                                                                            \
+  EG_ASSERT_MALLOC(v);
 
-#define EG_TABGORUP_GET_STRUCT_PTR_VOID(w, v)  \
-        if (w == NULL ){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget is NULL.", dR); \
-                return; \
-        } \
-        if (EG_Widget_GetType( w ) != EG_Widget_Type_TabGroup){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget payload is not of type EG_TabGroup.", dR); \
-                return; \
-        } \
-        if ( (v =EG_Widget_GetPayload( w )) == NULL){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget payload is NULL.", dR); \
-                return; \
-        } \
-        EG_ASSERT_MALLOC( v );
+#define EG_TABGORUP_GET_STRUCT_PTR_VOID(w, v)                                  \
+  if (w == NULL) {                                                             \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget is NULL.", dR);                         \
+    return;                                                                    \
+  }                                                                            \
+  if (EG_Widget_GetType(w) != EG_Widget_Type_TabGroup) {                       \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget payload is not of type EG_TabGroup.",   \
+           dR);                                                                \
+    return;                                                                    \
+  }                                                                            \
+  if ((v = EG_Widget_GetPayload(w)) == NULL) {                                 \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget payload is NULL.", dR);                 \
+    return;                                                                    \
+  }                                                                            \
+  EG_ASSERT_MALLOC(v);
 
-#define EG_TABGROUP_GET_STRUCT_PTR_VOID(w, v)  \
-        if (w == NULL ){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget is NULL.", dR); \
-                return; \
-        } \
-        if (EG_Widget_GetType( w ) != EG_Widget_Type_TabGroup){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget payload is not of type EG_TabGroup.", dR); \
-                return; \
-        } \
-        if ( (v =EG_Widget_GetPayload( w )) == NULL){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget payload is NULL.", dR); \
-                return; \
-        } \
-        EG_ASSERT_MALLOC( v );
+#define EG_TABGROUP_GET_STRUCT_PTR_VOID(w, v)                                  \
+  if (w == NULL) {                                                             \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget is NULL.", dR);                         \
+    return;                                                                    \
+  }                                                                            \
+  if (EG_Widget_GetType(w) != EG_Widget_Type_TabGroup) {                       \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget payload is not of type EG_TabGroup.",   \
+           dR);                                                                \
+    return;                                                                    \
+  }                                                                            \
+  if ((v = EG_Widget_GetPayload(w)) == NULL) {                                 \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget payload is NULL.", dR);                 \
+    return;                                                                    \
+  }                                                                            \
+  EG_ASSERT_MALLOC(v);
 
-#define EG_TABGORUP_GET_STRUCT_PTR_VOID(w, v)  \
-        if (w == NULL ){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget is NULL.", dR); \
-                return; \
-        } \
-        if (EG_Widget_GetType( w ) != EG_Widget_Type_TabGroup){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget payload is not of type EG_TabGroup.", dR); \
-                return; \
-        } \
-        if ( (v =EG_Widget_GetPayload( w )) == NULL){ \
-                EG_Log(EG_LOG_ERROR, dL"EG_Widget payload is NULL.", dR); \
-                return; \
-        } \
-        EG_ASSERT_MALLOC( v );
-
-
+#define EG_TABGORUP_GET_STRUCT_PTR_VOID(w, v)                                  \
+  if (w == NULL) {                                                             \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget is NULL.", dR);                         \
+    return;                                                                    \
+  }                                                                            \
+  if (EG_Widget_GetType(w) != EG_Widget_Type_TabGroup) {                       \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget payload is not of type EG_TabGroup.",   \
+           dR);                                                                \
+    return;                                                                    \
+  }                                                                            \
+  if ((v = EG_Widget_GetPayload(w)) == NULL) {                                 \
+    EG_Log(EG_LOG_ERROR, dL "EG_Widget payload is NULL.", dR);                 \
+    return;                                                                    \
+  }                                                                            \
+  EG_ASSERT_MALLOC(v);
 
 /* EG_Widget payload:
  */
 
 #define MAX_TABGROUP_PAGES 16
 
-typedef struct{
-        EG_Widget       *page_widget_ptr[MAX_TABGROUP_PAGES];
-        long            count;
+typedef struct {
+  EG_Widget *page_widget_ptr[MAX_TABGROUP_PAGES];
+  long count;
 
-	long		selected;
+  long selected;
 
-	int		tab_bar_width;
-}EG_TabGroup;
-#define EG_AsTabGroup(n) ((EG_TabGroup*) n)
-
+  int tab_bar_width;
+} EG_TabGroup;
+#define EG_AsTabGroup(n) ((EG_TabGroup *)n)
 
 /* Private and Friend Functions:
  */
@@ -151,15 +156,14 @@ typedef struct{
 extern "C" {
 #endif
 
-	EG_BOOL EG_TabGroup_SelectPage(EG_Widget *page_widget);
-	EG_BOOL EG_TabGroup_SelectPageByIndex(EG_Widget *widget_ptr, int page);
+EG_BOOL EG_TabGroup_SelectPage(EG_Widget *page_widget);
+EG_BOOL EG_TabGroup_SelectPageByIndex(EG_Widget *widget_ptr, int page);
 
 #ifdef __cplusplus
 }
 #endif
 
-
-/* END OF tabgroup_private.h ----------------------------------------------------
+/* END OF tabgroup_private.h
+ * ----------------------------------------------------
  */
 #endif
-
