@@ -23,7 +23,7 @@
 #define BEEBMEM_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
 #include <stdio.h>
@@ -35,44 +35,49 @@ extern unsigned char Roms[16][16384];
 extern unsigned char ROMSEL;
 extern int PagedRomReg;
 /* Master 128 Specific Stuff */
-extern unsigned char FSRam[8192]; // 8K Filing System RAM
+extern unsigned char FSRam[8192];      // 8K Filing System RAM
 extern unsigned char PrivateRAM[4096]; // 4K Private RAM (VDU Use mainly)
-extern int CMOSRAM[64]; // 50 Bytes CMOS RAM
+extern int CMOSRAM[64];                // 50 Bytes CMOS RAM
 extern unsigned char ShadowRAM[32768]; // 20K Shadow RAM
-extern unsigned char ACCCON; // ACCess CONtrol register
+extern unsigned char ACCCON;           // ACCess CONtrol register
 struct CMOSType {
-	unsigned char Enabled;
-	unsigned char ChipSelect;
-	unsigned char Address;
-    unsigned char StrobedData;
-	unsigned char DataStrobe;
-	unsigned char Op;
+  unsigned char Enabled;
+  unsigned char ChipSelect;
+  unsigned char Address;
+  unsigned char StrobedData;
+  unsigned char DataStrobe;
+  unsigned char Op;
 };
 extern struct CMOSType CMOS;
-extern unsigned char Sh_Display,Sh_CPUX,Sh_CPUE,PRAM,FRAM;
+extern unsigned char Sh_Display, Sh_CPUX, Sh_CPUE, PRAM, FRAM;
 extern char RomPath[512];
-/* End of Master 128 Specific Stuff, note initilised anyway regardless of Model Type in use */
+/* End of Master 128 Specific Stuff, note initilised anyway regardless of Model
+ * Type in use */
 /* NOTE: Only to be used if 'a' doesn't change the address */
-#define BEEBREADMEM_FAST(a) ((a<0xfc00)?WholeRam[a]:BeebReadMem(a))
+#define BEEBREADMEM_FAST(a) ((a < 0xfc00) ? WholeRam[a] : BeebReadMem(a))
 /* as BEEBREADMEM_FAST but then increments a */
-#define BEEBREADMEM_FASTINC(a) ((a<0xfc00)?WholeRam[a++]:BeebReadMem(a++))
+#define BEEBREADMEM_FASTINC(a) ((a < 0xfc00) ? WholeRam[a++] : BeebReadMem(a++))
 
 int BeebReadMem(int Address);
 void BeebWriteMem(int Address, int Value);
-#define BEEBWRITEMEM_FAST(Address, Value) if (Address<0x8000) WholeRam[Address]=Value; else BeebWriteMem(Address,Value);
-#define BEEBWRITEMEM_DIRECT(Address, Value) WholeRam[Address]=Value;
+#define BEEBWRITEMEM_FAST(Address, Value)                                      \
+  if (Address < 0x8000)                                                        \
+    WholeRam[Address] = Value;                                                 \
+  else                                                                         \
+    BeebWriteMem(Address, Value);
+#define BEEBWRITEMEM_DIRECT(Address, Value) WholeRam[Address] = Value;
 char *BeebMemPtrWithWrap(int a, int n);
 char *BeebMemPtrWithWrapMo7(int a, int n);
 void BeebReadRoms(void);
-void BeebMemInit(unsigned char LoadRoms,unsigned char SkipIntegraBConfig);
+void BeebMemInit(unsigned char LoadRoms, unsigned char SkipIntegraBConfig);
 
 /* Used to show the Rom titles from the options menu */
-char *ReadRomTitle( int bank, char *Title, int BufSize );
+char *ReadRomTitle(int bank, char *Title, int BufSize);
 
 void beebmem_dumpstate(void);
 void SaveMemUEF(FILE *SUEF);
-extern int EFDCAddr; // 1770 FDC location
-extern int EDCAddr; // Drive control location
+extern int EFDCAddr;   // 1770 FDC location
+extern int EDCAddr;    // Drive control location
 extern bool NativeFDC; // see beebmem.cpp for description
 void LoadRomRegsUEF(FILE *SUEF);
 void LoadMainMemUEF(FILE *SUEF);

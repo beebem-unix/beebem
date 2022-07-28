@@ -25,12 +25,11 @@
 #define VIA_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
-#include <stdio.h>
 #include "viastate.h"
-
+#include <stdio.h>
 
 void VIAReset(VIAState *ToReset);
 void SaveVIAUEF(FILE *SUEF);

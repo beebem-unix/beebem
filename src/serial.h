@@ -28,8 +28,8 @@ extern volatile bool bSerialStateChanged;
 extern bool TapeControlEnabled;
 extern char UEFTapeName[256];
 extern int UnlockTape;
-extern unsigned char TxD,RxD;
-extern int TapeClock,OldClock;
+extern unsigned char TxD, RxD;
+extern int TapeClock, OldClock;
 extern int TapeClockSpeed;
 
 void SetTapeSpeed(int speed);
@@ -39,4 +39,3 @@ void TapeControlCloseDialog(void);
 void SaveSerialUEF(FILE *SUEF);
 void LoadSerialUEF(FILE *SUEF);
 #endif
-

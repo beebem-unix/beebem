@@ -5,11 +5,11 @@
 #define SASI_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
 void SASIReset(void);
-void SASIWrite(int Address, int Value) ;
+void SASIWrite(int Address, int Value);
 int SASIRead(int Address);
 int SASIReadData(void);
 void SASIWriteData(int data);

@@ -18,22 +18,21 @@
 /* program.                                                                 */
 /****************************************************************************/
 
-
 #ifndef USERKYBD_HEADER
 #define USERKYBD_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
-#include <string.h>
-#include <stdlib.h>
-#include "windows.h"
 #include "port.h"
+#include "windows.h"
+#include <stdlib.h>
+#include <string.h>
 
 // Public declarations.
 
-BOOL UserKeyboardDialog( HWND  hwndParent );
+BOOL UserKeyboardDialog(HWND hwndParent);
 
 extern int UserKeymap[256][2];
 

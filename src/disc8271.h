@@ -24,13 +24,13 @@
 #define DISC8271_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
 extern int Disc8271Trigger; /* Cycle based time Disc8271Trigger */
 
-void LoadSimpleDSDiscImage(char *FileName, int DriveNum,int Tracks);
-void LoadSimpleDiscImage(char *FileName, int DriveNum,int HeadNum, int Tracks);
+void LoadSimpleDSDiscImage(char *FileName, int DriveNum, int Tracks);
+void LoadSimpleDiscImage(char *FileName, int DriveNum, int HeadNum, int Tracks);
 int IsDiscWritable(int DriveNum);
 void DiscWriteEnable(int DriveNum, int WriteEnable);
 void CreateDiscImage(char *FileName, int DriveNum, int Heads, int Tracks);
@@ -48,7 +48,9 @@ void Disc8271_write(int Address, int Value);
 /*--------------------------------------------------------------------------*/
 void Disc8271_poll_real(void);
 
-#define Disc8271_poll(ncycles) if (Disc8271Trigger<=TotalCycles) Disc8271_poll_real();
+#define Disc8271_poll(ncycles)                                                 \
+  if (Disc8271Trigger <= TotalCycles)                                          \
+    Disc8271_poll_real();
 
 /*--------------------------------------------------------------------------*/
 void Disc8271_reset(void);

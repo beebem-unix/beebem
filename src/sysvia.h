@@ -26,7 +26,7 @@ keyboard emulation - David Alan Gilbert 30/10/94 */
 #define SYSVIA_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
 #include "via.h"
@@ -50,7 +50,7 @@ void BeebReleaseAllKeys(void);
 void SysVIATriggerCA1Int(int value);
 extern unsigned char IC32State;
 
-void CMOSWrite(unsigned char CMOSAddr,unsigned char CMOSData);
+void CMOSWrite(unsigned char CMOSAddr, unsigned char CMOSData);
 unsigned char CMOSRead(unsigned char CMOSAddr);
 
 void sysvia_dumpstate(void);

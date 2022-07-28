@@ -5,13 +5,13 @@
 #define SCSI_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
 extern char HardDriveEnabled;
 
 void SCSIReset(void);
-void SCSIWrite(int Address, int Value) ;
+void SCSIWrite(int Address, int Value);
 int SCSIRead(int Address);
 int ReadData(void);
 void WriteData(int data);

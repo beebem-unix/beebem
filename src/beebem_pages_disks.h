@@ -1,13 +1,13 @@
-/* START OF beebem_pages_disks.h --------------------------------------------------------------
+/* START OF beebem_pages_disks.h
+ * --------------------------------------------------------------
  */
 
 #ifndef _DW_PAGES_DISKS_H_
 #define _DW_PAGES_DISKS_H_
 
 #if HAVE_CONFIG_H
-#       include <config.h>
+#include <config.h>
 #endif
-
 
 #include "gui.h"
 #include "gui_widget_private.h"
@@ -20,9 +20,7 @@ extern "C" {
 }
 #endif
 
-/* END OF beebem_pages_disks.h ----------------------------------------------------------------
+/* END OF beebem_pages_disks.h
+ * ----------------------------------------------------------------
  */
 #endif
-
-
-

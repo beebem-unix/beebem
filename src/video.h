@@ -23,7 +23,7 @@
 #define VIDEO_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
 #include <stdio.h>
@@ -37,21 +37,25 @@ extern unsigned char CRTCControlReg;
 extern unsigned char CRTC_HorizontalTotal;     /* R0 */
 extern unsigned char CRTC_HorizontalDisplayed; /* R1 */
 extern unsigned char CRTC_HorizontalSyncPos;   /* R2 */
-extern unsigned char CRTC_SyncWidth;           /* R3 - top 4 bits are Vertical (in scan lines) and bottom 4 are horizontal in characters */
+extern unsigned char
+    CRTC_SyncWidth; /* R3 - top 4 bits are Vertical (in scan lines) and bottom 4
+                       are horizontal in characters */
 extern unsigned char CRTC_VerticalTotal;       /* R4 */
 extern unsigned char CRTC_VerticalTotalAdjust; /* R5 */
 extern unsigned char CRTC_VerticalDisplayed;   /* R6 */
 extern unsigned char CRTC_VerticalSyncPos;     /* R7 */
-extern unsigned char CRTC_InterlaceAndDelay;   /* R8 - 0,1 are interlace modes, 4,5 display blanking delay, 6,7 cursor blanking delay */
-extern unsigned char CRTC_ScanLinesPerChar;    /* R9 */
-extern unsigned char CRTC_CursorStart;         /* R10 */
-extern unsigned char CRTC_CursorEnd;           /* R11 */
-extern unsigned char CRTC_ScreenStartHigh;     /* R12 */
-extern unsigned char CRTC_ScreenStartLow;      /* R13 */
-extern unsigned char CRTC_CursorPosHigh;       /* R14 */
-extern unsigned char CRTC_CursorPosLow;        /* R15 */
-extern unsigned char CRTC_LightPenHigh;        /* R16 */
-extern unsigned char CRTC_LightPenLow;         /* R17 */
+extern unsigned char
+    CRTC_InterlaceAndDelay; /* R8 - 0,1 are interlace modes, 4,5 display
+                               blanking delay, 6,7 cursor blanking delay */
+extern unsigned char CRTC_ScanLinesPerChar; /* R9 */
+extern unsigned char CRTC_CursorStart;      /* R10 */
+extern unsigned char CRTC_CursorEnd;        /* R11 */
+extern unsigned char CRTC_ScreenStartHigh;  /* R12 */
+extern unsigned char CRTC_ScreenStartLow;   /* R13 */
+extern unsigned char CRTC_CursorPosHigh;    /* R14 */
+extern unsigned char CRTC_CursorPosLow;     /* R15 */
+extern unsigned char CRTC_LightPenHigh;     /* R16 */
+extern unsigned char CRTC_LightPenLow;      /* R17 */
 extern unsigned int ActualScreenWidth;
 extern long ScreenAdjust;
 
@@ -68,7 +72,9 @@ void VideoGetText(char *text, int line);
 
 extern unsigned char TeletextEnabled;
 
-#define VideoPoll(ncycles) if ((VideoTriggerCount)<=TotalCycles) VideoDoScanLine();
+#define VideoPoll(ncycles)                                                     \
+  if ((VideoTriggerCount) <= TotalCycles)                                      \
+    VideoDoScanLine();
 
 // Allow enough lines for all modes.
 // i.e. max(virtical total * scan lines per char) = 38 * 8  (mode 7 excluded)

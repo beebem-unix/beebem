@@ -26,14 +26,14 @@
 #define USERVIA_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
-#include "viastate.h"
 #include "via.h"
+#include "viastate.h"
 
 extern VIAState UserVIAState;
-extern unsigned char WTDelay1,WTDelay2;
+extern unsigned char WTDelay1, WTDelay2;
 
 void UserVIAWrite(int Address, int Value);
 int UserVIARead(int Address);
@@ -79,11 +79,11 @@ void PrinterPoll();
 
 /* User Port Breakout Box */
 
-void GetBitKeysUsed( char *Keys );
-extern int	BitKey;			// Used to store the bit key pressed while we wait 
+void GetBitKeysUsed(char *Keys);
+extern int BitKey; // Used to store the bit key pressed while we wait
 void ShowBitKey(int key, int ctrlID);
-const char *BitKeyName( int Key );
-void SetBitKey( int ctrlID );
+const char *BitKeyName(int Key);
+void SetBitKey(int ctrlID);
 int GetValue(int ctrlID);
 void SetValue(int ctrlID, int State);
 extern int BitKeys[8];
@@ -98,13 +98,15 @@ void ShowOutputs(unsigned char data);
 
 //--HWND	PromptForBitKeyInput( HWND hwndParent, UINT ctrlID );
 //--BOOL	CALLBACK BreakOutDlgProc( HWND   hwnd,
-//--									   UINT   nMessage,
-//--									   WPARAM wParam,
-//--									   LPARAM lParam );
-//--LRESULT CALLBACK GetBitKeyWndProc( HWND hWnd,	
+//--									   UINT
+//nMessage,
+//--									   WPARAM
+//wParam,
+//--									   LPARAM lParam
+//);
+//--LRESULT CALLBACK GetBitKeyWndProc( HWND hWnd,
 //--								UINT message,
 //--								WPARAM uParam,
 //--								LPARAM lParam);
-
 
 #endif

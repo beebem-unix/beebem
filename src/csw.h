@@ -7,7 +7,9 @@
  *
  */
 
-#define BUFFER_LEN	256
+#include <stdio.h>
+
+#define BUFFER_LEN 256
 
 void LoadCSW(char *file);
 void CloseCSW(void);
@@ -32,4 +34,3 @@ extern int bit_count;
 extern unsigned char CSWOpen;
 extern int CSW_BUF;
 extern int CSW_CYCLES;
-

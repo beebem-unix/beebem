@@ -6,27 +6,33 @@
 #define _cRegistry_H_
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
 #include "windows.h"
-#define MAX_BUFF_LENGTH 1024 // maximum length of data (in bytes) that you may read in.
+#define MAX_BUFF_LENGTH                                                        \
+  1024 // maximum length of data (in bytes) that you may read in.
 
 class cRegistry {
 public:
-	bool CreateKey(HKEY hKeyRoot, LPCSTR lpSubKey);
-	bool DeleteKey(HKEY hKeyRoot, LPCSTR lpSubKey);
+  bool CreateKey(HKEY hKeyRoot, LPCSTR lpSubKey);
+  bool DeleteKey(HKEY hKeyRoot, LPCSTR lpSubKey);
 
-	bool DeleteValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValueName);
+  bool DeleteValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValueName);
 
-	bool GetBinaryValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue, PVOID pData, int* pnSize);
-	bool GetDWORDValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue, DWORD &dwBuffer);
-	bool GetStringValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue, LPSTR lpBuffer);
+  bool GetBinaryValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
+                      PVOID pData, int *pnSize);
+  bool GetDWORDValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
+                     DWORD &dwBuffer);
+  bool GetStringValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
+                      LPSTR lpBuffer);
 
-	bool SetBinaryValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue, PVOID pData, int* pnSize);
-	bool SetDWORDValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue, DWORD dwValue);
-	bool SetStringValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue, LPCSTR lpData);
+  bool SetBinaryValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
+                      PVOID pData, int *pnSize);
+  bool SetDWORDValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
+                     DWORD dwValue);
+  bool SetStringValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
+                      LPCSTR lpData);
 };
-
 
 #endif

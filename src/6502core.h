@@ -23,7 +23,7 @@
 #define CORE6502_HEADER
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
 
 #include "port.h"
@@ -40,9 +40,9 @@ typedef enum IRQ_Nums {
   hdc,
 } IRQ_Nums;
 
-typedef enum NMI_Nums{
-	nmi_floppy,
-	nmi_econet,
+typedef enum NMI_Nums {
+  nmi_floppy,
+  nmi_econet,
 } NMI_Nums;
 
 extern int trace;
@@ -62,12 +62,14 @@ extern int DisplayCycles;
 extern int CyclesToInt;
 #define NO_TIMER_INT_DUE -1000000
 
-#define SetTrigger(after,var) var=TotalCycles+after;
-#define IncTrigger(after,var) var+=(after);
+#define SetTrigger(after, var) var = TotalCycles + after;
+#define IncTrigger(after, var) var += (after);
 
-#define ClearTrigger(var) var=CycleCountTMax;
+#define ClearTrigger(var) var = CycleCountTMax;
 
-#define AdjustTrigger(var) if (var!=CycleCountTMax) var-=CycleCountWrap;
+#define AdjustTrigger(var)                                                     \
+  if (var != CycleCountTMax)                                                   \
+    var -= CycleCountWrap;
 
 /*-------------------------------------------------------------------------*/
 /* Initialise 6502core                                                     */

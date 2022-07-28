@@ -27,14 +27,14 @@
 //#define MULTITHREAD
 
 #if HAVE_CONFIG_H
-# include <config.h>
+#include <config.h>
 #endif
 
-#include "windows.h"
 #include "beebwin.h"
+#include "windows.h"
 
-#include <functions.h>
 #include "sdl.h"
+#include <functions.h>
 
 #include <gui.h>
 
@@ -44,14 +44,13 @@ extern int Tmp_Command_Line_Fullscreen;
 /* -------------------------------
  */
 
-
 #include "cregistry.h"
 extern cRegistry SysReg;
 extern char FDCDLL[256];
 
 extern const char *CFG_REG_KEY;
 
-//extern int fullscreen;
+// extern int fullscreen;
 extern int done;
 
 extern unsigned char MachineType;
@@ -60,16 +59,11 @@ extern BeebWin *mainWin;
 void WriteLog(char *fmt, ...);
 extern int trace_186;
 
-
-
 void Quit(void);
 void SetActiveWindow(EG_Window *window_ptr);
 int GetFullscreenState(void);
 int ToggleFullscreen(void);
 void ShowingMenu(void);
 void NoMenuShown(void);
-
-
-
 
 #endif

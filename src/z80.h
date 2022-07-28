@@ -1,7 +1,7 @@
 /* Header file for the instruction set simulator.
    Copyright (C) 1995  Frank D. Cringle.
    Modifications for MMU and CP/M 3.1 Copyright (C) 2000/2003 by Andreas Gerlich
-   
+
 
 This file is part of yaze-ag - yet another Z80 emulator by ag.
 
@@ -22,8 +22,10 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
 /* SEE limits and BYTE-, WORD- and FASTREG - defintions im MEM_MMU.h */
 
 #if HAVE_CONFIG_H
-#	include <config.h>
+#include <config.h>
 #endif
+
+#include "z80mem.h"
 
 typedef unsigned short WORD;
 
@@ -33,9 +35,9 @@ extern int af_sel;
 
 /* two sets of 16-bit registers */
 extern struct ddregs {
-	WORD bc;
-	WORD de;
-	WORD hl;
+  WORD bc;
+  WORD de;
+  WORD hl;
 } regs[2];
 extern int regs_sel;
 
@@ -54,39 +56,38 @@ extern volatile int stopsim;
 
 extern FASTWORK simz80(FASTREG PC);
 
-#define FLAG_C	1
-#define FLAG_N	2
-#define FLAG_P	4
-#define FLAG_H	16
-#define FLAG_Z	64
-#define FLAG_S	128
+#define FLAG_C 1
+#define FLAG_N 2
+#define FLAG_P 4
+#define FLAG_H 16
+#define FLAG_Z 64
+#define FLAG_S 128
 
-#define SETFLAG(f,c)	AF = (c) ? AF | FLAG_ ## f : AF & ~FLAG_ ## f
-#define TSTFLAG(f)	((AF & FLAG_ ## f) != 0)
+#define SETFLAG(f, c) AF = (c) ? AF | FLAG_##f : AF & ~FLAG_##f
+#define TSTFLAG(f) ((AF & FLAG_##f) != 0)
 
-#define ldig(x)		((x) & 0xf)
-#define hdig(x)		(((x)>>4)&0xf)
-#define lreg(x)		((x)&0xff)
-#define hreg(x)		(((x)>>8)&0xff)
+#define ldig(x) ((x)&0xf)
+#define hdig(x) (((x) >> 4) & 0xf)
+#define lreg(x) ((x)&0xff)
+#define hreg(x) (((x) >> 8) & 0xff)
 
-#define Setlreg(x, v)	x = (((x)&0xff00) | ((v)&0xff))
-#define Sethreg(x, v)	x = (((x)&0xff) | (((v)&0xff) << 8))
+#define Setlreg(x, v) x = (((x)&0xff00) | ((v)&0xff))
+#define Sethreg(x, v) x = (((x)&0xff) | (((v)&0xff) << 8))
 
-/* SEE functions for manipulating of memory in mem_mmu.h 
-      line RAM, GetBYTE, GetWORD, PutBYTE, PutWORD, .... 
+/* SEE functions for manipulating of memory in mem_mmu.h
+      line RAM, GetBYTE, GetWORD, PutBYTE, PutWORD, ....
 */
 
 #ifndef BIOS
 extern int in(unsigned int);
 extern void out(unsigned int, unsigned char);
 #define Input(port) in(port)
-#define Output(port, value) out(port,value)
+#define Output(port, value) out(port, value)
 #else
 /* Define these as macros or functions if you really want to simulate I/O */
-#define Input(port)	0
+#define Input(port) 0
 #define Output(port, value)
 #endif
-
 
 void z80_execute();
 void init_z80();
@@ -104,4 +105,3 @@ void z80_NMI_Interrupt(void);
 void z80_IRQ_Interrupt(void);
 void set_Z80_irq_line(int state);
 void set_Z80_nmi_line(int state);
-
