@@ -1,3 +1,4 @@
+.cache
 data/Makefile
 doc/Makefile
 m4/Makefile
@@ -15,3 +16,4 @@ Makefile
 *.o
 *.a
 src/beebem
+compile_commands.json
