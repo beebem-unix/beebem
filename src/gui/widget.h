@@ -15,7 +15,6 @@
 #endif
 
 #include "gui/types.h"
-
 #include "gui/widget.h"
 
 #include <SDL.h>

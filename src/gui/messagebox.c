@@ -9,12 +9,11 @@
 #include "config.h"
 #endif
 
-#include "gui/log.h"
-
 #include "gui/messagebox.h"
-#include "gui/messagebox_private.h"
 
 #include "gui/functions.h"
+#include "gui/log.h"
+#include "gui/messagebox_private.h"
 
 #include <SDL.h>
 

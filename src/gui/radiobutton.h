@@ -15,12 +15,10 @@
 #endif
 
 #include "gui/sdl.h"
+#include "gui/tickbox.h"
 #include "gui/types.h"
-
 #include "gui/widget.h"
 #include "gui/window.h"
-
-#include "gui/tickbox.h"
 
 #include <SDL.h>
 

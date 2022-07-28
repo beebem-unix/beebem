@@ -11,28 +11,21 @@
 #include "config.h"
 #endif
 
-#include "gui/log.h"
+#include "gui/radiogroup.h"
 
 #include "gui/functions.h"
-
-#include "gui/radiogroup.h"
-#include "gui/radiogroup_private.h"
-
+#include "gui/log.h"
 #include "gui/radiobutton.h"
 #include "gui/radiobutton_private.h"
-
+#include "gui/radiogroup_private.h"
+#include "gui/sdl.h"
 #include "gui/togglebutton.h"
 #include "gui/togglebutton_private.h"
-
-#include "gui/window.h"
-#include "gui/window_private.h"
-
 #include "gui/widget.h"
 #include "gui/widget_private.h"
-
 #include "gui/widget_shared.h"
-
-#include "gui/sdl.h"
+#include "gui/window.h"
+#include "gui/window_private.h"
 
 #include <SDL.h>
 

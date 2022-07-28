@@ -15,10 +15,10 @@
 #endif
 
 #include "gui/types.h"
-#include <SDL.h>
-
 #include "gui/widget.h"
 #include "gui/window.h"
+
+#include <SDL.h>
 
 /* Convenient macro to check for more obvious EG_Window struct pointer errors.
  */

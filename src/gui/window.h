@@ -15,9 +15,9 @@
 #endif
 
 #include "gui/types.h"
-#include <SDL.h>
-
 #include "gui/widget.h"
+
+#include <SDL.h>
 
 /* Should not need this until window is a widget (I suck so much...)
  */

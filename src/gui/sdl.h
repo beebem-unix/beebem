@@ -5,9 +5,9 @@
 #include "config.h"
 #endif
 
-#include <SDL.h>
-
 #include "gui/types.h"
+
+#include <SDL.h>
 
 #define EG_Draw_Border_Normal 0
 #define EG_Draw_Border_BoxHigh 1

@@ -12,21 +12,17 @@
 #include "config.h"
 #endif
 
-#include "gui/log.h"
-#include "gui/types.h"
+#include "gui/progressbar.h"
 
 #include "gui/functions.h"
-
-#include "gui/progressbar.h"
+#include "gui/log.h"
 #include "gui/progressbar_private.h"
-
-#include "gui/widget_shared.h"
-
-#include "gui/window.h"
-#include "gui/window_private.h"
-
+#include "gui/types.h"
 #include "gui/widget.h"
 #include "gui/widget_private.h"
+#include "gui/widget_shared.h"
+#include "gui/window.h"
+#include "gui/window_private.h"
 
 #include <SDL.h>
 
@@ -95,8 +91,8 @@ static EG_BOOL Callback_Paint(EG_Widget *widget_ptr, SDL_Rect area) {
     tmp.h = loc.h - 4;
 
     //		if (progressbar_ptr->previous_w != tmp.w ||
-    // progressbar_ptr->previous_w <= 0){ 			progressbar_ptr->previous_w
-    // = tmp.w;
+    // progressbar_ptr->previous_w <= 0){
+    // progressbar_ptr->previous_w = tmp.w;
 
     //			printf("---> %ld\n", progressbar_ptr->previous_w);
 
