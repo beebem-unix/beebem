@@ -3,7 +3,7 @@
 /* usually 800000 for 10000 Hz sample rate.  */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #define MAX_SAMPLE_CHUNK 8000

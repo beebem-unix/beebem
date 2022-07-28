@@ -26,7 +26,7 @@
 #define USERVIA_HEADER
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "via.h"
@@ -99,10 +99,10 @@ void ShowOutputs(unsigned char data);
 //--HWND	PromptForBitKeyInput( HWND hwndParent, UINT ctrlID );
 //--BOOL	CALLBACK BreakOutDlgProc( HWND   hwnd,
 //--									   UINT
-//nMessage,
-//--									   WPARAM
-//wParam,
-//--									   LPARAM lParam
+// nMessage,
+//-- WPARAM wParam,
+//--									   LPARAM
+//lParam
 //);
 //--LRESULT CALLBACK GetBitKeyWndProc( HWND hWnd,
 //--								UINT message,

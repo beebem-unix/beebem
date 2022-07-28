@@ -6,7 +6,7 @@
 #define _DW_PAGES_DISKS_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui.h"

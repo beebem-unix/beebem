@@ -11,7 +11,7 @@
 #define _DW_TICKBOX_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui/sdl.h"

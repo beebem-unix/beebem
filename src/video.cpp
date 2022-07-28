@@ -28,7 +28,7 @@
 /* Richard Gellman 4/2/2001 AAAARGH SHADOW RAM! HELP! */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <fstream>
@@ -1500,7 +1500,8 @@ void CRTCWrite(int Address, int Value) {
   Value &= 0xff;
   if (Address & 1) {
     //	if (CRTCControlReg<14) { fputc(CRTCControlReg,crtclog);
-    //fputc(Value,crtclog); } 	if (CRTCControlReg<14) { 		fprintf(crtclog,"%d
+    // fputc(Value,crtclog); } 	if (CRTCControlReg<14) {
+    // fprintf(crtclog,"%d
     //(%02X) Written to register %d from
     //%04X\n",Value,Value,CRTCControlReg,ProgramCounter);
     //	}

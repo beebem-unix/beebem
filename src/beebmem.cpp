@@ -22,7 +22,7 @@
 // Econet emulation: Rob O'Donnell robert@irrelevant.com 28/12/2004
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <ctype.h>
@@ -1018,16 +1018,16 @@ void BeebReadRoms(void) {
   //-- if (RomCfg!=NULL) {
   //--	 // CFG file open, proceed to read the roms.
   //--	 // if machinetype=1 (i.e. BBC B Integra B) we need to skip 17 lines in
-  //the file
+  // the file
   //--	 if (MachineType==1) for (romslot=0;romslot<17;romslot++)
-  //fgets(RomName,80,RomCfg);
+  // fgets(RomName,80,RomCfg);
   //--	 // if machinetype=2 (i.e. BBC B+) we need to skip 34 lines in the file
   //--	 if (MachineType==2) for (romslot=0;romslot<34;romslot++)
-  //fgets(RomName,80,RomCfg);
+  // fgets(RomName,80,RomCfg);
   //--	 // if machinetype=3 (i.e. Master 128) we need to skip 51 lines in the
-  //file
+  // file
   //--	 if (MachineType==3) for (romslot=0;romslot<51;romslot++)
-  //fgets(RomName,80,RomCfg);
+  // fgets(RomName,80,RomCfg);
   //--	 // read OS ROM
   //--	 fgets(RomName,80,RomCfg);
   //--	 if (strchr(RomName, 13)) *strchr(RomName, 13) = 0;
@@ -1044,7 +1044,7 @@ void BeebReadRoms(void) {
   //--//	 fullname[strlen(fullname)-1]=0;
   //--	 InFile=fopen(fullname,"rb");
   //--	 if (InFile!=NULL) { fread(WholeRam+0xc000,1,16384,InFile);
-  //fclose(InFile); }
+  // fclose(InFile); }
   //--  	 else {
   //--		 char errstr[200];
   //--		 sprintf(errstr, "Cannot open specified OS ROM:\n %s",fullname);
@@ -1063,29 +1063,30 @@ void BeebReadRoms(void) {
   //--		}
   //--		isrom=1; RomWritable[romslot]=0; Shortener=0;
   //--		if (strncmp(RomName,"EMPTY",5)==0)  { RomWritable[romslot]=0;
-  //isrom=0; }
+  // isrom=0; }
   //--		if (strncmp(RomName,"RAM",3)==0) { RomWritable[romslot]=1;
-  //isrom=0; }
+  // isrom=0; }
   //--		if (strncmp(RomName+(strlen(RomName)-5),":RAM",4)==0) {
-  //--			// Writable ROM (don't ask, Mark De Weger should be happy now
+  //--			// Writable ROM (don't ask, Mark De Weger should be happy
+  //now
   //;) Hi Mark! )
   //--			RomWritable[romslot]=1; // Make it writable
   //--			isrom=1; // Make it a ROM still
   //--			Shortener=4; // Shorten filename
   //--		}
   //--		for (sc = 0; fullname[sc]; sc++) if (fullname[sc] == '\\')
-  //fullname[sc] = '/';
+  // fullname[sc] = '/';
   //--		fullname[strlen(fullname)-Shortener]=0;
   //--		InFile=fopen(fullname,"rb");
   //--		if	(InFile!=NULL) { fread(Roms[romslot],1,16384,InFile);
-  //fclose(InFile); }
+  // fclose(InFile); }
   //--		else {
   //--			if (isrom==1) {
   //--				char errstr[200];
   //--				sprintf(errstr, "Cannot open specified ROM:\n
   //%s",fullname);
   //--				MessageBox(GETHWND,errstr,"BBC
-  //Emulator",MB_OK|MB_ICONERROR);
+  // Emulator",MB_OK|MB_ICONERROR);
   //--			}
   //--		}
   //--	 }

@@ -24,14 +24,14 @@
 #define VIA_HEADER
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include "via.h"
 #include "debug.h"
 #include "sysvia.h"
 #include "uefstate.h"
 #include "uservia.h"
+#include "via.h"
 #include "viastate.h"
 #include <fstream>
 #include <iostream>

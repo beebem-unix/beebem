@@ -23,7 +23,7 @@
 /* Copied for 65C02 Tube core - 13/04/01 */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <fstream>
@@ -89,7 +89,7 @@ unsigned char TubeNMIStatus =
 //## NMILock.
 //##
 //-- static unsigned int NMILock=0; /* Well I think NMI's are maskable - to stop
-//repeated NMI's - the lock is released when an RTI is done */
+// repeated NMI's - the lock is released when an RTI is done */
 //++
 static unsigned int tube_NMILock = 0;
 //<-
@@ -1577,7 +1577,7 @@ void Exec65C02Instruction(void) {
   // Output debug info
   //--  if (DebugEnabled)
   //--
-  //DebugDisassembler(TubeProgramCounter,Accumulator,XReg,YReg,PSR,StackReg,false);
+  // DebugDisassembler(TubeProgramCounter,Accumulator,XReg,YReg,PSR,StackReg,false);
 
   // For the Master, check Shadow Ram Presence
   // Note, this has to be done BEFORE reading an instruction due to Bit E and

@@ -1,7 +1,7 @@
 /* UEF tape file functions */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "uef.h"
@@ -12,9 +12,9 @@
 
 //## [TODO] ------------------
 //## Tapes are loaded over serial, and serial.cpp is currently disabled. So all
-//this code does nothing at the moment.
+// this code does nothing at the moment.
 //## (usfstate saves the state, but does not compress, so does not use any of
-//this code.)
+// this code.)
 //## -------------------------
 //--#undef HAVE_ZLIB_H
 //--#undef HAVE_LIBZ

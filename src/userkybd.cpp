@@ -22,12 +22,12 @@
 //-- Not ported at all yet!
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include "userkybd.h"
 #include "beebemrc.h"
 #include "main.h"
+#include "userkybd.h"
 #include "windows.h"
 #include <stdio.h>
 #include <string.h>
@@ -45,10 +45,10 @@ void SetRowCol(UINT ctrlID);
 void ShowKeyUp(void);
 //--BOOL	CALLBACK UserKeyboard_DlgProc( HWND   hwnd,
 //--									   UINT
-//nMessage,
-//--									   WPARAM
-//wParam,
-//--									   LPARAM lParam
+// nMessage,
+//-- WPARAM wParam,
+//--									   LPARAM
+//lParam
 //);
 //--LRESULT CALLBACK GetKeyWndProc( HWND hWnd,
 //--								UINT message,
@@ -57,9 +57,9 @@ void ShowKeyUp(void);
 //--void	OnDrawItem( UINT CtrlID, LPDRAWITEMSTRUCT lpDrawItemStruct );
 //--void	DrawBorder( HDC hDC, RECT rect, BOOL Depressed );
 //--void	DrawSides( HDC hDC, RECT rect, COLORREF TopLeft, COLORREF
-//BottomRight );
-//--void	DrawText( HDC hDC, RECT rect, HWND hWndctrl, COLORREF colour, BOOL
-//Depressed );
+// BottomRight );
+//--void	DrawText( HDC hDC, RECT rect, HWND hWndctrl, COLORREF colour,
+//BOOL Depressed );
 COLORREF GetKeyColour(UINT ctrlID);
 HWND PromptForInput(HWND hwndParent, UINT ctrlID);
 void GetKeysUsed(LPSTR Keys);
@@ -81,7 +81,7 @@ int BBCRow; // Used to store the Row and Col values while we wait
 int BBCCol; // for a key press from the User.
 BOOL WaitingForKey = FALSE; // True while waiting for a key to be pressed.
 //--HBRUSH	hFunctionBrush;	// The brush that has to be passed back for
-//coloured keys.
+// coloured keys.
 //--HFONT	hGetkeyFont;	// The Font used by the Getkey prompt window.
 
 // Row,Col  Default values set to transTable1
@@ -252,10 +252,11 @@ void SetBBCKeyForVKEY(int Key) {
 
 //--BOOL CALLBACK UserKeyboard_DlgProc( HWND   hwnd,
 //--									UINT
-//nMessage,
+// nMessage,
 //--									WPARAM
-//wParam,
-//--									LPARAM lParam
+// wParam,
+//--									LPARAM
+//lParam
 //)
 //--{
 //--/*
@@ -298,13 +299,13 @@ void SetBBCKeyForVKEY(int Key) {
 //--
 //--
 //--/*		// After the key is drawn if the key has been pressed we can get
-//the
+// the
 //--		// VKEY value.
 //--		if ( ((LPDRAWITEMSTRUCT) lParam)->itemState == (ODS_FOCUS |
-//ODS_SELECTED))
+// ODS_SELECTED))
 //--		{
 //--			// Close the Getkey prompt window before starting it
-//again.
+// again.
 //--			if ( hwndGetkey != NULL )
 //--				SendMessage( hwndGetkey, WM_CLOSE, 0, 0L );
 //--
@@ -372,7 +373,7 @@ void SetBBCKeyForVKEY(int Key) {
 /****************************************************************************/
 
 //--void DrawText( HDC hDC, RECT rect, HWND hWndctrl, COLORREF colour, BOOL
-//Depressed )
+// Depressed )
 //--{
 //--	SIZE Size;
 //--	CHAR text[10];
@@ -387,16 +388,17 @@ void SetBBCKeyForVKEY(int Key) {
 //--		// Output text.
 //--		if ( Depressed )
 //--			TextOut( hDC,
-//--				 	 (((rect.right - rect.left) - Size.cx ) / 2 )
+//--				 	 (((rect.right - rect.left) - Size.cx ) / 2
+//)
 //+ 1,
-//--					 (((rect.bottom-rect.top) - Size.cy) / 2) +
-//1,
+//--					 (((rect.bottom-rect.top) - Size.cy) / 2)
+//+ 1,
 //--					 text,
 //--					 (int)strlen( text ));
 //--		else
 //--			TextOut( hDC,
 //--				 	 ((rect.right - rect.left) - Size.cx ) /
-//2,
+// 2,
 //--					 ((rect.bottom-rect.top) - Size.cy) / 2,
 //--					 text,
 //--					 (int)strlen( text ));
@@ -451,7 +453,7 @@ COLORREF GetKeyColour(UINT ctrlID) {
 //--	DrawBorder( lpDrawItemStruct->hDC,
 //--				lpDrawItemStruct->rcItem,
 //--				( lpDrawItemStruct->itemState == ( ODS_FOCUS |
-//ODS_SELECTED )) );
+// ODS_SELECTED )) );
 //--
 //--
 //--	// Draw the text.
@@ -460,7 +462,7 @@ COLORREF GetKeyColour(UINT ctrlID) {
 //--			  lpDrawItemStruct->hwndItem,
 //--			  0x00FFFFFF,
 //--			  ( lpDrawItemStruct->itemState == ( ODS_FOCUS |
-//ODS_SELECTED )) );
+// ODS_SELECTED )) );
 //--
 //--
 //--	// Clear up.
@@ -485,53 +487,53 @@ HWND PromptForInput(HWND hwndParent, UINT ctrlID) {
   //--	{
   //--
   //--		wc.style		 = CS_HREDRAW | CS_VREDRAW;// Class
-  //style(s).
+  // style(s).
   //--		wc.lpfnWndProc	 = (WNDPROC)GetKeyWndProc;	   // Window
-  //Procedure
-  //--		wc.cbClsExtra	 = 0;					   // No per-class extra
-  //data.
-  //--		wc.cbWndExtra	 = 0;					   // No per-window
+  // Procedure
+  //--		wc.cbClsExtra	 = 0;					   // No per-class
   //extra data.
-  //--		wc.hInstance	 = hInst;				   // Owner of this
-  //class
+  //--		wc.cbWndExtra	 = 0;					   // No
+  //per-window extra data.
+  //--		wc.hInstance	 = hInst;				   // Owner of
+  //this class
   //--		wc.hIcon		 = LoadIcon(hInst,
-  //MAKEINTRESOURCE(IDI_BEEBEM));
+  // MAKEINTRESOURCE(IDI_BEEBEM));
   //--		wc.hCursor		 = NULL;
   //--		wc.hbrBackground = (HBRUSH)(COLOR_BTNFACE+1);// Default color
   //--		wc.lpszMenuName  = NULL; // Menu from .RC
-  //--		wc.lpszClassName = "BEEBGETKEY"; //szAppName;				//
-  //Name to register as
+  //--		wc.lpszClassName = "BEEBGETKEY"; //szAppName;
+  //// Name to register as
   //--
   //--		// Register the window class and return success/failure code.
   //--		(RegisterClass(&wc));
   //--	}
   //--
   //--	Success = CreateWindow(	szClass,	// pointer to registered class
-  //name
-  //--							szTitle,	// pointer to window
-  //name
+  // name
+  //--							szTitle,	// pointer to
+  //window name
   //--							WS_OVERLAPPED|
-  //--							WS_CAPTION| DS_MODALFRAME |
-  //DS_SYSMODAL,
+  //--							WS_CAPTION| DS_MODALFRAME
+  //| DS_SYSMODAL,
   //--//				WS_SYSMENU|
   //--//				WS_MINIMIZEBOX, // Window style.
-  //--							// WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS |
-  //WS_CAPTION,
+  //--							// WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
+  //| WS_CAPTION,
   //--							//WS_SYSMENU, // Window
-  //style.
+  // style.
   //--							80, 40,
-  //--							gkWidth,	// window
-  //width
-  //--							gkHeight,	// window
-  //height
-  //--							hwndParent,	// handle to parent or owner
-  //window
-  //--							NULL,//HMENU(IDD_GETKEY),	// handle to menu
-  //or child-window identifier
-  //--							hInst,	// handle to application
-  //instance
-  //--							NULL // pointer to window-creation
-  //data
+  //--							gkWidth,	//
+  //window width
+  //--							gkHeight,	//
+  //window height
+  //--							hwndParent,	// handle to parent or
+  //owner window
+  //--							NULL,//HMENU(IDD_GETKEY),	// handle to
+  //menu or child-window identifier
+  //--							hInst,	// handle to
+  //application instance
+  //--							NULL // pointer to
+  //window-creation data
   //--
   //--							);
   //--	if ( Success == NULL )
@@ -545,12 +547,12 @@ HWND PromptForInput(HWND hwndParent, UINT ctrlID) {
 /****************************************************************************/
 
 //--LRESULT CALLBACK GetKeyWndProc( HWND hWnd,		   // window handle
-//--								UINT message,	   //
-//type of message
-//--								WPARAM uParam,	   //
-//additional information
-//--								LPARAM lParam)	   //
-//additional information
+//--								UINT message,
+//// type of message
+//--								WPARAM uParam,
+//// additional information
+//--								LPARAM lParam)
+//// additional information
 //--{
 //--#define IDI_TEXT 100
 //--
@@ -558,7 +560,7 @@ HWND PromptForInput(HWND hwndParent, UINT ctrlID) {
 //--	{
 //--	case WM_CREATE:
 //--		// Add the parameters required for this window. ie a Stic text
-//control
+// control
 //--		// and a cancel button.
 //--
 //--		HWND hwndCtrl;
@@ -566,48 +568,48 @@ HWND PromptForInput(HWND hwndParent, UINT ctrlID) {
 //--
 //--		// Change Window Font.
 //--		PostMessage( hWnd, WM_SETFONT, (WPARAM)GetStockObject(
-//ANSI_VAR_FONT ),
+// ANSI_VAR_FONT ),
 //--					 MAKELPARAM(FALSE, 0) );
 //--
 //--		// Create the static text for keys used
 //--		hwndCtrl = CreateWindow( "STATIC", "Assigned to PC key(s): ",
-//WS_CHILD | SS_SIMPLE | WS_VISIBLE,
+// WS_CHILD | SS_SIMPLE | WS_VISIBLE,
 //--								 4, 4,
-//--								 gkWidth-10, 16, hWnd,
-//HMENU(IDI_TEXT),
+//--								 gkWidth-10, 16,
+//hWnd, HMENU(IDI_TEXT),
 //--
 //((LPCREATESTRUCT)lParam)->hInstance, NULL );
 //--		PostMessage( hwndCtrl, WM_SETFONT, (WPARAM)GetStockObject(
-//ANSI_VAR_FONT ),
+// ANSI_VAR_FONT ),
 //--					 MAKELPARAM(FALSE, 0) );
 //--
 //--		// The keys used list.
 //--		GetKeysUsed( szUsedKeys );
 //--		CharToOem( szUsedKeys, szUsedKeys );
 //--		hwndCtrl = CreateWindow( "STATIC", szUsedKeys, WS_CHILD |
-//SS_SIMPLE | WS_VISIBLE,
+// SS_SIMPLE | WS_VISIBLE,
 //--								 8, 20,
-//--								 gkWidth-10, 16, hWnd,
-//HMENU(IDI_TEXT),
+//--								 gkWidth-10, 16,
+//hWnd, HMENU(IDI_TEXT),
 //--
 //((LPCREATESTRUCT)lParam)->hInstance, NULL );
 //--		PostMessage( hwndCtrl, WM_SETFONT, (WPARAM)GetStockObject(
-//ANSI_VAR_FONT ),
+// ANSI_VAR_FONT ),
 //--					 MAKELPARAM(FALSE, 0) );
 //--
 //--		// Create the OK button.
 //--		hwndCtrl = CreateWindow( "BUTTON", "&Ok", WS_CHILD |
-//BS_DEFPUSHBUTTON | WS_VISIBLE,
-//--								 ( gkWidth - 50 ) / 2,
-//gkHeight - 50,
+// BS_DEFPUSHBUTTON | WS_VISIBLE,
+//--								 ( gkWidth - 50 ) /
+//2, gkHeight - 50,
 //--								 60, 18,
 //--								 hWnd,
-//HMENU(IDOK),
+// HMENU(IDOK),
 //--
 //((LPCREATESTRUCT)lParam)->hInstance, NULL );
 //--
 //--		PostMessage( hwndCtrl, WM_SETFONT, (WPARAM)GetStockObject(
-//ANSI_VAR_FONT ),
+// ANSI_VAR_FONT ),
 //--					 MAKELPARAM(FALSE, 0) );
 //--	break;
 //--

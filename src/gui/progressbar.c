@@ -9,7 +9,7 @@
  */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui/log.h"
@@ -95,8 +95,8 @@ static EG_BOOL Callback_Paint(EG_Widget *widget_ptr, SDL_Rect area) {
     tmp.h = loc.h - 4;
 
     //		if (progressbar_ptr->previous_w != tmp.w ||
-    // progressbar_ptr->previous_w <= 0){ 			progressbar_ptr->previous_w =
-    // tmp.w;
+    // progressbar_ptr->previous_w <= 0){ 			progressbar_ptr->previous_w
+    // = tmp.w;
 
     //			printf("---> %ld\n", progressbar_ptr->previous_w);
 

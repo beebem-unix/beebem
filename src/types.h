@@ -5,7 +5,7 @@
 #define _EG_TYPES_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 /* START OF types.h ------------------------------------------------------------

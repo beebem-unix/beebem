@@ -23,7 +23,7 @@
 #define BEEBWIN_HEADER
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "windows.h"
@@ -438,7 +438,8 @@ private:
   // object LPDIRECTDRAWSURFACE		m_DDSPrimary;	// DirectDraw primary
   // surface LPDIRECTDRAWSURFACE2	m_DDS2Primary;	// DirectDraw primary
   // surface
-  // LPDIRECTDRAWSURFACE		m_DDSOne;		// Offscreen surface
+  // LPDIRECTDRAWSURFACE		m_DDSOne;		// Offscreen
+  // surface
   // 1 LPDIRECTDRAWSURFACE2	m_DDS2One;		// Offscreen surface 1
   // LPDIRECTDRAWSURFACE     m_BackBuffer;   // Full Screen Back Buffer
   // LPDIRECTDRAWSURFACE2	m_BackBuffer2;  // DD2 of the above

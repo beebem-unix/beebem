@@ -11,7 +11,7 @@
 #define _DW_TICKBOX_PRIVATE_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui/types.h"
@@ -66,7 +66,7 @@ typedef struct {
 extern "C" {
 #endif
 //	EG_BOOL 	EG_TickBox_SetIcons(EG_Widget *widget_ptr, char
-//set_icon, char unset_icon);
+// set_icon, char unset_icon);
 EG_BOOL EG_TickBox_SetGroupParent(EG_Widget *tickbox_widget_ptr,
                                   EG_Widget *group_parent_widget_ptr);
 #ifdef __cplusplus

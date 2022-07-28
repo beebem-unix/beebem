@@ -2,7 +2,7 @@
 #define _FAKE_REGISTRY_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "types.h"

@@ -23,7 +23,7 @@
 /* Mike Wyatt 30/8/97 - Added disc write and format support */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <fstream>
@@ -1287,7 +1287,7 @@ void LoadSimpleDiscImage(char *FileName, int DriveNum, int HeadNum,
                "BBC Emulator", MB_OK | MB_ICONWARNING);
     //--#else
     //--   cerr << "WARNING - Incorrect disc type selected(?) in drive " <<
-    //DriveNum << "\n";
+    // DriveNum << "\n";
     //--   cerr << "This disc file looks like a double sided disc image.\n";
     //--   cerr << "Check files before copying them.\n";
     //--#endif
@@ -1355,7 +1355,7 @@ void LoadSimpleDSDiscImage(char *FileName, int DriveNum, int Tracks) {
                "BBC Emulator", MB_OK | MB_ICONWARNING);
     //--#else
     //--   cerr << "WARNING - Incorrect disc type selected(?) in drive " <<
-    //DriveNum << "\n";
+    // DriveNum << "\n";
     //--   cerr << "This disc file looks like a single sided disc image.\n";
     //--   cerr << "Check files before copying them.\n";
     //--#endif
@@ -1501,7 +1501,7 @@ void DiscWriteEnable(int DriveNum, int WriteEnable) {
       //--     cerr << "WARNING - Invalid Disc Catalogue in drive " << DriveNum
       //<< "\n";
       //--     cerr << "This disc image will get corrupted if files are written
-      //to it.\n";
+      // to it.\n";
       //--     cerr << "Copy all the files to a new image to fix it.\n";
       //--#endif
     }
@@ -1612,10 +1612,10 @@ static void LoadStartupDisc(int DriveNum, char *DiscString) {
                "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
     //--   cerr << "Incorrect format for BeebDiscLoad - the correct format
-    //is\n";
+    // is\n";
     //--   cerr << "  D|S:tracks:filename\n e.g. D:80:discims/elite\n";
     //--   cerr << "  for a double sided, 80 track disc image called
-    //discims/elite\n";
+    // discims/elite\n";
     //--#endif
   } else {
     switch (DoubleSided) {

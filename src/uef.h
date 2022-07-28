@@ -2,7 +2,7 @@
 #define _UEF_H
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 extern int uef_errno;

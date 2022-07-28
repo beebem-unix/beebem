@@ -26,7 +26,7 @@ keyboard emulation - David Alan Gilbert 30/10/94 */
 #define SYSVIA_HEADER
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "via.h"

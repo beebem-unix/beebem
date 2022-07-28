@@ -11,7 +11,7 @@
 #define _DW_WIDGET_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui/types.h"

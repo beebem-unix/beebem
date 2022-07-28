@@ -12,7 +12,7 @@
 #define _DW_MESSAGEBOX_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #define EG_MESSAGEBOX_STOP 0

@@ -31,7 +31,7 @@
 #define LINE_H
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 /* This uses a little trick to allow __LINE__ to be

@@ -8,7 +8,7 @@
  */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui/log.h"
@@ -260,7 +260,7 @@ void EG_Window_Diagnositc_DumpChildren(EG_Window *window_ptr) {
   //
   //		printf("%8X|%10s|%d|%d|(%03d %03d %03d %03d)\n"
   //		 , tmp_widget_ptr, EG_Widget_GetName(tmp_widget_ptr), (unsigned
-  //int) EG_Widget_GetCanGetFocusToggle(tmp_widget_ptr) 		 ,
+  // int) EG_Widget_GetCanGetFocusToggle(tmp_widget_ptr) 		 ,
   // EG_Window_ThisWidgetHasFocus(tmp_widget_ptr) 		 , clipping.x,
   // clipping.y, clipping.w, clipping.h
   //		);

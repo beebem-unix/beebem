@@ -12,7 +12,7 @@
 #define _DW_TABPAGE_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui/types.h"

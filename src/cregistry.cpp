@@ -20,7 +20,7 @@
 // * Doesn't provide network registry support.
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <ctype.h>
@@ -118,7 +118,7 @@ bool cRegistry::GetBinaryValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
   //--	if((RegOpenKeyEx(hKeyRoot, lpSubKey, 0, KEY_ALL_ACCESS,
   //&hKeyResult))==ERROR_SUCCESS) {
   //--
-  //if((lRes=RegQueryValueEx(hKeyResult,lpValue,NULL,&dwType,(LPBYTE)pData,&dwSize))==ERROR_SUCCESS)
+  // if((lRes=RegQueryValueEx(hKeyResult,lpValue,NULL,&dwType,(LPBYTE)pData,&dwSize))==ERROR_SUCCESS)
   //{
   //--			if(dwType==REG_BINARY) {
   //--				*pnSize=dwSize;
@@ -161,7 +161,7 @@ bool cRegistry::GetDWORDValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
   //--	if((RegOpenKeyEx(hKeyRoot, lpSubKey, 0, KEY_ALL_ACCESS,
   //&hKeyResult))==ERROR_SUCCESS) {
   //--		if((lRes=RegQueryValueEx(hKeyResult,lpValue, NULL, &dwType,
-  //pBytes, &dwBufferSize))==ERROR_SUCCESS) {
+  // pBytes, &dwBufferSize))==ERROR_SUCCESS) {
   //--			if(dwType==REG_DWORD) {
   //--				DWORD* pDW = reinterpret_cast<DWORD*>(pBytes);
   //--				dwBuffer = (*pDW);
@@ -205,7 +205,7 @@ bool cRegistry::GetStringValue(HKEY hKeyRoot, const LPCSTR lpSubKey,
   //--	if((RegOpenKeyEx(hKeyRoot, lpSubKey, 0, KEY_ALL_ACCESS,
   //&hKeyResult))==ERROR_SUCCESS) {
   //--		if((lRes=RegQueryValueEx(hKeyResult,lpValue, NULL, &dwType,
-  //pBytes, &dwBufferSize))==ERROR_SUCCESS) {
+  // pBytes, &dwBufferSize))==ERROR_SUCCESS) {
   //--			if(dwType==REG_SZ) {
   //--				strcpy(lpBuffer,(char*)pBytes);
   //--				RegCloseKey(hKeyResult);
@@ -256,7 +256,7 @@ bool cRegistry::SetBinaryValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
   //--	if((RegOpenKeyEx(hKeyRoot, lpSubKey, 0, KEY_ALL_ACCESS,
   //&hKeyResult))==ERROR_SUCCESS) {
   //--
-  //if((lRes=RegSetValueEx(hKeyResult,lpValue,0,REG_BINARY,reinterpret_cast<BYTE*>(pData),dwSize))==ERROR_SUCCESS)
+  // if((lRes=RegSetValueEx(hKeyResult,lpValue,0,REG_BINARY,reinterpret_cast<BYTE*>(pData),dwSize))==ERROR_SUCCESS)
   //{
   //--			RegCloseKey(hKeyResult);
   //--			*pnSize = dwSize;
@@ -285,7 +285,7 @@ bool cRegistry::SetDWORDValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
   //--	if((RegOpenKeyEx(hKeyRoot, lpSubKey, 0, KEY_ALL_ACCESS,
   //&hKeyResult))==ERROR_SUCCESS) {
   //--
-  //if((lRes=RegSetValueEx(hKeyResult,lpValue,0,REG_DWORD,reinterpret_cast<BYTE*>(&dwValue),sizeof(DWORD)))==ERROR_SUCCESS)
+  // if((lRes=RegSetValueEx(hKeyResult,lpValue,0,REG_DWORD,reinterpret_cast<BYTE*>(&dwValue),sizeof(DWORD)))==ERROR_SUCCESS)
   //{
   //--			RegCloseKey(hKeyResult);
   //--			return true;
@@ -314,7 +314,7 @@ bool cRegistry::SetStringValue(HKEY hKeyRoot, LPCSTR lpSubKey, LPCSTR lpValue,
   //--	if((RegOpenKeyEx(hKeyRoot, lpSubKey, 0, KEY_ALL_ACCESS,
   //&hKeyResult))==ERROR_SUCCESS) {
   //--
-  //if((lRes=RegSetValueEx(hKeyResult,lpValue,0,REG_SZ,reinterpret_cast<BYTE*>(lpData),dwLength))==ERROR_SUCCESS)
+  // if((lRes=RegSetValueEx(hKeyResult,lpValue,0,REG_SZ,reinterpret_cast<BYTE*>(lpData),dwLength))==ERROR_SUCCESS)
   //{
   //--			RegCloseKey(hKeyResult);
   //--			return true;

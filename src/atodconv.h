@@ -24,7 +24,7 @@
 #define ATODCONV_HEADER
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 extern int JoystickEnabled;

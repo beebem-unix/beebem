@@ -23,7 +23,7 @@
 /* Mike Wyatt 7/6/97 - Added undocumented instructions */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <fstream>
@@ -1186,7 +1186,7 @@ void Exec6502Instruction(void) {
   for (loop = 0; loop < loopc; loop++) {
     /* Output debug info */
     //->		if (DebugEnabled &&
-    //!DebugDisassembler(ProgramCounter,Accumulator,XReg,YReg,PSR,StackReg,true))
+    //! DebugDisassembler(ProgramCounter,Accumulator,XReg,YReg,PSR,StackReg,true))
     //<-			continue;
 
     if (trace == 1) {

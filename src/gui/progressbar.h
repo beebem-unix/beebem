@@ -12,7 +12,7 @@
 #define _DW_PROGRESSBAR_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui/sdl.h"

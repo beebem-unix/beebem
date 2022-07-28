@@ -25,7 +25,7 @@
 // thereof ;P
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "beebsound.h"
@@ -164,7 +164,7 @@ HRESULT WriteToSoundBuffer(PBYTE lpbSoundData) {
   //--	HRESULT hr;
   //--	int CDiff;
   //--	if ((DSound==NULL) || (DSB1==NULL)) return DS_OK; // Don't write if
-  //DirectSound not up and running!
+  // DirectSound not up and running!
   //--	// (As when in menu loop)
   //--	// Correct from pointer desync
   //--	if (!Playing) {
@@ -177,8 +177,8 @@ HRESULT WriteToSoundBuffer(PBYTE lpbSoundData) {
   //--			hr = DSB1->Restore();
   //--			if (hr == DS_OK)
   //--				hr = DSB1->Lock(0, 0,
-  //--					&lpvPtr1, &dwBytes1, &lpvPtr2, &dwBytes2,
-  //DSBLOCK_ENTIREBUFFER);
+  //--					&lpvPtr1, &dwBytes1, &lpvPtr2,
+  //&dwBytes2, DSBLOCK_ENTIREBUFFER);
   //--		}
   //--		if (lpvPtr1!=NULL) memset(lpvPtr1,128,dwBytes1);
   //--		if (lpvPtr2!=NULL) memset(lpvPtr2,128,dwBytes2);
@@ -191,7 +191,7 @@ HRESULT WriteToSoundBuffer(PBYTE lpbSoundData) {
   //--		DSB1->GetCurrentPosition(NULL,&CWC);
   //--		WriteOffset=CWC+WRITE_ADJUST;
   //--		if (WriteOffset>=TSoundBufferSize)
-  //WriteOffset-=TSoundBufferSize;
+  // WriteOffset-=TSoundBufferSize;
   //--		bReRead=FALSE;
   //--	}
   //--	// Obtain write pointer.
@@ -238,7 +238,7 @@ HRESULT WriteToSoundBuffer(PBYTE lpbSoundData) {
   //-- 	if (Playing && aviWriter)
   //--	{
   //--		HRESULT hr = aviWriter->WriteSound(lpbSoundData,
-  //SoundBufferSize);
+  // SoundBufferSize);
   //--		if (hr != E_UNEXPECTED && FAILED(hr))
   //--		{
   //--			MessageBox(GETHWND, "Failed to write sound to AVI file",
@@ -609,7 +609,7 @@ HRESULT CreatePrimarySoundBuffer(void) {
   //--	memset(&dsbdesc, 0, sizeof(DSBUFFERDESC)); // Zero it out.
   //--	dsbdesc.dwSize = sizeof(DSBUFFERDESC);
   //--	dsbdesc.dwFlags = DSBCAPS_PRIMARYBUFFER | DSBCAPS_GETCURRENTPOSITION2 |
-  //DSBCAPS_STICKYFOCUS;
+  // DSBCAPS_STICKYFOCUS;
   //--	dsbdesc.dwBufferBytes = 0;
   //--	dsbdesc.lpwfxFormat = NULL;
   //--
@@ -631,24 +631,25 @@ static void InitAudioDev(int sampleratein) {
   //--		int dsect=0;
   //--		dsect=1;
   //-- 		hr = DirectSoundCreate(NULL, &DSound, NULL);
-  //--		if (hr != DS_OK) MessageBox(GETHWND,"Attempt to start DirectSound
-  //system failed","BeebEm",MB_ICONERROR|MB_OK);
+  //--		if (hr != DS_OK) MessageBox(GETHWND,"Attempt to start
+  //DirectSound system failed","BeebEm",MB_ICONERROR|MB_OK);
   //--		if(hr == DS_OK)
   //--		{
   //--			hr=DS_OK;
   //--			if (UsePrimaryBuffer) {
-  //--				hr = DSound->SetCooperativeLevel(mainWin->GethWnd(),
-  //DSSCL_WRITEPRIMARY);
+  //--				hr =
+  //DSound->SetCooperativeLevel(mainWin->GethWnd(), DSSCL_WRITEPRIMARY);
   //--				if (hr == DSERR_UNSUPPORTED) {
-  //--					MessageBox(GETHWND,"Use of Primary DirectSound Buffer
-  //unsupported on this system. Using Secondary DirectSound Buffer instead",
+  //--					MessageBox(GETHWND,"Use of Primary DirectSound
+  //Buffer unsupported on this system. Using Secondary DirectSound Buffer
+  // instead",
   //--						"BBC
-  //Emulator",MB_OK|MB_ICONERROR);
+  // Emulator",MB_OK|MB_ICONERROR);
   //--					UsePrimaryBuffer=0;
   //--				}
   //--			}
   //--			if (!UsePrimaryBuffer)
-  //hr=DSound->SetCooperativeLevel(mainWin->GethWnd(),DSSCL_NORMAL);
+  // hr=DSound->SetCooperativeLevel(mainWin->GethWnd(),DSSCL_NORMAL);
   //--		}
   //--		if(hr == DS_OK)
   //--		{
@@ -656,14 +657,14 @@ static void InitAudioDev(int sampleratein) {
   //--			if (UsePrimaryBuffer) hr = CreatePrimarySoundBuffer();
   //--			else hr=CreateSecondarySoundBuffer();
   //--		} else MessageBox(GETHWND,"Attempt to create DirectSound buffer
-  //failed","BeebEm",MB_ICONERROR|MB_OK);
+  // failed","BeebEm",MB_ICONERROR|MB_OK);
   //--		if (hr != DS_OK)
   //--		{
   //--			char  errstr[200];
-  //--			sprintf(errstr,"Direct Sound initialisation failed on part
-  //%i\nFailure code %X",dsect,hr);
+  //--			sprintf(errstr,"Direct Sound initialisation failed on
+  //part %i\nFailure code %X",dsect,hr);
   //--			MessageBox(GETHWND,errstr,"BBC
-  //Emulator",MB_OK|MB_ICONERROR);
+  // Emulator",MB_OK|MB_ICONERROR);
   //--			SoundReset();
   //--		}
   //--		mainWin->SetPBuff();
@@ -1000,8 +1001,8 @@ void ClickRelay(unsigned char RState) {
 
 int GetVol(int vol) {
   if (SoundExponentialVolume) {
-    //		static int expVol[] = { 0,  2,  4,  6,  9, 12, 15, 19, 24, 30, 38, 48,
-    //60, 76,  95, 120 };
+    //		static int expVol[] = { 0,  2,  4,  6,  9, 12, 15, 19, 24, 30, 38,
+    //48, 60, 76,  95, 120 };
     static int expVol[] = {0,  11, 14, 17, 20, 24, 28,  33,
                            39, 46, 54, 63, 74, 87, 102, 120};
     if (vol >= 0 && vol <= 15)

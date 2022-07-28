@@ -5,13 +5,13 @@
 // Econet added Rob O'Donnell 2004-12-28.
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include "debug.h"
 #include "6502core.h"
 #include "beebemrc.h"
 #include "beebmem.h"
+#include "debug.h"
 #include "main.h"
 #include "tube.h"
 #include "windows.h"
@@ -1900,7 +1900,7 @@ InstInfo optable[256] = {
 //*******************************************************************
 
 //-- BOOL CALLBACK DebugDlgProc(HWND hwndDlg, UINT message, WPARAM wParam,
-//LPARAM lParam);
+// LPARAM lParam);
 int DebugDisassembleInstruction(int addr, bool host, char *opstr);
 int DebugDisassembleCommand(int addr, int count, bool host);
 void DebugMemoryDump(int addr, int count, bool host);
@@ -1930,9 +1930,9 @@ void DebugOpenDialog(HINSTANCE hinst, HWND hwndMain) {
   //--					(LPARAM)MAKELPARAM(FALSE,0));
   //--
   //--		SendDlgItemMessage(hwndDebug, IDC_DEBUGBPS, BM_SETCHECK,
-  //BST_CHECKED, 0);
+  // BST_CHECKED, 0);
   //--		SendDlgItemMessage(hwndDebug, IDC_DEBUGHOST, BM_SETCHECK,
-  //BST_CHECKED, 0);
+  // BST_CHECKED, 0);
   //--	}
 }
 
@@ -1972,17 +1972,17 @@ void DebugDisplayInfo(const char *info) {
   //--	}
   //--	if (LinesDisplayed > LINES_IN_INFO)
   //--		SendMessage(hwndInfo, LB_SETTOPINDEX, LinesDisplayed -
-  //LINES_IN_INFO, 0);
+  // LINES_IN_INFO, 0);
 }
 
 //--BOOL CALLBACK DebugDlgProc(HWND hwndDlg, UINT message, WPARAM wParam, LPARAM
-//lParam)
+// lParam)
 //--{
 //--	switch (message)
 //--	{
 //--		case WM_INITDIALOG:
 //--			SendDlgItemMessage(hwndDlg, IDC_DEBUGCOMMAND,
-//EM_SETLIMITTEXT, MAX_COMMAND_LEN, 0);
+// EM_SETLIMITTEXT, MAX_COMMAND_LEN, 0);
 //--			return TRUE;
 //--
 //--		case WM_ACTIVATE:
@@ -2011,11 +2011,12 @@ void DebugDisplayInfo(const char *info) {
 //--						InstCount = 0;
 //--						BreakpointHit = false;
 //--						DebugDisplayInfo("");
-//--						DebugDisplayInfo("- EXECUTION RESTARTED
+//--						DebugDisplayInfo("- EXECUTION
+//RESTARTED
 //-");
 //--						DebugDisplayInfo("");
 //--						SetDlgItemText(hwndDebug,
-//IDC_DEBUGCOMMAND, "");
+// IDC_DEBUGCOMMAND, "");
 //--					}
 //--					return TRUE;
 //--
@@ -2028,27 +2029,30 @@ void DebugDisplayInfo(const char *info) {
 //--
 //--				case IDC_DEBUGBPS:
 //--					BPSOn = (SendDlgItemMessage(hwndDebug,
-//IDC_DEBUGBPS, BM_GETCHECK, 0, 0) == BST_CHECKED);
+// IDC_DEBUGBPS, BM_GETCHECK, 0, 0) == BST_CHECKED);
 //--					break;
 //--
 //--				case IDC_DEBUGOS:
 //--					DebugOS = (SendDlgItemMessage(hwndDebug,
-//IDC_DEBUGOS, BM_GETCHECK, 0, 0) == BST_CHECKED);
+// IDC_DEBUGOS, BM_GETCHECK, 0, 0) == BST_CHECKED);
 //--					break;
 //--
 //--				case IDC_DEBUGROM:
-//--					DebugROM = (SendDlgItemMessage(hwndDebug,
-//IDC_DEBUGROM, BM_GETCHECK, 0, 0) == BST_CHECKED);
+//--					DebugROM =
+//(SendDlgItemMessage(hwndDebug, IDC_DEBUGROM, BM_GETCHECK, 0, 0) ==
+// BST_CHECKED);
 //--					break;
 //--
 //--				case IDC_DEBUGHOST:
-//--					DebugHost = (SendDlgItemMessage(hwndDebug,
-//IDC_DEBUGHOST, BM_GETCHECK, 0, 0) == BST_CHECKED);
+//--					DebugHost =
+//(SendDlgItemMessage(hwndDebug, IDC_DEBUGHOST, BM_GETCHECK, 0, 0) ==
+// BST_CHECKED);
 //--					break;
 //--
 //--				case IDC_DEBUGPARASITE:
-//--					DebugParasite = (SendDlgItemMessage(hwndDebug,
-//IDC_DEBUGPARASITE, BM_GETCHECK, 0, 0) == BST_CHECKED);
+//--					DebugParasite =
+//(SendDlgItemMessage(hwndDebug, IDC_DEBUGPARASITE, BM_GETCHECK, 0, 0) ==
+// BST_CHECKED);
 //--					break;
 //--
 //--				case IDCANCEL:
@@ -2067,11 +2071,11 @@ void DebugDisplayTrace(DebugType type, bool host, const char *info) {
   //--		switch (type)
   //--		{
   //--		case DEBUG_VIDEO:
-  //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGVIDEO, BM_GETCHECK,
-  //0, 0) == BST_CHECKED)
+  //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGVIDEO,
+  //BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--				DebugDisplayInfo(info);
   //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGVIDEOBRK,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--			{
   //--				DebugOn = TRUE;
   //--				InstCount = 1;
@@ -2081,10 +2085,10 @@ void DebugDisplayTrace(DebugType type, bool host, const char *info) {
   //--			break;
   //--		case DEBUG_USERVIA:
   //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGUSERVIA,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--				DebugDisplayInfo(info);
   //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGUSERVIABRK,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--			{
   //--				DebugOn = TRUE;
   //--				InstCount = 1;
@@ -2094,10 +2098,10 @@ void DebugDisplayTrace(DebugType type, bool host, const char *info) {
   //--			break;
   //--		case DEBUG_SYSVIA:
   //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGSYSVIA,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--				DebugDisplayInfo(info);
   //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGSYSVIABRK,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--			{
   //--				DebugOn = TRUE;
   //--				InstCount = 1;
@@ -2109,10 +2113,10 @@ void DebugDisplayTrace(DebugType type, bool host, const char *info) {
   //--			if ((DebugHost && host) || (DebugParasite && !host))
   //--			{
   //--				if (SendDlgItemMessage(hwndDebug, IDC_DEBUGTUBE,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--					DebugDisplayInfo(info);
-  //--				if (SendDlgItemMessage(hwndDebug, IDC_DEBUGTUBEBRK,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  //--				if (SendDlgItemMessage(hwndDebug,
+  //IDC_DEBUGTUBEBRK, BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--				{
   //--					DebugOn = TRUE;
   //--					InstCount = 1;
@@ -2123,10 +2127,10 @@ void DebugDisplayTrace(DebugType type, bool host, const char *info) {
   //--			break;
   //--		case DEBUG_SERIAL:
   //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGSERIAL,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--				DebugDisplayInfo(info);
   //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGSERIALBRK,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--			{
   //--				DebugOn = TRUE;
   //--				InstCount = 1;
@@ -2136,10 +2140,10 @@ void DebugDisplayTrace(DebugType type, bool host, const char *info) {
   //--			break;
   //--		case DEBUG_ECONET:
   //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGECONET,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--				DebugDisplayInfo(info);
   //--			if (SendDlgItemMessage(hwndDebug, IDC_DEBUGECONETBRK,
-  //BM_GETCHECK, 0, 0) == BST_CHECKED)
+  // BM_GETCHECK, 0, 0) == BST_CHECKED)
   //--			{
   //--				DebugOn = TRUE;
   //--				InstCount = 1;
@@ -2152,7 +2156,7 @@ void DebugDisplayTrace(DebugType type, bool host, const char *info) {
   //--}
   //--
   //--bool DebugDisassembler(int addr, int Accumulator, int XReg, int YReg, int
-  //PSR, bool host)
+  // PSR, bool host)
   //--{
   //--	char str[150];
   //--	int i;
@@ -2184,7 +2188,7 @@ void DebugDisplayTrace(DebugType type, bool host, const char *info) {
   //--			else
   //--			{
   //--				if (addr >= Breakpoints[i].start && addr <=
-  //Breakpoints[i].end)
+  // Breakpoints[i].end)
   //--					BreakpointHit = true;
   //--			}
   //--		}
@@ -2258,7 +2262,7 @@ void DebugDisplayTrace(DebugType type, bool host, const char *info) {
   //--		DebugDisassembleInstruction(addr, host, str);
   //--
   //--		sprintf(str + strlen(str), "%02X %02X %02X %02X ", Accumulator,
-  //XReg, YReg, StackReg);
+  // XReg, YReg, StackReg);
   //--
   //--		sprintf(str + strlen(str), (PSR & FlagC) ? "C" : ".");
   //--		sprintf(str + strlen(str), (PSR & FlagZ) ? "Z" : ".");
@@ -2367,15 +2371,16 @@ void DebugExecuteCommand() {
   //--				if (i != LB_ERR)
   //--				{
   //--					SendMessage(hwndBP, LB_DELETESTRING, i,
-  //0);
+  // 0);
   //--					for (i = 0; i < BPCount; ++i)
   //--					{
   //--						if (Breakpoints[i].start ==
-  //start)
+  // start)
   //--						{
   //--							if (i != BPCount - 1)
-  //--								memmove(&Breakpoints[i],
-  //&Breakpoints[i+1], sizeof(Breakpoint) * (BPCount - i - 1));
+  //--
+  //memmove(&Breakpoints[i], &Breakpoints[i+1], sizeof(Breakpoint) * (BPCount -
+  //i - 1));
   //--							BPCount--;
   //--							i = BPCount;
   //--						}
@@ -2384,19 +2389,19 @@ void DebugExecuteCommand() {
   //--				else
   //--				{
   //--					if (end >= 0 && end <= 0xffff && start <
-  //end)
+  // end)
   //--					{
-  //--						sprintf(info, "%04X-%04X", start,
-  //end);
+  //--						sprintf(info, "%04X-%04X",
+  //start, end);
   //--						Breakpoints[BPCount].start =
-  //start;
+  // start;
   //--						Breakpoints[BPCount].end = end;
   //--						BPCount++;
   //--					}
   //--					else
   //--					{
   //--						Breakpoints[BPCount].start =
-  //start;
+  // start;
   //--						Breakpoints[BPCount].end = -1;
   //--						BPCount++;
   //--					}
@@ -2445,7 +2450,8 @@ void DebugExecuteCommand() {
   //--			FILE *fd = fopen(filename, "w");
   //--			if (fd)
   //--			{
-  //--				for (i = LinesDisplayed - count; i < LinesDisplayed;
+  //--				for (i = LinesDisplayed - count; i <
+  //LinesDisplayed;
   //++i)
   //--				{
   //--					SendMessage(hwndInfo, LB_GETTEXT, i,
@@ -2456,7 +2462,7 @@ void DebugExecuteCommand() {
   //--
   //--				DebugDisplayInfo("");
   //--				sprintf(info, "Wrote %x lines to: %s", count,
-  //filename);
+  // filename);
   //--				DebugDisplayInfo(info);
   //--
   //--				SetDlgItemText(hwndDebug, IDC_DEBUGCOMMAND, "");
@@ -2465,7 +2471,7 @@ void DebugExecuteCommand() {
   //--			{
   //--				DebugDisplayInfo("");
   //--				sprintf(info, "Failed open for write: %s",
-  //filename);
+  // filename);
   //--				DebugDisplayInfo(info);
   //--			}
   //--		}
@@ -2477,7 +2483,7 @@ void DebugExecuteCommand() {
   //--		while (*param == ' ')
   //--			++param;
   //--		if (sscanf(param, "%x", &start) == 1 && start >= 0 && start <=
-  //0xffff)
+  // 0xffff)
   //--		{
   //--			ok = true;
   //--			i = 0;
@@ -2499,7 +2505,7 @@ void DebugExecuteCommand() {
   //--
   //--			DebugDisplayInfo("");
   //--			sprintf(info, "Changed %x bytes starting at %x", i,
-  //start);
+  // start);
   //--			DebugDisplayInfo(info);
   //--
   //--			SetDlgItemText(hwndDebug, IDC_DEBUGCOMMAND, "");

@@ -20,7 +20,7 @@
 /****************************************************************************/
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "sdl.h"
@@ -171,13 +171,15 @@ int GetBytesFromSDLSoundBuffer(int len) {
              ++uiCatchedUpTimes);
 
       //			// we dump everything apart from two blocks
-      //overwise we're
+      // overwise we're
       //			// always living on a knife edge.. (i.e.: we're
-      //max'ed out
+      // max'ed out
       //			// all the time and have no spare resources to
-      //fall back on. 			while (SDLSoundBufferBytesHave > ( (unsigned long)samples
-      //* 2)){ 				SDLSoundBufferOffset_OUT++; 				if (SDLSoundBufferOffset_OUT >=
-      //SOUND_BUFFER_SIZE) 					SDLSoundBufferOffset_OUT = (unsigned long) 0;
+      // fall back on. 			while (SDLSoundBufferBytesHave > (
+      // (unsigned long)samples
+      //* 2)){ 				SDLSoundBufferOffset_OUT++;
+      //if (SDLSoundBufferOffset_OUT >= SOUND_BUFFER_SIZE)
+      // SDLSoundBufferOffset_OUT = (unsigned long) 0;
       //				SDLSoundBufferBytesHave--;
       //			}
       CatchupSound();
@@ -584,7 +586,7 @@ int Create_Screen(void) {
    */
   //	if (screen_ptr->format->palette->ncolors > 256){
   //		fprintf(stderr, "Trying to set 8bit bitmaps palette but have too
-  //many colors!\n"); 		return false;
+  // many colors!\n"); 		return false;
   //	}
   //	SDL_SetColors(video_output, screen_ptr->format->palette->colors, 0
   //	 , screen_ptr->format->palette->ncolors);
@@ -954,7 +956,7 @@ void RenderLine(int line, int isTeletext, int xoffset) {
       int window_y = line;
       // Fix height for some resolutions:
       //			switch (
-      //fullscreen?cfg_Fullscreen_Resolution:cfg_Windowed_Resolution) {
+      // fullscreen?cfg_Fullscreen_Resolution:cfg_Windowed_Resolution) {
       switch (fullscreen_val ? cfg_Fullscreen_Resolution
                              : cfg_Windowed_Resolution) {
       case RESOLUTION_640X512:
@@ -988,12 +990,14 @@ void RenderLine(int line, int isTeletext, int xoffset) {
       if (cfg_EmulateCrtTeletext == 0 || (line & 1) == 1 ||
           disable_grille_for_teletext == 1) {
         //#endif
-        //				src.x=36; src.y=line; src.w=SDL_WINDOW_WIDTH -
-        //(36 + 124); src.h=1; 				dst.x= (36+124) / 2; dst.y=line +6;
-        //dst.w=SDL_WINDOW_WIDTH - (36 + 124); dst.h=1;
+        //				src.x=36; src.y=line; src.w=SDL_WINDOW_WIDTH
+        //-
+        //(36 + 124); src.h=1; 				dst.x= (36+124) / 2;
+        //dst.y=line +6; dst.w=SDL_WINDOW_WIDTH - (36 + 124); dst.h=1;
 
-        //				src.x=0; src.y=line; src.w=SDL_WINDOW_WIDTH;
-        //src.h=1; 				dst.x=0; dst.y=line; dst.w=SDL_WINDOW_WIDTH; dst.h=1;
+        //				src.x=0; src.y=line;
+        //src.w=SDL_WINDOW_WIDTH; src.h=1; 				dst.x=0;
+        // dst.y=line; dst.w=SDL_WINDOW_WIDTH; dst.h=1;
         src.x = 0;
         src.y = line;
         src.w = screen_ptr->w;
@@ -1023,7 +1027,7 @@ void RenderLine(int line, int isTeletext, int xoffset) {
         return;
 
       //			switch (
-      //fullscreen?cfg_Fullscreen_Resolution:cfg_Windowed_Resolution) {
+      // fullscreen?cfg_Fullscreen_Resolution:cfg_Windowed_Resolution) {
       switch (fullscreen_val ? cfg_Fullscreen_Resolution
                              : cfg_Windowed_Resolution) {
       case RESOLUTION_640X512:
@@ -1088,7 +1092,7 @@ void RenderLine(int line, int isTeletext, int xoffset) {
       }
 
       //			printf("Line: %d %d\n", (int) dst.y, (int)
-      //dst.h);
+      // dst.h);
 
       // Graphics mode is never more than 256 scanlines so
       // double up the lines
@@ -1103,7 +1107,7 @@ void RenderLine(int line, int isTeletext, int xoffset) {
       }
       //#endif
       //			SDL_UpdateRect(screen_ptr, 0, window_y ,
-      //SDL_WINDOW_WIDTH 			 , 2);
+      // SDL_WINDOW_WIDTH 			 , 2);
     }
   }
 }
@@ -1464,10 +1468,10 @@ int ConvertSDLKeyToBBCKey(SDL_keysym keysym /*, int *pressed */, int *col,
 //--/* Wrapper for SDL surface update
 //-- *
 //-- * Should call a user callback so program knows the GUI has updated
-//something
+// something
 //-- */
 //--void EG_Draw_UpdateSurface(SDL_Surface *surface, Sint32 x, Sint32 y, Sint32
-//w
+// w
 //-- , Sint32 h)
 //--{
 //--	SDL_UpdateRect(surface, x, y, w, h);
@@ -1521,7 +1525,7 @@ int ConvertSDLKeyToBBCKey(SDL_keysym keysym /*, int *pressed */, int *col,
 //--
 //--// 0 = center, -1 = left. 1 = right
 //--void EG_Draw_String(SDL_Surface *surface, SDL_Color *color, EG_BOOL bold,
-//SDL_Rect *area_ptr
+// SDL_Rect *area_ptr
 //-- , int justify, char *string)
 //--{
 //--	SDL_Rect drawing_area; // SDL_DW_Draw_CalcDrawingArea(surface, &area);
@@ -1542,7 +1546,7 @@ int ConvertSDLKeyToBBCKey(SDL_keysym keysym /*, int *pressed */, int *col,
 //--        len = strlen(string);
 //--
 //--        //SDL_FillRect(surface, &drawing_area, SDL_MapRGB(surface->format,
-//255
+// 255
 //--        // , 255, 255));
 //--
 //--        x = drawing_area.x;
@@ -1581,7 +1585,7 @@ int ConvertSDLKeyToBBCKey(SDL_keysym keysym /*, int *pressed */, int *col,
 //--}
 //--
 //--void EG_Draw_Char(SDL_Surface *surface, SDL_Color *color, EG_BOOL bold,
-//Uint16 x, Uint16 y
+// Uint16 x, Uint16 y
 //-- , char c)
 //--{
 //--        SDL_Rect src, dst;
@@ -1730,14 +1734,14 @@ int ConvertSDLKeyToBBCKey(SDL_keysym keysym /*, int *pressed */, int *col,
 //--
 //--        // Bottom line:
 //--        line.x = drawing_area.x  +1  ; line.y = drawing_area.y +
-//drawing_area.h-1;
+// drawing_area.h-1;
 //--	line.w = drawing_area.w  -2  ;
 //--	line.h = 1;
 //-- //       SDL_FillRect(surface, &line, dull_col);
 //--
 //--        // Left line:
 //--        line.x=drawing_area.x; line.y=drawing_area.y  +1  ;
-//line.h=drawing_area.h  -2;
+// line.h=drawing_area.h  -2;
 //--	line.w = 1;
 //--  	line.h+=1;
 //--        SDL_FillRect(surface, &line, bright_col);
@@ -1833,14 +1837,14 @@ int ConvertSDLKeyToBBCKey(SDL_keysym keysym /*, int *pressed */, int *col,
 //--
 //--        // Bottom line:
 //--        line.x = drawing_area.x  +1  ; line.y = drawing_area.y +
-//drawing_area.h-1;
+// drawing_area.h-1;
 //--	line.w = drawing_area.w  -2  ;
 //--	line.h = 1;
 //--        SDL_FillRect(surface, &line, dull_col);
 //--
 //--        // Left line:
 //--        line.x=drawing_area.x; line.y=drawing_area.y  +1  ;
-//line.h=drawing_area.h  -2  ;
+// line.h=drawing_area.h  -2  ;
 //--	line.w = 1;
 //--        SDL_FillRect(surface, &line, bright_col);
 //--

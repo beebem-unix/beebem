@@ -6,7 +6,7 @@
 // Standard disclaimers apply.
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 /* Compiling with econet support is optional.  Code
@@ -79,7 +79,7 @@ int ListenSocket;
 
 //-> SOCKET SendSocket;
 //-- WSADATA WsaDat;							//
-//Windows sockets info
+// Windows sockets info
 //++
 int SendSocket;
 //<-
@@ -342,9 +342,9 @@ void EconetReset(void) {
             //->						if
             //(bind(ListenSocket, (SOCKADDR*)&service, sizeof(service)) == 0) {
             //--
-            //EconetListenPort = network[i].port;
+            // EconetListenPort = network[i].port;
             //--
-            //EconetStationNumber = network[i].station;
+            // EconetStationNumber = network[i].station;
             //--						}
             //++
             if (bind(ListenSocket, (struct sockaddr *)&service,
@@ -447,7 +447,7 @@ void ReadNetwork(void) {
   EcoCfg = fopen(TmpPath, "rt");
   if (EcoCfg == NULL) {
     //->		sprintf(info, "Econet: Failed to open configuration
-    //file:\n %s", TmpPath);
+    // file:\n %s", TmpPath);
     //--		EconetError(info);
     //++
     sprintf(info, "Econet: Failed to open econet configuration file: %s",
@@ -496,7 +496,7 @@ void ReadNetwork(void) {
         } while (i < strlen(EcoName));
         //->				if (DebugEnabled) {
         //--					sprintf(info, "Econet:
-        //ConfigFile Net %i Stn %i IP %08x Port %i",
+        // ConfigFile Net %i Stn %i IP %08x Port %i",
         //--
         // network[networkp].network, network[networkp].station,
         //--
@@ -781,7 +781,7 @@ bool EconetPoll_real(void) { // return NMI status
   // idle transmission mode - ignored here,. CR3b4 - FDSE - flag detect status
   // enable.  when set, then FD (SR1b3) + interrupr indicated a flag
   //				has been received. I don't think we use this
-  //mode, so ignoring it.
+  // mode, so ignoring it.
   // CR3b5 - Loop - Loop mode. Not used.
   // CR3b6 - GAP/TST - sets test loopback mode (when not in Loop operation
   // mode.) ignored. CR3b7 - LOC/DTR - (when not in loop mode) controls DTR pin
@@ -842,7 +842,7 @@ bool EconetPoll_real(void) { // return NMI status
           ADLC.txftl = 0;
           //->					if (DebugEnabled)
           //--
-          //DebugDisplayTrace(DEBUG_ECONET, true, "EconetPoll: TxUnderun!!");
+          // DebugDisplayTrace(DEBUG_ECONET, true, "EconetPoll: TxUnderun!!");
           //++
           qDEBUG("Econet poll: TxUnderun!!");
           //<-
@@ -1110,7 +1110,7 @@ bool EconetPoll_real(void) { // return NMI status
     FlagFillActive = false;
     //->		if (DebugEnabled)
     //--			DebugDisplayTrace(DEBUG_ECONET, true, "Econet:
-    //FlagFill timeout reset");
+    // FlagFill timeout reset");
     //++
     qDEBUG("FlagFill timeout reset.");
     //<-
@@ -1210,10 +1210,11 @@ bool EconetPoll_real(void) { // return NMI status
       }
     } else {                // FC mode
       if (!(ADLC.txfptr)) { // nothing in fifo
-                            //->				if (DebugEnabled &&
+                            //->				if (DebugEnabled
+                            //&&
                             //!(ADLC.status1 & 64))
                             //--
-                            //DebugDisplayTrace(DEBUG_ECONET, true, "set fc");
+                            // DebugDisplayTrace(DEBUG_ECONET, true, "set fc");
                             //++
         if (!(ADLC.status1 & 64))
           qDEBUG("Set fc.");
@@ -1367,7 +1368,7 @@ bool EconetPoll_real(void) { // return NMI status
         if (ADLC.control2 & 1) {
           interruptnow = TRUE;
           //->					DebugDisplayTrace(DEBUG_ECONET,
-          //true, "ADLC: S1 flags still set, interrupt");
+          // true, "ADLC: S1 flags still set, interrupt");
           //++
           qDEBUG("ADLC: S1 flags still set, interrupt");
           //<-

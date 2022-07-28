@@ -26,12 +26,12 @@ to cause problems as far as can be determined under normal use".
 -- end of legal crap - Richard Gellman :) */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
-#include "disc1770.h"
 #include "6502core.h"
 #include "beebemrc.h"
+#include "disc1770.h"
 #include "main.h"
 #include "uefstate.h"
 #include "windows.h"
@@ -241,9 +241,10 @@ void Write1770Register(unsigned char Register, unsigned char Value) {
       MultiSect = (Value & 16) >> 4;
     }
 
-    //		if (ComBits==0xe0) { // Read Track		- not implemented
-    //yet 			Sector = 0; 			Track = Data; 			RotSect=Sector; 			FDCommand=20; MultiSect = 1;
-    //			ResetStatus(1);
+    //		if (ComBits==0xe0) { // Read Track		- not
+    //implemented yet 			Sector = 0; 			Track =
+    // Data; 			RotSect=Sector; 			FDCommand=20; MultiSect =
+    // 1; 			ResetStatus(1);
     //		}
 
     if (ComBits == 0xf0) { // Write Track
@@ -564,13 +565,16 @@ void Poll1770(int NCycles) {
   //		if ((dStatus & 2)==0) {
   //			NFDCommand=0;
   //			ResetStatus(4); ResetStatus(5); ResetStatus(3);
-  //ResetStatus(2); 			if (!feof(CurrentDisc)) { Data=fgetc(CurrentDisc);
-  //SetStatus(1); NMIStatus|=1<<nmi_floppy; } // DRQ 			dByteCount--; 			if
-  //(dByteCount==0) RotSect++; if (RotSect>MaxSects[CurrentDrive]) RotSect=0; 			if
+  // ResetStatus(2); 			if (!feof(CurrentDisc)) {
+  // Data=fgetc(CurrentDisc); SetStatus(1); NMIStatus|=1<<nmi_floppy; } // DRQ
+  // dByteCount--; 			if (dByteCount==0) RotSect++; if
+  //(RotSect>MaxSects[CurrentDrive]) RotSect=0; 			if
   //((dByteCount==0) && (!MultiSect)) { ResetStatus(0);
-  //NMIStatus|=1<<nmi_floppy; fseek(CurrentDisc,HeadPos[CurrentDrive],SEEK_SET);
-  //FDCommand=10; } // End of sector 			if ((dByteCount==0) && (MultiSect)) {
-  //dByteCount=257; Sector++; 				if (Sector==MaxSects[CurrentDrive]) { MultiSect=0;
+  // NMIStatus|=1<<nmi_floppy;
+  // fseek(CurrentDisc,HeadPos[CurrentDrive],SEEK_SET); FDCommand=10; } // End
+  // of sector 			if ((dByteCount==0) && (MultiSect)) {
+  // dByteCount=257; Sector++; 				if (Sector==MaxSects[CurrentDrive]) {
+  // MultiSect=0;
   ///* Sector=0; */ }
   //			}
   //			LoadingCycles=BYTE_TIME; // Slow down the read a bit :)

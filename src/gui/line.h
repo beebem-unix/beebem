@@ -20,7 +20,7 @@
  * In which case the above example would output:
  *
  * "Got this far!"
- * 
+ *
  * instead.
  *
  *
@@ -31,7 +31,7 @@
 #define LINE_H
 
 #if HAVE_CONFIG_H
-# include <config.h>
+#include "config.h"
 #endif
 
 /* This uses a little trick to allow __LINE__ to be
@@ -40,16 +40,17 @@
  */
 
 #ifndef WITHOUT_SHENANIGANS
-#       ifndef __HERE__
-#               define _STR1_(s)                #s
-#               define _STR2_(s)                _STR1_(s)
-#               define __STRLINE__              _STR2_(__LINE__)
-#               define __L__			__FILE__": "__STRLINE__": "
-#       endif
-#else
-#       define __L__				""
+#ifndef __HERE__
+#define _STR1_(s) #s
+#define _STR2_(s) _STR1_(s)
+#define __STRLINE__ _STR2_(__LINE__)
+#define __L__                                                                  \
+  __FILE__ ": "__STRLINE__                                                     \
+           ": "
 #endif
-
+#else
+#define __L__ ""
+#endif
 
 /* As __PRETTY_FUNCTION__ may be a variable, I cannot mix it
  * with the string literal generated above.
@@ -58,20 +59,18 @@
  */
 
 #ifndef WITHOUT_SHENANIGANS
-#	define  __F__                           __PRETTY_FUNCTION__
+#define __F__ __PRETTY_FUNCTION__
 #else
-#       define  __F__                           ""
+#define __F__ ""
 #endif
-
 
 /* Nice spacer
  */
 
 #ifndef WITHOUT_SHENANIGANS
-#	define	__S__				": "
+#define __S__ ": "
 #else
-#	define	__S__				""
+#define __S__ ""
 #endif
 
-
-#endif  /* LINE_H */
+#endif /* LINE_H */

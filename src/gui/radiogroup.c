@@ -8,7 +8,7 @@
  */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui/log.h"
@@ -471,15 +471,14 @@ EG_BOOL EG_RadioGroup_Select(EG_Widget *button_widget_ptr) {
 
   //	if (EG_Widget_GetType(button_widget_ptr) == EG_Widget_Type_RadioButton)
   //		EG_RADIOBUTTON_GET_STRUCT_PTR(button_widget_ptr,
-  //radio_button_ptr,
+  // radio_button_ptr,
   // EG_FALSE); 	else if (EG_Widget_GetType(button_widget_ptr) ==
   // EG_Widget_Type_ToggleButton)
   //		EG_TOGGLEBUTTON_GET_STRUCT_PTR(button_widget_ptr,
-  //toggle_button_ptr,
-  // EG_FALSE); 	else{ 		EG_Log(EG_LOG_ERROR, dL"Button %s is not of valid
-  // type.",
-  // dR 		 , EG_Widget_GetName(button_widget_ptr) ); 		return
-  // EG_FALSE;
+  // toggle_button_ptr,
+  // EG_FALSE); 	else{ 		EG_Log(EG_LOG_ERROR, dL"Button %s is not of
+  // valid type.", dR 		 , EG_Widget_GetName(button_widget_ptr) );
+  // return EG_FALSE;
   //	}
 
   /* Get EG_RadioGroup, if NULL, then not associated with a group yet.

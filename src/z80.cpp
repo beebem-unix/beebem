@@ -21,7 +21,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
    with the following choice of options */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 // constexpr char perl_params[] =
@@ -31,8 +31,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA. */
 //     "dfd_inline=1,"
 //     "ed_inline=1";
 
-#include "z80.h"
 #include "main.h"
+#include "z80.h"
 #include "z80mem.h"
 
 /* Z80 registers */

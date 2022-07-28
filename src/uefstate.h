@@ -2,7 +2,7 @@
 #define UEFSTATE_HEADER
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 void fput32(unsigned int word32, FILE *fileptr);

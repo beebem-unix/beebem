@@ -19,7 +19,7 @@
 #define _DW_TABGROUP_PRIVATE_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include "gui/types.h"

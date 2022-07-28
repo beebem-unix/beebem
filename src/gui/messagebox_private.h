@@ -12,7 +12,7 @@
 #define _DW_MESSAGEBOX_PRIVATE_H_
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 /* END OF messagebox_private.h

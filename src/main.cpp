@@ -20,7 +20,7 @@
 /* Mike Wyatt and NRM's port to win32 - 7/6/97 */
 
 #if HAVE_CONFIG_H
-#include <config.h>
+#include "config.h"
 #endif
 
 #include <signal.h>
@@ -295,10 +295,10 @@ int main(int argc, char *argv[]) {
     // mainWin->IsFrozen())
     //--		{
     //--			if(!GetMessage(&msg,    // message structure
-    //--							NULL,   // handle of window
-    //receiving the message
-    //--							0,      // lowest
-    //message to examine
+    //--							NULL,   // handle of
+    //window receiving the message
+    //--							0,      //
+    //lowest message to examine
     //--							0))
     //--				break;              // Quit the app on
     // WM_QUIT
@@ -306,9 +306,9 @@ int main(int argc, char *argv[]) {
     //--			if (hCurrentDialog == NULL ||
     //! IsDialogMessage(hCurrentDialog, &msg)) {
     //--				TranslateMessage(&msg);// Translates
-    //virtual key codes
+    // virtual key codes
     //--				DispatchMessage(&msg); // Dispatches
-    //message to window
+    // message to window
     //--			}
     //--		}
 
@@ -472,11 +472,11 @@ int main(int argc, char *argv[]) {
                 BeebKeyUp(row, col);
             }
 
-            //						/* Release Caps lock for X11 after
-            //a short delay.
+            //						/* Release Caps lock for X11
+            //after a short delay.
             //						 */
-            //						if (event.key.keysym.sym ==
-            //SDLK_CAPSLOCK
+            //						if (event.key.keysym.sym
+            //== SDLK_CAPSLOCK
             //&& cfg_HaveX11){
             // printf("Need to release Caps\n");
             //							//SDL_Delay(1000);
