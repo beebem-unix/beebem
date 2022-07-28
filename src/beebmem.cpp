@@ -57,8 +57,6 @@
 #include "user_config.h"
 //<+
 
-using namespace std;
-
 /* Each Rom now has a Ram/Rom flag */
 int RomWritable[16] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
 
@@ -1067,8 +1065,8 @@ void BeebReadRoms(void) {
   //--		if (strncmp(RomName,"RAM",3)==0) { RomWritable[romslot]=1;
   // isrom=0; }
   //--		if (strncmp(RomName+(strlen(RomName)-5),":RAM",4)==0) {
-  //--			// Writable ROM (don't ask, Mark De Weger should be happy
-  //now
+  //--			// Writable ROM (don't ask, Mark De Weger should be
+  //happy now
   //;) Hi Mark! )
   //--			RomWritable[romslot]=1; // Make it writable
   //--			isrom=1; // Make it a ROM still
@@ -1481,7 +1479,7 @@ void beebmem_dumpstate(void) {
   bottom = fopen("memdump_bottom", "wb");
   top = fopen("memdump_top", "wb");
   if ((bottom == NULL) || (top == NULL)) {
-    cerr << "Couldn't open memory dump files\n";
+    std::cerr << "Couldn't open memory dump files\n";
     return;
   };
 

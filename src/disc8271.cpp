@@ -43,8 +43,6 @@
 #include "windows.h"
 //--#endif
 
-using namespace std;
-
 extern int TorchTube;
 
 int Disc8271Trigger; /* Cycle based time Disc8271Trigger */
@@ -166,7 +164,8 @@ static void NotImp(const char *NotImpCom) {
   sprintf(errstr, "Disc operation '%s' not supported", NotImpCom);
   MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
   //--#else
-  //-- cerr << NotImpCom << " has not been implemented in disc8271 - sorry\n";
+  //-- std::cerr << NotImpCom << " has not been implemented in disc8271 -
+  //sorry\n";
   //-- exit(0);
   //--#endif
 }; /* NotImp */
@@ -480,8 +479,8 @@ static void ReadInterrupt(void) {
 
   DataReg =
       CommandStatus.CurrentSectorPtr->Data[CommandStatus.ByteWithinSector++];
-  /*cerr << "ReadInterrupt called - DataReg=0x" << hex << int(DataReg) << dec <<
-   * "ByteWithinSector=" << CommandStatus.ByteWithinSector << "\n"; */
+  /*std::cerr << "ReadInterrupt called - DataReg=0x" << hex << int(DataReg) <<
+   * dec << "ByteWithinSector=" << CommandStatus.ByteWithinSector << "\n"; */
 
   /* DumpAfterEach=1; */
   ResultReg = 0;
@@ -496,7 +495,8 @@ static void ReadInterrupt(void) {
           CommandStatus.CurrentSectorPtr == NULL) {
         DoErr(0x1e); /* Sector not found */
         return;
-      } /* else cerr << "all ptr for sector " << CommandStatus.CurrentSector <<
+      } /* else std::cerr << "all ptr for sector " <<
+           CommandStatus.CurrentSector <<
            "\n"*/
       ;
     } else {
@@ -882,7 +882,7 @@ static void DoWriteSpecialCommand(void) {
     break;
 
   default:
-    /* cerr << "Write to bad special register\n"; */
+    /* std::cerr << "Write to bad special register\n"; */
     return;
     break;
   }; /* Special register number switch */
@@ -943,7 +943,7 @@ static void DoReadSpecialCommand(void) {
     break;
 
   default:
-    /* cerr << "Read of bad special register\n"; */
+    /* std::cerr << "Read of bad special register\n"; */
     return;
     break;
   }; /* Special register number switch */
@@ -1014,13 +1014,15 @@ int Disc8271_read(int Address) {
 
   switch (Address) {
   case 0:
-    /*cerr << "8271 Status register read (0x" << hex << int(StatusReg) << dec <<
+    /*std::cerr << "8271 Status register read (0x" << hex << int(StatusReg) <<
+     * dec <<
      * ")\n"; */
     Value = StatusReg;
     break;
 
   case 1:
-    /*cerr << "8271 Result register read (0x" << hex << int(ResultReg) << dec <<
+    /*std::cerr << "8271 Result register read (0x" << hex << int(ResultReg) <<
+     * dec <<
      * ")\n"; */
     StatusReg &= ~0x18; /* Clear interrupt request  and result reg full flag*/
     UPDATENMISTATUS;
@@ -1029,7 +1031,7 @@ int Disc8271_read(int Address) {
     break;
 
   case 4:
-    /*cerr << "8271 data register read\n"; */
+    /*std::cerr << "8271 data register read\n"; */
     StatusReg &= ~0xc; /* Clear interrupt and non-dma request - not stated but
                           DFS never looks at result reg!*/
     UPDATENMISTATUS;
@@ -1037,7 +1039,8 @@ int Disc8271_read(int Address) {
     break;
 
   default:
-    /* cerr << "8271: Read to unknown register address=" << Address << "\n"; */
+    /* std::cerr << "8271: Read to unknown register address=" << Address <<
+     * "\n"; */
     break;
   }; /* Address switch */
 
@@ -1047,7 +1050,8 @@ int Disc8271_read(int Address) {
 /*--------------------------------------------------------------------------*/
 static void CommandRegWrite(int Value) {
   PrimaryCommandLookupType *ptr = CommandPtrFromNumber(Value);
-  /*cerr << "8271: Command register write value=0x" << hex << Value << dec <<
+  /*std::cerr << "8271: Command register write value=0x" << hex << Value << dec
+   * <<
    * "(Name=" << ptr->Ident << ")\n"; */
   ThisCommand = Value;
   NParamsInThisCommand = ptr->NParams;
@@ -1068,7 +1072,7 @@ static void CommandRegWrite(int Value) {
 /*--------------------------------------------------------------------------*/
 static void ParamRegWrite(int Value) {
   if (PresentParam >= NParamsInThisCommand) {
-    /* cerr << "8271: Unwanted parameter register write value=0x" << hex <<
+    /* std::cerr << "8271: Unwanted parameter register write value=0x" << hex <<
      * Value << dec << "\n"; */
   } else {
     Params[PresentParam++] = Value;
@@ -1082,12 +1086,12 @@ static void ParamRegWrite(int Value) {
       UPDATENMISTATUS;
 
       PrimaryCommandLookupType *ptr = CommandPtrFromNumber(ThisCommand);
-      /* cerr << "<Disc access>"; */
-      /*  cerr << "8271: All parameters arrived for '" << ptr->Ident;
+      /* std::cerr << "<Disc access>"; */
+      /*  std::cerr << "8271: All parameters arrived for '" << ptr->Ident;
         int tmp;
         for(tmp=0;tmp<PresentParam;tmp++)
-          cerr << " 0x" << hex << int(Params[tmp]);
-        cerr << dec << "\n"; */
+          std::cerr << " 0x" << hex << int(Params[tmp]);
+        std::cerr << dec << "\n"; */
 
       ptr->ToCall();
     }; /* Got all params yet? */
@@ -1107,7 +1111,8 @@ void Disc8271_write(int Address, int Value) {
     break;
 
   case 2:
-    /* cerr << "8271: Reset register write, value=0x" << hex << Value << dec <<
+    /* std::cerr << "8271: Reset register write, value=0x" << hex << Value <<
+     * dec <<
      * "\n"; */
     /* The caller should write a 1 and then >11 cycles later a 0 - but I'm just
     going to reset on both edges */
@@ -1115,7 +1120,8 @@ void Disc8271_write(int Address, int Value) {
     break;
 
   case 4:
-    /* cerr << "8271: data register write, value=0x" << hex << Value << dec <<
+    /* std::cerr << "8271: data register write, value=0x" << hex << Value << dec
+     * <<
      * "\n"; */
     StatusReg &= ~0xc;
     UPDATENMISTATUS;
@@ -1123,7 +1129,7 @@ void Disc8271_write(int Address, int Value) {
     break;
 
   default:
-    /* cerr << "8271: Write to unknown register address=" << Address << ",
+    /* std::cerr << "8271: Write to unknown register address=" << Address << ",
      * value=0x" << hex << Value << dec << "\n"; */
     break;
   }; /* Address switch */
@@ -1240,7 +1246,7 @@ void LoadSimpleDiscImage(char *FileName, int DriveNum, int HeadNum,
     sprintf(errstr, "Could not open disc file:\n  %s", FileName);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
-    //--   cerr << "Could not open disc file " << FileName << "\n";
+    //--   std::cerr << "Could not open disc file " << FileName << "\n";
     //--#endif
     return;
   };
@@ -1286,10 +1292,11 @@ void LoadSimpleDiscImage(char *FileName, int DriveNum, int HeadNum,
                "disc image. Check files before copying them.\n",
                "BBC Emulator", MB_OK | MB_ICONWARNING);
     //--#else
-    //--   cerr << "WARNING - Incorrect disc type selected(?) in drive " <<
+    //--   std::cerr << "WARNING - Incorrect disc type selected(?) in drive " <<
     // DriveNum << "\n";
-    //--   cerr << "This disc file looks like a double sided disc image.\n";
-    //--   cerr << "Check files before copying them.\n";
+    //--   std::cerr << "This disc file looks like a double sided disc
+    //image.\n";
+    //--   std::cerr << "Check files before copying them.\n";
     //--#endif
   }
 }; /* LoadSimpleDiscImage */
@@ -1306,7 +1313,7 @@ void LoadSimpleDSDiscImage(char *FileName, int DriveNum, int Tracks) {
     sprintf(errstr, "Could not open disc file:\n  %s", FileName);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
-    //--    cerr << "Could not open disc file " << FileName << "\n";
+    //--    std::cerr << "Could not open disc file " << FileName << "\n";
     //--#endif
     return;
   };
@@ -1354,10 +1361,11 @@ void LoadSimpleDSDiscImage(char *FileName, int DriveNum, int Tracks) {
                "disc image. Check files before copying them.\n",
                "BBC Emulator", MB_OK | MB_ICONWARNING);
     //--#else
-    //--   cerr << "WARNING - Incorrect disc type selected(?) in drive " <<
+    //--   std::cerr << "WARNING - Incorrect disc type selected(?) in drive " <<
     // DriveNum << "\n";
-    //--   cerr << "This disc file looks like a single sided disc image.\n";
-    //--   cerr << "Check files before copying them.\n";
+    //--   std::cerr << "This disc file looks like a single sided disc
+    //image.\n";
+    //--   std::cerr << "Check files before copying them.\n";
     //--#endif
   }
 }; /* LoadSimpleDSDiscImage */
@@ -1385,7 +1393,8 @@ static void SaveTrackImage(int DriveNum, int HeadNum, int TrackNum) {
             FileNames[DriveNum]);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
-    //--    cerr << "Could not open disc file for write " << FileNames[DriveNum]
+    //--    std::cerr << "Could not open disc file for write " <<
+    //FileNames[DriveNum]
     //<< "\n";
     //--#endif
     return;
@@ -1424,7 +1433,7 @@ static void SaveTrackImage(int DriveNum, int HeadNum, int TrackNum) {
     sprintf(errstr, "Failed writing to disc file:\n  %s", FileNames[DriveNum]);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
-    //--   cerr << "Failed writing to disc file " << FileNames[DriveNum] <<
+    //--   std::cerr << "Failed writing to disc file " << FileNames[DriveNum] <<
     //"\n";
     //--#endif
   };
@@ -1498,11 +1507,13 @@ void DiscWriteEnable(int DriveNum, int WriteEnable) {
                  "files to a new image to fix it.",
                  "BBC Emulator", MB_OK | MB_ICONWARNING);
       //--#else
-      //--     cerr << "WARNING - Invalid Disc Catalogue in drive " << DriveNum
+      //--     std::cerr << "WARNING - Invalid Disc Catalogue in drive " <<
+      //DriveNum
       //<< "\n";
-      //--     cerr << "This disc image will get corrupted if files are written
+      //--     std::cerr << "This disc image will get corrupted if files are
+      //written
       // to it.\n";
-      //--     cerr << "Copy all the files to a new image to fix it.\n";
+      //--     std::cerr << "Copy all the files to a new image to fix it.\n";
       //--#endif
     }
 
@@ -1530,7 +1541,7 @@ void CreateDiscImage(char *FileName, int DriveNum, int Heads, int Tracks) {
                    MB_YESNO | MB_ICONQUESTION) != IDYES)
       return;
     //--#else
-    //--   cerr << "Could not create disc file " << FileName << "\n";
+    //--   std::cerr << "Could not create disc file " << FileName << "\n";
     //--   return;
     //--#endif
   };
@@ -1542,7 +1553,7 @@ void CreateDiscImage(char *FileName, int DriveNum, int Heads, int Tracks) {
     sprintf(errstr, "Could not create disc file:\n  %s", FileName);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
-    //--   cerr << "Could not create disc file " << FileName << "\n";
+    //--   std::cerr << "Could not create disc file " << FileName << "\n";
     //--#endif
     return;
   };
@@ -1578,7 +1589,7 @@ void CreateDiscImage(char *FileName, int DriveNum, int Heads, int Tracks) {
     //<-
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
-    //--   cerr << "Failed writing to disc file " << FileName << "\n";
+    //--   std::cerr << "Failed writing to disc file " << FileName << "\n";
     //--#endif
   } else {
     /* Now load the new image into the correct drive */
@@ -1611,10 +1622,10 @@ static void LoadStartupDisc(int DriveNum, char *DiscString) {
                "D|S|A:tracks:filename",
                "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
-    //--   cerr << "Incorrect format for BeebDiscLoad - the correct format
+    //--   std::cerr << "Incorrect format for BeebDiscLoad - the correct format
     // is\n";
-    //--   cerr << "  D|S:tracks:filename\n e.g. D:80:discims/elite\n";
-    //--   cerr << "  for a double sided, 80 track disc image called
+    //--   std::cerr << "  D|S:tracks:filename\n e.g. D:80:discims/elite\n";
+    //--   std::cerr << "  for a double sided, 80 track disc image called
     // discims/elite\n";
     //--#endif
   } else {
@@ -1653,9 +1664,10 @@ static void LoadStartupDisc(int DriveNum, char *DiscString) {
                  "D for double sided and A for ADFS",
                  "BBC Emulator", MB_OK | MB_ICONERROR);
       //--#else
-      //--       cerr << "BeebDiscLoad environment variable set wrong - the\n";
-      //--       cerr << "first character is either S or D signifying\n";
-      //--       cerr << "single or double sided\n";
+      //--       std::cerr << "BeebDiscLoad environment variable set wrong -
+      //the\n";
+      //--       std::cerr << "first character is either S or D signifying\n";
+      //--       std::cerr << "single or double sided\n";
       //--#endif
       break;
     }; /* Switch */
@@ -1864,28 +1876,29 @@ void Load8271UEF(FILE *SUEF) {
 
 /*--------------------------------------------------------------------------*/
 void disc8271_dumpstate(void) {
-  cerr << "8271:\n";
-  cerr << "  ResultReg=" << int(ResultReg) << "\n";
-  cerr << "  StatusReg=" << int(StatusReg) << "\n";
-  cerr << "  DataReg=" << int(DataReg) << "\n";
-  cerr << "  Internal_Scan_SectorNum=" << int(Internal_Scan_SectorNum) << "\n";
-  cerr << "  Internal_Scan_Count=" << Internal_Scan_Count << "\n";
-  cerr << "  Internal_ModeReg=" << int(Internal_ModeReg) << "\n";
-  cerr << "  Internal_CurrentTrack=" << int(Internal_CurrentTrack[0]) << ","
-       << int(Internal_CurrentTrack[1]) << "\n";
-  cerr << "  Internal_DriveControlOutputPort="
-       << int(Internal_DriveControlOutputPort) << "\n";
-  cerr << "  Internal_DriveControlInputPort="
-       << int(Internal_DriveControlInputPort) << "\n";
-  cerr << "  Internal_BadTracks="
-       << "(" << int(Internal_BadTracks[0][0]) << ","
-       << int(Internal_BadTracks[0][1]) << ") (";
-  cerr << int(Internal_BadTracks[1][0]) << "," << int(Internal_BadTracks[1][1])
-       << ")\n";
-  cerr << "  Disc8271Trigger=" << Disc8271Trigger << "\n";
-  cerr << "  ThisCommand=" << ThisCommand << "\n";
-  cerr << "  NParamsInThisCommand=" << NParamsInThisCommand << "\n";
-  cerr << "  PresentParam=" << PresentParam << "\n";
-  cerr << "  Selects=" << Selects[0] << "," << Selects[1] << "\n";
-  cerr << "  NextInterruptIsErr=" << NextInterruptIsErr << "\n";
+  std::cerr << "8271:\n";
+  std::cerr << "  ResultReg=" << int(ResultReg) << "\n";
+  std::cerr << "  StatusReg=" << int(StatusReg) << "\n";
+  std::cerr << "  DataReg=" << int(DataReg) << "\n";
+  std::cerr << "  Internal_Scan_SectorNum=" << int(Internal_Scan_SectorNum)
+            << "\n";
+  std::cerr << "  Internal_Scan_Count=" << Internal_Scan_Count << "\n";
+  std::cerr << "  Internal_ModeReg=" << int(Internal_ModeReg) << "\n";
+  std::cerr << "  Internal_CurrentTrack=" << int(Internal_CurrentTrack[0])
+            << "," << int(Internal_CurrentTrack[1]) << "\n";
+  std::cerr << "  Internal_DriveControlOutputPort="
+            << int(Internal_DriveControlOutputPort) << "\n";
+  std::cerr << "  Internal_DriveControlInputPort="
+            << int(Internal_DriveControlInputPort) << "\n";
+  std::cerr << "  Internal_BadTracks="
+            << "(" << int(Internal_BadTracks[0][0]) << ","
+            << int(Internal_BadTracks[0][1]) << ") (";
+  std::cerr << int(Internal_BadTracks[1][0]) << ","
+            << int(Internal_BadTracks[1][1]) << ")\n";
+  std::cerr << "  Disc8271Trigger=" << Disc8271Trigger << "\n";
+  std::cerr << "  ThisCommand=" << ThisCommand << "\n";
+  std::cerr << "  NParamsInThisCommand=" << NParamsInThisCommand << "\n";
+  std::cerr << "  PresentParam=" << PresentParam << "\n";
+  std::cerr << "  Selects=" << Selects[0] << "," << Selects[1] << "\n";
+  std::cerr << "  NextInterruptIsErr=" << NextInterruptIsErr << "\n";
 };

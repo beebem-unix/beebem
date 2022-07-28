@@ -57,8 +57,6 @@
 //--#define INLINE
 //--#endif
 
-using namespace std;
-
 int CPUDebug = 0;
 int BeginDump = 0;
 FILE *InstrLog;
@@ -2396,6 +2394,6 @@ void Load6502UEF(FILE *SUEF) {
 /*-------------------------------------------------------------------------*/
 /* Dump state                                                              */
 void core_dumpstate(void) {
-  cerr << "core:\n";
+  std::cerr << "core:\n";
   DumpRegs();
 }; /* core_dumpstate */

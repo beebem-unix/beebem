@@ -62,8 +62,6 @@
 #include "user_config.h"
 //<+
 
-using namespace std;
-
 /* Bit assignments in control reg:
    0 - Flash colour (0=first colour, 1=second)
    1 - Teletext select (0=on chip serialiser, 1=teletext)
@@ -724,8 +722,8 @@ static void VideoStartOfFrame(void) {
   //--                frametime/=(double)HZ;
   //--#endif
   //--    frametime/=(double)BEEB_DOTIME_SAMPLESIZE;
-  //--    cerr << "Frametime: " << frametime << "s fps=" << (1/frametime) <<
-  //"Total cycles=" << TotalCycles << "Cycles in last unit=" <<
+  //--    std::cerr << "Frametime: " << frametime << "s fps=" << (1/frametime)
+  //<< "Total cycles=" << TotalCycles << "Cycles in last unit=" <<
   //(TotalCycles-OldCycles) << "\n";
   //--    OldCycles=TotalCycles;
   //--    previous=now;
@@ -1248,7 +1246,7 @@ void VideoDoScanLine(void) {
   set_screen_width();
   //<-
 
-  /* cerr << "CharLine=" << VideoState.CharLine << " InCharLineUp=" <<
+  /* std::cerr << "CharLine=" << VideoState.CharLine << " InCharLineUp=" <<
    * VideoState.InCharLineUp << "\n"; */
   if (VideoState.IsTeletext) {
     static int DoCA1Int = 0;
@@ -1600,7 +1598,8 @@ void CRTCWrite(int Address, int Value) {
     default: /* In case the user wrote a duff control register value */
       break;
     }; /* CRTCWrite switch */
-    /* cerr << "CRTCWrite RegNum=" << int(CRTCControlReg) << " Value=" << Value
+    /* std::cerr << "CRTCWrite RegNum=" << int(CRTCControlReg) << " Value=" <<
+     * Value
      * << "\n"; */
   } else {
     CRTCControlReg = Value & 0x1f;
@@ -1635,7 +1634,8 @@ void VideoULAWrite(int Address, int Value) {
   if (Address & 1) {
     VideoULA_Palette[(Value & 0xf0) >> 4] = (Value & 0xf) ^ 7;
     FastTable_Valid = 0;
-    /* cerr << "Palette reg " << ((Value & 0xf0)>>4) << " now has value " <<
+    /* std::cerr << "Palette reg " << ((Value & 0xf0)>>4) << " now has value "
+     * <<
      * ((Value & 0xf) ^ 7) << "\n"; */
     // fprintf(crtclog,"Pallette written to at line
     // %d\n",VideoState.PixmapLine);
@@ -1644,7 +1644,7 @@ void VideoULAWrite(int Address, int Value) {
     VideoULA_ControlReg = Value;
     FastTable_Valid = 0; /* Could be more selective and only do it if no.of.cols
                             bit changes */
-    /* cerr << "VidULA Ctrl reg write " << hex << Value << "\n"; */
+    /* std::cerr << "VidULA Ctrl reg write " << hex << Value << "\n"; */
     // Adjust HSyncModifier
     if (VideoULA_ControlReg & 16)
       HSyncModifier = 8;
@@ -1839,32 +1839,35 @@ void LoadVideoUEF(FILE *SUEF) {
 /*-------------------------------------------------------------------------*/
 void video_dumpstate(void) {
   int tmp;
-  cerr << "video:\n";
-  cerr << "  VideoULA_ControlReg=" << int(VideoULA_ControlReg) << "\n";
-  cerr << "  VideoULA_Palette=";
+  std::cerr << "video:\n";
+  std::cerr << "  VideoULA_ControlReg=" << int(VideoULA_ControlReg) << "\n";
+  std::cerr << "  VideoULA_Palette=";
   for (tmp = 0; tmp < 16; tmp++)
-    cerr << int(VideoULA_Palette[tmp]) << " ";
-  cerr << "\n  CRTC Control=" << int(CRTCControlReg) << "\n";
-  cerr << "  CRTC_HorizontalTotal=" << int(CRTC_HorizontalTotal) << "\n";
-  cerr << "  CRTC_HorizontalDisplayed=" << int(CRTC_HorizontalDisplayed)
-       << "\n";
-  cerr << "  CRTC_HorizontalSyncPos=" << int(CRTC_HorizontalSyncPos) << "\n";
-  cerr << "  CRTC_SyncWidth=" << int(CRTC_SyncWidth) << "\n";
-  cerr << "  CRTC_VerticalTotal=" << int(CRTC_VerticalTotal) << "\n";
-  cerr << "  CRTC_VerticalTotalAdjust=" << int(CRTC_VerticalTotalAdjust)
-       << "\n";
-  cerr << "  CRTC_VerticalDisplayed=" << int(CRTC_VerticalDisplayed) << "\n";
-  cerr << "  CRTC_VerticalSyncPos=" << int(CRTC_VerticalSyncPos) << "\n";
-  cerr << "  CRTC_InterlaceAndDelay=" << int(CRTC_InterlaceAndDelay) << "\n";
-  cerr << "  CRTC_ScanLinesPerChar=" << int(CRTC_ScanLinesPerChar) << "\n";
-  cerr << "  CRTC_CursorStart=" << int(CRTC_CursorStart) << "\n";
-  cerr << "  CRTC_CursorEnd=" << int(CRTC_CursorEnd) << "\n";
-  cerr << "  CRTC_ScreenStartHigh=" << int(CRTC_ScreenStartHigh) << "\n";
-  cerr << "  CRTC_ScreenStartLow=" << int(CRTC_ScreenStartLow) << "\n";
-  cerr << "  CRTC_CursorPosHigh=" << int(CRTC_CursorPosHigh) << "\n";
-  cerr << "  CRTC_CursorPosLow=" << int(CRTC_CursorPosLow) << "\n";
-  cerr << "  CRTC_LightPenHigh=" << int(CRTC_LightPenHigh) << "\n";
-  cerr << "  CRTC_LightPenLow=" << int(CRTC_LightPenLow) << "\n";
+    std::cerr << int(VideoULA_Palette[tmp]) << " ";
+  std::cerr << "\n  CRTC Control=" << int(CRTCControlReg) << "\n";
+  std::cerr << "  CRTC_HorizontalTotal=" << int(CRTC_HorizontalTotal) << "\n";
+  std::cerr << "  CRTC_HorizontalDisplayed=" << int(CRTC_HorizontalDisplayed)
+            << "\n";
+  std::cerr << "  CRTC_HorizontalSyncPos=" << int(CRTC_HorizontalSyncPos)
+            << "\n";
+  std::cerr << "  CRTC_SyncWidth=" << int(CRTC_SyncWidth) << "\n";
+  std::cerr << "  CRTC_VerticalTotal=" << int(CRTC_VerticalTotal) << "\n";
+  std::cerr << "  CRTC_VerticalTotalAdjust=" << int(CRTC_VerticalTotalAdjust)
+            << "\n";
+  std::cerr << "  CRTC_VerticalDisplayed=" << int(CRTC_VerticalDisplayed)
+            << "\n";
+  std::cerr << "  CRTC_VerticalSyncPos=" << int(CRTC_VerticalSyncPos) << "\n";
+  std::cerr << "  CRTC_InterlaceAndDelay=" << int(CRTC_InterlaceAndDelay)
+            << "\n";
+  std::cerr << "  CRTC_ScanLinesPerChar=" << int(CRTC_ScanLinesPerChar) << "\n";
+  std::cerr << "  CRTC_CursorStart=" << int(CRTC_CursorStart) << "\n";
+  std::cerr << "  CRTC_CursorEnd=" << int(CRTC_CursorEnd) << "\n";
+  std::cerr << "  CRTC_ScreenStartHigh=" << int(CRTC_ScreenStartHigh) << "\n";
+  std::cerr << "  CRTC_ScreenStartLow=" << int(CRTC_ScreenStartLow) << "\n";
+  std::cerr << "  CRTC_CursorPosHigh=" << int(CRTC_CursorPosHigh) << "\n";
+  std::cerr << "  CRTC_CursorPosLow=" << int(CRTC_CursorPosLow) << "\n";
+  std::cerr << "  CRTC_LightPenHigh=" << int(CRTC_LightPenHigh) << "\n";
+  std::cerr << "  CRTC_LightPenLow=" << int(CRTC_LightPenLow) << "\n";
 }; /* video_dumpstate */
 
 void DebugVideoState() {

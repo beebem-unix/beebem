@@ -47,8 +47,6 @@ keyboard emulation - David Alan Gilbert 30/10/94 */
 #include "windows.h"
 //--#endif
 
-using namespace std;
-
 /* Clock stuff for Master 128 RTC */
 time_t SysTime;
 struct tm *CurTime;
@@ -709,8 +707,8 @@ unsigned char CMOSRead(unsigned char CMOSAddr) {
 
 /*--------------------------------------------------------------------------*/
 void sysvia_dumpstate(void) {
-  cerr << "Sysvia:\n";
-  cerr << "  IC32State=" << IC32State << "\n";
+  std::cerr << "Sysvia:\n";
+  std::cerr << "  IC32State=" << IC32State << "\n";
   via_dumpstate(&SysVIAState);
 }; /* sysvia_dumpstate */
 

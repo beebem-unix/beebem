@@ -37,8 +37,6 @@
 #include <iostream>
 #include <stdio.h>
 
-using namespace std;
-
 void VIAReset(VIAState *ToReset) {
   ToReset->ora = ToReset->orb = 0xff;
   ToReset->ira = ToReset->irb = 0xff;
@@ -58,22 +56,22 @@ void VIAReset(VIAState *ToReset) {
 
 /*-------------------------------------------------------------------------*/
 void via_dumpstate(VIAState *ToDump) {
-  cerr << "  ora=" << int(ToDump->ora) << "\n";
-  cerr << "  orb=" << int(ToDump->orb) << "\n";
-  cerr << "  ira=" << int(ToDump->ira) << "\n";
-  cerr << "  irb=" << int(ToDump->irb) << "\n";
-  cerr << "  ddra=" << int(ToDump->ddra) << "\n";
-  cerr << "  ddrb=" << int(ToDump->ddrb) << "\n";
-  cerr << "  acr=" << int(ToDump->acr) << "\n";
-  cerr << "  pcr=" << int(ToDump->pcr) << "\n";
-  cerr << "  ifr=" << int(ToDump->ifr) << "\n";
-  cerr << "  ier=" << int(ToDump->ier) << "\n";
-  cerr << "  timer1c=" << ToDump->timer1c << "\n";
-  cerr << "  timer2c=" << ToDump->timer2c << "\n";
-  cerr << "  timer1l=" << ToDump->timer1l << "\n";
-  cerr << "  timer2l=" << ToDump->timer2l << "\n";
-  cerr << "  timer1hasshot=" << ToDump->timer1hasshot << "\n";
-  cerr << "  timer2hasshot=" << ToDump->timer2hasshot << "\n";
+  std::cerr << "  ora=" << int(ToDump->ora) << "\n";
+  std::cerr << "  orb=" << int(ToDump->orb) << "\n";
+  std::cerr << "  ira=" << int(ToDump->ira) << "\n";
+  std::cerr << "  irb=" << int(ToDump->irb) << "\n";
+  std::cerr << "  ddra=" << int(ToDump->ddra) << "\n";
+  std::cerr << "  ddrb=" << int(ToDump->ddrb) << "\n";
+  std::cerr << "  acr=" << int(ToDump->acr) << "\n";
+  std::cerr << "  pcr=" << int(ToDump->pcr) << "\n";
+  std::cerr << "  ifr=" << int(ToDump->ifr) << "\n";
+  std::cerr << "  ier=" << int(ToDump->ier) << "\n";
+  std::cerr << "  timer1c=" << ToDump->timer1c << "\n";
+  std::cerr << "  timer2c=" << ToDump->timer2c << "\n";
+  std::cerr << "  timer1l=" << ToDump->timer1l << "\n";
+  std::cerr << "  timer2l=" << ToDump->timer2l << "\n";
+  std::cerr << "  timer1hasshot=" << ToDump->timer1hasshot << "\n";
+  std::cerr << "  timer2hasshot=" << ToDump->timer2hasshot << "\n";
 }; /* via_dumpstate */
 
 void DebugViaState(const char *s, VIAState *v) {

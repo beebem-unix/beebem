@@ -42,8 +42,6 @@
 #include "windows.h"
 //--#endif
 
-using namespace std;
-
 bool mBreakOutWindow = false;
 
 int BitKey; // Used to store the bit key pressed while we wait
@@ -549,7 +547,7 @@ void PrinterPoll() {
 
 /*--------------------------------------------------------------------------*/
 void uservia_dumpstate(void) {
-  cerr << "Uservia:\n";
+  std::cerr << "Uservia:\n";
   via_dumpstate(&UserVIAState);
 }; /* uservia_dumpstate */
 
@@ -597,7 +595,7 @@ void BreakOutCloseDialog() {
 //--									WPARAM
 // wParam,
 //--									LPARAM
-//lParam
+// lParam
 //)
 //--{
 //--int bit;
@@ -887,21 +885,29 @@ void ShowOutputs(unsigned char data) {
   //--		if (data != last_data)
   //--		{
   //--			changed_bits = data ^ last_data;
-  //--			if (changed_bits & 0x80) { if ((UserVIAState.ddrb & 0x80)
+  //--			if (changed_bits & 0x80) { if ((UserVIAState.ddrb &
+  // 0x80)
   //== 0x80) SetValue(IDC_OB7, (data & 0x80) != 0); else SetValue(IDC_OB7, 0); }
-  //--			if (changed_bits & 0x40) { if ((UserVIAState.ddrb & 0x40)
+  //--			if (changed_bits & 0x40) { if ((UserVIAState.ddrb &
+  // 0x40)
   //== 0x40) SetValue(IDC_OB6, (data & 0x40) != 0); else SetValue(IDC_OB6, 0); }
-  //--			if (changed_bits & 0x20) { if ((UserVIAState.ddrb & 0x20)
+  //--			if (changed_bits & 0x20) { if ((UserVIAState.ddrb &
+  // 0x20)
   //== 0x20) SetValue(IDC_OB5, (data & 0x20) != 0); else SetValue(IDC_OB5, 0); }
-  //--			if (changed_bits & 0x10) { if ((UserVIAState.ddrb & 0x10)
+  //--			if (changed_bits & 0x10) { if ((UserVIAState.ddrb &
+  // 0x10)
   //== 0x10) SetValue(IDC_OB4, (data & 0x10) != 0); else SetValue(IDC_OB4, 0); }
-  //--			if (changed_bits & 0x08) { if ((UserVIAState.ddrb & 0x08)
+  //--			if (changed_bits & 0x08) { if ((UserVIAState.ddrb &
+  // 0x08)
   //== 0x08) SetValue(IDC_OB3, (data & 0x08) != 0); else SetValue(IDC_OB3, 0); }
-  //--			if (changed_bits & 0x04) { if ((UserVIAState.ddrb & 0x04)
+  //--			if (changed_bits & 0x04) { if ((UserVIAState.ddrb &
+  // 0x04)
   //== 0x04) SetValue(IDC_OB2, (data & 0x04) != 0); else SetValue(IDC_OB2, 0); }
-  //--			if (changed_bits & 0x02) { if ((UserVIAState.ddrb & 0x02)
+  //--			if (changed_bits & 0x02) { if ((UserVIAState.ddrb &
+  // 0x02)
   //== 0x02) SetValue(IDC_OB1, (data & 0x02) != 0); else SetValue(IDC_OB1, 0); }
-  //--			if (changed_bits & 0x01) { if ((UserVIAState.ddrb & 0x01)
+  //--			if (changed_bits & 0x01) { if ((UserVIAState.ddrb &
+  // 0x01)
   //== 0x01) SetValue(IDC_OB0, (data & 0x01) != 0); else SetValue(IDC_OB0, 0); }
   //--			last_data = data;
   //--		}
@@ -917,21 +923,29 @@ void ShowInputs(unsigned char data) {
   //--		if (data != last_data)
   //--		{
   //--			changed_bits = data ^ last_data;
-  //--			if (changed_bits & 0x80) { if ((UserVIAState.ddrb & 0x80)
+  //--			if (changed_bits & 0x80) { if ((UserVIAState.ddrb &
+  // 0x80)
   //== 0x00) SetValue(IDC_IB7, (data & 0x80) == 0); else SetValue(IDC_IB7, 0); }
-  //--			if (changed_bits & 0x40) { if ((UserVIAState.ddrb & 0x40)
+  //--			if (changed_bits & 0x40) { if ((UserVIAState.ddrb &
+  // 0x40)
   //== 0x00) SetValue(IDC_IB6, (data & 0x40) == 0); else SetValue(IDC_IB6, 0); }
-  //--			if (changed_bits & 0x20) { if ((UserVIAState.ddrb & 0x20)
+  //--			if (changed_bits & 0x20) { if ((UserVIAState.ddrb &
+  // 0x20)
   //== 0x00) SetValue(IDC_IB5, (data & 0x20) == 0); else SetValue(IDC_IB5, 0); }
-  //--			if (changed_bits & 0x10) { if ((UserVIAState.ddrb & 0x10)
+  //--			if (changed_bits & 0x10) { if ((UserVIAState.ddrb &
+  // 0x10)
   //== 0x00) SetValue(IDC_IB4, (data & 0x10) == 0); else SetValue(IDC_IB4, 0); }
-  //--			if (changed_bits & 0x08) { if ((UserVIAState.ddrb & 0x08)
+  //--			if (changed_bits & 0x08) { if ((UserVIAState.ddrb &
+  // 0x08)
   //== 0x00) SetValue(IDC_IB3, (data & 0x08) == 0); else SetValue(IDC_IB3, 0); }
-  //--			if (changed_bits & 0x04) { if ((UserVIAState.ddrb & 0x04)
+  //--			if (changed_bits & 0x04) { if ((UserVIAState.ddrb &
+  // 0x04)
   //== 0x00) SetValue(IDC_IB2, (data & 0x04) == 0); else SetValue(IDC_IB2, 0); }
-  //--			if (changed_bits & 0x02) { if ((UserVIAState.ddrb & 0x02)
+  //--			if (changed_bits & 0x02) { if ((UserVIAState.ddrb &
+  // 0x02)
   //== 0x00) SetValue(IDC_IB1, (data & 0x02) == 0); else SetValue(IDC_IB1, 0); }
-  //--			if (changed_bits & 0x01) { if ((UserVIAState.ddrb & 0x01)
+  //--			if (changed_bits & 0x01) { if ((UserVIAState.ddrb &
+  // 0x01)
   //== 0x00) SetValue(IDC_IB0, (data & 0x01) == 0); else SetValue(IDC_IB0, 0); }
   //--			last_data = data;
   //--		}
@@ -981,12 +995,12 @@ void SetBitKey(int ctrlID) {
   // style(s).
   //--		wc.lpfnWndProc	 = (WNDPROC)GetBitKeyWndProc;	   // Window
   // Procedure
-  //--		wc.cbClsExtra	 = 0;					   // No per-class
-  //extra data.
+  //--		wc.cbClsExtra	 = 0;					   // No
+  // per-class extra data.
   //--		wc.cbWndExtra	 = 0;					   // No
-  //per-window extra data.
-  //--		wc.hInstance	 = hInst;				   // Owner of
-  //this class
+  // per-window extra data.
+  //--		wc.hInstance	 = hInst;				   //
+  //Owner of this class
   //--		wc.hIcon		 = LoadIcon(hInst,
   // MAKEINTRESOURCE(IDI_BEEBEM));
   //--		wc.hCursor		 = NULL;
@@ -1001,28 +1015,28 @@ void SetBitKey(int ctrlID) {
   //--
   //--	Success = CreateWindow(	szClass,	// pointer to registered class
   // name
-  //--							szTitle,	// pointer to
-  //window name
+  //--							szTitle,	//
+  //pointer to window name
   //--							WS_OVERLAPPED|
-  //--							WS_CAPTION| DS_MODALFRAME
-  //| DS_SYSMODAL,
+  //--							WS_CAPTION|
+  // DS_MODALFRAME | DS_SYSMODAL,
   //--//				WS_SYSMENU|
   //--//				WS_MINIMIZEBOX, // Window style.
-  //--							// WS_CHILD | WS_VISIBLE | WS_CLIPSIBLINGS
-  //| WS_CAPTION,
+  //--							// WS_CHILD | WS_VISIBLE
+  //| WS_CLIPSIBLINGS | WS_CAPTION,
   //--							//WS_SYSMENU, // Window
   // style.
   //--							80, 40,
   //--							200,	// window width
   //--							90,	// window height
-  //--							hwndParent,	// handle to parent or
-  //owner window
-  //--							NULL,//HMENU(IDD_GETKEY),	// handle to
-  //menu or child-window identifier
+  //--							hwndParent,	// handle to
+  //parent or owner window
+  //--							NULL,//HMENU(IDD_GETKEY),	//
+  //handle to menu or child-window identifier
   //--							hInst,	// handle to
-  //application instance
+  // application instance
   //--							NULL // pointer to
-  //window-creation data
+  // window-creation data
   //--
   //--							);
   //--	if ( Success == NULL )
@@ -1066,7 +1080,7 @@ void SetBitKey(int ctrlID) {
 // WS_CHILD | SS_SIMPLE | WS_VISIBLE,
 //--								 4, 4,
 //--								 200-10, 16,
-//hWnd, HMENU(IDI_TEXT),
+// hWnd, HMENU(IDI_TEXT),
 //--
 //((LPCREATESTRUCT)lParam)->hInstance, NULL );
 //--		PostMessage( hwndCtrl, WM_SETFONT, (WPARAM)GetStockObject(
@@ -1082,7 +1096,7 @@ void SetBitKey(int ctrlID) {
 // SS_SIMPLE | WS_VISIBLE,
 //--								 8, 20,
 //--								 200-10, 16,
-//hWnd, HMENU(IDI_TEXT),
+// hWnd, HMENU(IDI_TEXT),
 //--
 //((LPCREATESTRUCT)lParam)->hInstance, NULL );
 //--		PostMessage( hwndCtrl, WM_SETFONT, (WPARAM)GetStockObject(
@@ -1092,7 +1106,8 @@ void SetBitKey(int ctrlID) {
 //--		// Create the OK button.
 //--		hwndCtrl = CreateWindow( "BUTTON", "&Ok", WS_CHILD |
 // BS_DEFPUSHBUTTON | WS_VISIBLE,
-//--								 ( 200 - 50 ) / 2, 90
+//--								 ( 200 - 50 ) /
+//2, 90
 //- 50,
 //--								 60, 18,
 //--								 hWnd,
