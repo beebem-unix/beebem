@@ -31,9 +31,9 @@
 #include <SDL.h>
 
 #ifdef WITH_UNIX_EXTRAS
-#include <sys/types.h>
 #include <dirent.h>
 #include <pwd.h>
+#include <sys/types.h>
 #endif
 
 #include "windows.h"
@@ -67,7 +67,7 @@
 #include "log.h"
 #include "sdl.h"
 
-#include <gui.h>
+#include "gui/gui.h"
 
 #include "beebem_pages.h"
 #include "fake_registry.h"
@@ -165,7 +165,7 @@ int ToggleFullscreen(void) {
 
   //	if (SDL_WM_ToggleFullScreen(screen_ptr) != 1)
   //		EG_Log(EG_LOG_WARNING, dL"Could not toggle full-screen mode.",
-  //dR);
+  // dR);
 
   //	return(fullscreen);
   return mainWin->IsFullScreen();
@@ -264,9 +264,9 @@ int main(int argc, char *argv[]) {
   // Create serial threads
   //--	InitThreads();
   //--	CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)
-  //SerialThread,NULL,0,&iSerialThread);
+  // SerialThread,NULL,0,&iSerialThread);
   //--	CreateThread(NULL,0,(LPTHREAD_START_ROUTINE)
-  //StatThread,NULL,0,&iStatThread);
+  // StatThread,NULL,0,&iStatThread);
 
   /* -------------------------------------------------0----------
    */
@@ -292,23 +292,23 @@ int main(int argc, char *argv[]) {
   do {
 
     //--		if(PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE) ||
-    //mainWin->IsFrozen())
+    // mainWin->IsFrozen())
     //--		{
     //--			if(!GetMessage(&msg,    // message structure
-    //--							NULL,   // handle of window receiving the
-    //message
-    //--							0,      // lowest message to
-    //examine
+    //--							NULL,   // handle of window
+    //receiving the message
+    //--							0,      // lowest
+    //message to examine
     //--							0))
     //--				break;              // Quit the app on
-    //WM_QUIT
+    // WM_QUIT
     //--
-    //--			if (hCurrentDialog == NULL || !IsDialogMessage(hCurrentDialog,
-    //&msg)) {
-    //--				TranslateMessage(&msg);// Translates virtual key
-    //codes
-    //--				DispatchMessage(&msg); // Dispatches message to
-    //window
+    //--			if (hCurrentDialog == NULL ||
+    //! IsDialogMessage(hCurrentDialog, &msg)) {
+    //--				TranslateMessage(&msg);// Translates
+    //virtual key codes
+    //--				DispatchMessage(&msg); // Dispatches
+    //message to window
     //--			}
     //--		}
 
@@ -381,7 +381,7 @@ int main(int argc, char *argv[]) {
           if (event.button.button == SDL_BUTTON_LEFT) {
             //					printf("left button down\n");
             //--					if (mainWin)
-            //mainWin->SetMousestickButton(TRUE);
+            // mainWin->SetMousestickButton(TRUE);
             AMXButtons |= AMX_LEFT_BUTTON;
           }
           //-- case WM_MBUTTONDOWN:
@@ -405,7 +405,7 @@ int main(int argc, char *argv[]) {
           if (event.button.button == SDL_BUTTON_LEFT) {
             //					printf("left button up\n");
             //--					if (mainWin)
-            //mainWin->SetMousestickButton(FALSE);
+            // mainWin->SetMousestickButton(FALSE);
             AMXButtons &= ~AMX_LEFT_BUTTON;
           }
           //-- case WM_MBUTTONUP:
@@ -472,14 +472,16 @@ int main(int argc, char *argv[]) {
                 BeebKeyUp(row, col);
             }
 
-            //						/* Release Caps lock for X11 after a short
-            //delay.
+            //						/* Release Caps lock for X11 after
+            //a short delay.
             //						 */
-            //						if (event.key.keysym.sym == SDLK_CAPSLOCK &&
-            //cfg_HaveX11){ 							printf("Need to release Caps\n");
+            //						if (event.key.keysym.sym ==
+            //SDLK_CAPSLOCK
+            //&& cfg_HaveX11){
+            // printf("Need to release Caps\n");
             //							//SDL_Delay(1000);
-            //							X11_CapsLock_Down =
-            //10;
+            //							X11_CapsLock_Down
+            //= 10;
             //						}
 
             /* Handle reset:

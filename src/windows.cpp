@@ -2,12 +2,12 @@
 #include <config.h>
 #endif
 
-#include "windows.h"
 #include "beebem_pages.h"
 #include "fake_registry.h"
 #include "log.h"
+#include "windows.h"
 
-#include <gui.h>
+#include "gui/gui.h"
 
 /* Fake windows stuff:
  */
@@ -171,15 +171,15 @@ UINT GetMenuState(HMENU hMenu, UINT uId, UINT uFlags) {
       Otherwise, the return value is a mask (Bitwise OR) of the menu flags.
   Following are the menu flags associated with the menu item.
 
-      MF_CHECKED	A check mark is placed next to the item (for drop-down menus,
-  submenus, and shortcut menus only). MF_DISABLED	The item is disabled.
-      MF_GRAYED	The item is disabled and grayed.
-      MF_HILITE	The item is highlighted.
-      MF_MENUBARBREAK	This is the same as the MF_MENUBREAK flag, except for
-  drop-down menus, submenus, and shortcut menus, where the new column is
-  separated from the old column by a vertical line.
-      MF_MENUBREAK	The item is placed on a new line (for menu bars) or in a new
-  column (for drop-down menus, submenus, and shortcut menus) without separating
+      MF_CHECKED	A check mark is placed next to the item (for drop-down
+  menus, submenus, and shortcut menus only). MF_DISABLED	The item is
+  disabled. MF_GRAYED	The item is disabled and grayed. MF_HILITE	The item
+  is highlighted. MF_MENUBARBREAK	This is the same as the MF_MENUBREAK
+  flag, except for drop-down menus, submenus, and shortcut menus, where the new
+  column is separated from the old column by a vertical line.
+      MF_MENUBREAK	The item is placed on a new line (for menu bars) or in a
+  new column (for drop-down menus, submenus, and shortcut menus) without
+  separating
   columns. MF_OWNERDRAW	The item is owner-drawn. MF_POPUP	Menu item is a
   submenu. MF_SEPARATOR	There is a horizontal dividing line (for drop-down
   menus, submenus, and shortcut menus only).

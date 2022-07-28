@@ -11,7 +11,7 @@
 #include "sdl.h"
 //#include "include/gui_functions.h"
 
-#include <gui.h>
+#include "gui/gui.h"
 
 #include <SDL.h>
 

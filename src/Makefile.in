@@ -363,12 +363,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = gui
-
-#INCLUDE = -I@top_srcdir@/src/gui
-
-#INCLUDES        = @GTK_CFLAGS@ -I@top_srcdir@/src/gui
-#LDADD           = @GTK_LIBS@ @top_srcdir@/src/gui/libeg.a
-AM_CPPFLAGS = @GTK_CFLAGS@ -I@top_srcdir@/src/gui -I@top_srcdir@/src/
+AM_CPPFLAGS = @GTK_CFLAGS@ -I@top_srcdir@/src/
 LDADD = @GTK_LIBS@ @top_srcdir@/src/gui/libeg.a
 beebem_SOURCES = main.cpp log.c sdl.cpp windows.cpp beebem_pages.cpp \
 		beebem_pages_disks.cpp beebem_pages_disks.h \
