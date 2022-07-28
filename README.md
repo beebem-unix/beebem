@@ -8,6 +8,8 @@ see [doc/README.txt](doc/README.txt) for the original Beebem for Windows README.
 
 ## Installation
 
+full instructions can be found [here](INSTALL).
+
 ### Install in home account (for a specific user only):
 
 Extract the source code tarball:
