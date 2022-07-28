@@ -12,20 +12,20 @@
 #include <config.h>
 #endif
 
-#include <gui/log.h>
+#include "gui/log.h"
 
-#include <gui/functions.h>
+#include "gui/functions.h"
 
-#include <gui/togglebutton.h>
-#include <gui/togglebutton_private.h>
+#include "gui/togglebutton.h"
+#include "gui/togglebutton_private.h"
 
-#include <gui/window.h>
-#include <gui/window_private.h>
+#include "gui/window.h"
+#include "gui/window_private.h"
 
-#include <gui/widget.h>
-#include <gui/widget_private.h>
+#include "gui/widget.h"
+#include "gui/widget_private.h"
 
-#include <gui/widget_shared.h>
+#include "gui/widget_shared.h"
 
 #include <SDL.h>
 
@@ -88,7 +88,7 @@ static EG_BOOL Callback_Paint(EG_Widget *widget_ptr, SDL_Rect area) {
   //	if ( EG_Window_ThisWidgetHasFocus(widget_ptr) ){
   //		loc.x++;
   //		EG_Draw_String(surface_ptr, &color, EG_FALSE, &loc, -1,
-  //tickbox_ptr->caption); 		loc.x--;
+  // tickbox_ptr->caption); 		loc.x--;
   //	}
 
   EG_Draw_Enable_Update();
@@ -182,11 +182,11 @@ static EG_BOOL Callback_SDL_Event(EG_Widget *widget_ptr, SDL_Event *event_ptr) {
           if (togglebutton_ptr->is_selected == EG_TRUE) {
             togglebutton_ptr->is_selected = EG_FALSE;
             //						togglebutton_ptr->caption[0]=
-            //togglebutton_ptr->unset_value;
+            // togglebutton_ptr->unset_value;
           } else {
             togglebutton_ptr->is_selected = EG_TRUE;
-            //						togglebutton_ptr->caption[0] =
-            //togglebutton_ptr->set_value;
+            //						togglebutton_ptr->caption[0]
+            //= togglebutton_ptr->set_value;
           }
           if (EG_Window_SetFocusToThisWidget(widget_ptr) != EG_TRUE)
             EG_Log(EG_LOG_WARNING,
@@ -244,12 +244,12 @@ static EG_BOOL Callback_SDL_Event(EG_Widget *widget_ptr, SDL_Event *event_ptr) {
          */
         if (togglebutton_ptr->is_selected == EG_TRUE) {
           togglebutton_ptr->is_selected = EG_FALSE;
-          //						togglebutton_ptr->caption[0] =
-          //togglebutton_ptr->unset_value;
+          //						togglebutton_ptr->caption[0]
+          //= togglebutton_ptr->unset_value;
         } else {
           togglebutton_ptr->is_selected = EG_TRUE;
-          //						togglebutton_ptr->caption[0] =
-          //togglebutton_ptr->set_value;
+          //						togglebutton_ptr->caption[0]
+          //= togglebutton_ptr->set_value;
         }
 
         if (EG_Window_SetFocusToThisWidget(widget_ptr) != EG_TRUE)

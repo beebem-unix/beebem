@@ -11,25 +11,25 @@
 #include <config.h>
 #endif
 
-#include <gui/log.h>
+#include "gui/log.h"
 
-#include <gui/functions.h>
+#include "gui/functions.h"
 
-#include <gui/tickbox.h>
-#include <gui/tickbox_private.h>
+#include "gui/tickbox.h"
+#include "gui/tickbox_private.h"
 
-#include <gui/radiogroup.h>
-#include <gui/radiogroup_private.h>
+#include "gui/radiogroup.h"
+#include "gui/radiogroup_private.h"
 
-#include <gui/window.h>
-#include <gui/window_private.h>
+#include "gui/window.h"
+#include "gui/window_private.h"
 
-#include <gui/widget.h>
-#include <gui/widget_private.h>
+#include "gui/widget.h"
+#include "gui/widget_private.h"
 
-#include <gui/widget_shared.h>
+#include "gui/widget_shared.h"
 
-#include <gui/radiobutton.h>
+#include "gui/radiobutton.h"
 
 #include <SDL.h>
 
@@ -86,7 +86,7 @@ static EG_BOOL Callback_Paint(EG_Widget *widget_ptr, SDL_Rect area) {
   //	if ( EG_Window_ThisWidgetHasFocus(widget_ptr) ){
   //		loc.x++;
   //		EG_Draw_String(surface_ptr, &color, EG_FALSE, &loc, -1,
-  //tickbox_ptr->caption); 		loc.x--;
+  // tickbox_ptr->caption); 		loc.x--;
   //	}
 
   EG_Draw_Enable_Update();

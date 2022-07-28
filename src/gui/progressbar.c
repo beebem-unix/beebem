@@ -12,21 +12,21 @@
 #include <config.h>
 #endif
 
-#include <gui/log.h>
-#include <gui/types.h>
+#include "gui/log.h"
+#include "gui/types.h"
 
-#include <gui/functions.h>
+#include "gui/functions.h"
 
-#include <gui/progressbar.h>
-#include <gui/progressbar_private.h>
+#include "gui/progressbar.h"
+#include "gui/progressbar_private.h"
 
-#include <gui/widget_shared.h>
+#include "gui/widget_shared.h"
 
-#include <gui/window.h>
-#include <gui/window_private.h>
+#include "gui/window.h"
+#include "gui/window_private.h"
 
-#include <gui/widget.h>
-#include <gui/widget_private.h>
+#include "gui/widget.h"
+#include "gui/widget_private.h"
 
 #include <SDL.h>
 
@@ -87,15 +87,16 @@ static EG_BOOL Callback_Paint(EG_Widget *widget_ptr, SDL_Rect area) {
   if (progressbar_ptr->unknown_position == EG_FALSE) {
 
     //		if (progressbar_ptr->position !=
-    //progressbar_ptr->previous_position){ 			progressbar_ptr->previous_position =
-    //progressbar_ptr->position;
+    // progressbar_ptr->previous_position){
+    // progressbar_ptr->previous_position = progressbar_ptr->position;
     tmp.x = loc.x + 2;
     tmp.y = loc.y + 2;
     tmp.w = ((loc.w - 4) * progressbar_ptr->position);
     tmp.h = loc.h - 4;
 
     //		if (progressbar_ptr->previous_w != tmp.w ||
-    //progressbar_ptr->previous_w <= 0){ 			progressbar_ptr->previous_w = tmp.w;
+    // progressbar_ptr->previous_w <= 0){ 			progressbar_ptr->previous_w =
+    // tmp.w;
 
     //			printf("---> %ld\n", progressbar_ptr->previous_w);
 

@@ -14,12 +14,12 @@
 #include <config.h>
 #endif
 
-#include <gui/types.h>
+#include "gui/types.h"
 
-#include <gui/widget.h>
-#include <gui/window.h>
+#include "gui/widget.h"
+#include "gui/window.h"
 
-#include <gui/tickbox.h>
+#include "gui/tickbox.h"
 
 #include <SDL.h>
 
@@ -65,8 +65,8 @@ typedef struct {
 #ifdef __cplusplus
 extern "C" {
 #endif
-//	EG_BOOL 	EG_TickBox_SetIcons(EG_Widget *widget_ptr, char set_icon,
-//char unset_icon);
+//	EG_BOOL 	EG_TickBox_SetIcons(EG_Widget *widget_ptr, char
+//set_icon, char unset_icon);
 EG_BOOL EG_TickBox_SetGroupParent(EG_Widget *tickbox_widget_ptr,
                                   EG_Widget *group_parent_widget_ptr);
 #ifdef __cplusplus

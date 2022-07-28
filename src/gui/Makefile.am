@@ -1,7 +1,6 @@
 CXX = @CXX@ -Wall -Werror -Wno-format-security -DDATA_DIR=\"$(pkgdatadir)\"
 CC = @CC@ -Wall -Werror -Wno-format-security -DDATA_DIR=\"$(pkgdatadir)\"
 
-# INCLUDES = -I@top_srcdir@/src -I@top_srcdir@/src/gui
 AM_CPPFLAGS = -I@top_srcdir@/src
 
 noinst_LIBRARIES = libeg.a

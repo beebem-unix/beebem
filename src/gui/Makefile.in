@@ -292,8 +292,6 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-
-# INCLUDES = -I@top_srcdir@/src -I@top_srcdir@/src/gui
 AM_CPPFLAGS = -I@top_srcdir@/src
 noinst_LIBRARIES = libeg.a
 libeg_a_SOURCES = gui.h \

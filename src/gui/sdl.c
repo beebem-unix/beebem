@@ -3,11 +3,11 @@
 #include <config.h>
 #endif
 
-#include <gui/sdl.h>
+#include "gui/sdl.h"
 
-#include <gui/line.h>
-#include <gui/log.h>
-#include <gui/types.h>
+#include "gui/line.h"
+#include "gui/log.h"
+#include "gui/types.h"
 
 static EG_BOOL EG_DrawString_Initialise(void);
 static void EG_DrawString_Free(void);
@@ -302,9 +302,9 @@ void EG_Draw_TabBorder(SDL_Surface *surface, SDL_Rect *area, SDL_Color *color,
   case EG_Draw_Border_BoxLow:
     //			dull_col = SDL_MapRGB(surface->format
     //			 , (int) (1.3333*color->r >255.0 ? 255.0
-    //: 1.3333*color->r) 			 , (int) (1.3333*color->g >255.0 ? 255.0
-    //: 1.3333*color->g) 			 , (int) (1.3333*color->b >255.0 ? 255.0
-    //: 1.3333*color->b) );
+    //: 1.3333*color->r) 			 , (int) (1.3333*color->g >255.0
+    //: ? 255.0 1.3333*color->g) 			 , (int)
+    //: (1.3333*color->b >255.0 ? 255.0 1.3333*color->b) );
     //
     bright_col = SDL_MapRGB(surface->format, (int)(color->r * 0.6666),
                             (int)(color->g * 0.6666), (int)(color->b * 0.6666));
@@ -517,7 +517,7 @@ void EG_Draw_Toggle(SDL_Surface *surface, SDL_Rect *area, SDL_Color *color,
 
   //	if (type == EG_Draw_Border_BoxLow)
   //		fill_col = SDL_MapRGB(surface->format,127+64, 127+64-32,
-  //127+64-32); 	else
+  // 127+64-32); 	else
   fill_col = normal_col;
 
   // Fill

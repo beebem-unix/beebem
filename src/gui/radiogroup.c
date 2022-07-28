@@ -11,28 +11,28 @@
 #include <config.h>
 #endif
 
-#include <gui/log.h>
+#include "gui/log.h"
 
-#include <gui/functions.h>
+#include "gui/functions.h"
 
-#include <gui/radiogroup.h>
-#include <gui/radiogroup_private.h>
+#include "gui/radiogroup.h"
+#include "gui/radiogroup_private.h"
 
-#include <gui/radiobutton.h>
-#include <gui/radiobutton_private.h>
+#include "gui/radiobutton.h"
+#include "gui/radiobutton_private.h"
 
-#include <gui/togglebutton.h>
-#include <gui/togglebutton_private.h>
+#include "gui/togglebutton.h"
+#include "gui/togglebutton_private.h"
 
-#include <gui/window.h>
-#include <gui/window_private.h>
+#include "gui/window.h"
+#include "gui/window_private.h"
 
-#include <gui/widget.h>
-#include <gui/widget_private.h>
+#include "gui/widget.h"
+#include "gui/widget_private.h"
 
-#include <gui/widget_shared.h>
+#include "gui/widget_shared.h"
 
-#include <gui/sdl.h>
+#include "gui/sdl.h"
 
 #include <SDL.h>
 
@@ -90,14 +90,14 @@ static void Callback_Destroy(EG_Widget *widget_ptr) {
         }
 
         //				if (EG_Widget_GetType(tmp_widget_ptr) ==
-        //EG_Widget_Type_RadioButton)
+        // EG_Widget_Type_RadioButton)
         //					EG_RadioButton_SetGroupParent(tmp_widget_ptr,
-        //NULL);
+        // NULL);
         //
         //				if (EG_Widget_GetType(tmp_widget_ptr) ==
-        //EG_Widget_Type_ToggleButton)
+        // EG_Widget_Type_ToggleButton)
         //					EG_ToggleButton_SetGroupParent(tmp_widget_ptr,
-        //NULL);
+        // NULL);
       }
     }
 
@@ -470,12 +470,16 @@ EG_BOOL EG_RadioGroup_Select(EG_Widget *button_widget_ptr) {
   }
 
   //	if (EG_Widget_GetType(button_widget_ptr) == EG_Widget_Type_RadioButton)
-  //		EG_RADIOBUTTON_GET_STRUCT_PTR(button_widget_ptr, radio_button_ptr,
-  //EG_FALSE); 	else if (EG_Widget_GetType(button_widget_ptr) ==
-  //EG_Widget_Type_ToggleButton)
-  //		EG_TOGGLEBUTTON_GET_STRUCT_PTR(button_widget_ptr, toggle_button_ptr,
-  //EG_FALSE); 	else{ 		EG_Log(EG_LOG_ERROR, dL"Button %s is not of valid type.",
-  //dR 		 , EG_Widget_GetName(button_widget_ptr) ); 		return EG_FALSE;
+  //		EG_RADIOBUTTON_GET_STRUCT_PTR(button_widget_ptr,
+  //radio_button_ptr,
+  // EG_FALSE); 	else if (EG_Widget_GetType(button_widget_ptr) ==
+  // EG_Widget_Type_ToggleButton)
+  //		EG_TOGGLEBUTTON_GET_STRUCT_PTR(button_widget_ptr,
+  //toggle_button_ptr,
+  // EG_FALSE); 	else{ 		EG_Log(EG_LOG_ERROR, dL"Button %s is not of valid
+  // type.",
+  // dR 		 , EG_Widget_GetName(button_widget_ptr) ); 		return
+  // EG_FALSE;
   //	}
 
   /* Get EG_RadioGroup, if NULL, then not associated with a group yet.
@@ -551,7 +555,8 @@ EG_BOOL EG_RadioGroup_Select(EG_Widget *button_widget_ptr) {
       //(EG_RadioButton_Untick(next_button_widget_ptr)
       //			 != EG_TRUE)
       //				EG_Log(EG_LOG_ERROR, dL"EG_RadioButton
-      //could" 				 " not unset.", dR); 			else 				(void) EG_Widget_RepaintLot(
+      // could" 				 " not unset.", dR);
+      // else 				(void) EG_Widget_RepaintLot(
       //				 next_button_widget_ptr);
 
       switch (EG_Widget_GetType(next_button_widget_ptr)) {
@@ -576,8 +581,10 @@ EG_BOOL EG_RadioGroup_Select(EG_Widget *button_widget_ptr) {
   //	else{
   //		if (window_ptr != NULL){
   //			if (EG_Window_SetFocusToThisWidget(button_widget_ptr) !=
-  //EG_TRUE){ 				EG_Window_ClearFocus(window_ptr); 				EG_Log(EG_LOG_WARNING, dL"Could
-  //not move focus to pressed" 				 " button.", dR);
+  // EG_TRUE){ 				EG_Window_ClearFocus(window_ptr);
+  // EG_Log(EG_LOG_WARNING, dL"Could
+  // not move focus to pressed" 				 " button.",
+  // dR);
   //			}
   //		}
   //	}

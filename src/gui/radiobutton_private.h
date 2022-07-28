@@ -14,12 +14,12 @@
 #include <config.h>
 #endif
 
-#include <gui/types.h>
+#include "gui/types.h"
 
-#include <gui/tickbox_private.h>
+#include "gui/tickbox_private.h"
 
-#include <gui/widget.h>
-#include <gui/window.h>
+#include "gui/widget.h"
+#include "gui/window.h"
 
 #include <SDL.h>
 

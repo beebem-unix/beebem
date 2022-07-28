@@ -11,22 +11,22 @@
 #include <config.h>
 #endif
 
-#include <gui/log.h>
+#include "gui/log.h"
 
-#include <gui/functions.h>
+#include "gui/functions.h"
 
-#include <gui/slidebar.h>
-#include <gui/slidebar_private.h>
+#include "gui/slidebar.h"
+#include "gui/slidebar_private.h"
 
-#include <gui/window.h>
-#include <gui/window_private.h>
+#include "gui/window.h"
+#include "gui/window_private.h"
 
-#include <gui/widget.h>
-#include <gui/widget_private.h>
+#include "gui/widget.h"
+#include "gui/widget_private.h"
 
-#include <gui/widget_shared.h>
+#include "gui/widget_shared.h"
 
-#include <gui/sdl.h>
+#include "gui/sdl.h"
 
 #include <SDL.h>
 
@@ -311,11 +311,11 @@ static EG_BOOL Callback_SDL_Event(EG_Widget *widget_ptr, SDL_Event *event_ptr) {
 #ifndef WITHOUT_REALTIME_SLIDER
       if (slidebar_ptr->previous_position != slidebar_ptr->position) {
         //				if (
-        //EG_Draw_GetTimePassed(slidebar_ptr->last_called) >= 100){
+        // EG_Draw_GetTimePassed(slidebar_ptr->last_called) >= 100){
         EG_Widget_CallUserOnChange(widget_ptr);
         slidebar_ptr->previous_position = slidebar_ptr->position;
         //					slidebar_ptr->last_called =
-        //EG_Draw_GetCurrentTime();
+        // EG_Draw_GetCurrentTime();
         //				}
       }
 #endif

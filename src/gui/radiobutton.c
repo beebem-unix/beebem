@@ -11,18 +11,18 @@
 #include <config.h>
 #endif
 
-#include <gui/log.h>
+#include "gui/log.h"
 
-#include <gui/functions.h>
+#include "gui/functions.h"
 
-#include <gui/radiobutton.h>
-#include <gui/radiobutton_private.h>
+#include "gui/radiobutton.h"
+#include "gui/radiobutton_private.h"
 
-#include <gui/window.h>
-#include <gui/window_private.h>
+#include "gui/window.h"
+#include "gui/window_private.h"
 
-#include <gui/widget.h>
-#include <gui/widget_private.h>
+#include "gui/widget.h"
+#include "gui/widget_private.h"
 
 #include <SDL.h>
 

@@ -12,24 +12,24 @@
 #include <config.h>
 #endif
 
-#include <gui/functions.h>
-#include <gui/log.h>
+#include "gui/functions.h"
+#include "gui/log.h"
 
-#include <gui/sdl.h>
+#include "gui/sdl.h"
 
-#include <gui/window.h>
-#include <gui/window_private.h>
+#include "gui/window.h"
+#include "gui/window_private.h"
 
-#include <gui/widget.h>
-#include <gui/widget_private.h>
+#include "gui/widget.h"
+#include "gui/widget_private.h"
 
-#include <gui/widget_shared.h>
+#include "gui/widget_shared.h"
 
-#include <gui/tabgroup.h>
-#include <gui/tabgroup_private.h>
+#include "gui/tabgroup.h"
+#include "gui/tabgroup_private.h"
 
-#include <gui/tabpage.h>
-#include <gui/tabpage_private.h>
+#include "gui/tabpage.h"
+#include "gui/tabpage_private.h"
 
 #include <SDL.h>
 
@@ -351,7 +351,7 @@ static EG_BOOL Callback_Stopped(EG_Widget *widget_ptr, EG_BOOL is_stopped) {
 
     //		if (page_is_shown == EG_TRUE && is_stopped == EG_FALSE)
     //			EG_Widget_SetStoppedToggle(tabpage_ptr->child[i].widget_ptr,
-    //is_stopped);
+    // is_stopped);
   }
 
   return (EG_TRUE);
@@ -481,7 +481,7 @@ static void InitializeWidget(EG_Widget *widget_ptr) {
 //	 */
 //	for(i=0; i<tabpage_ptr->count; i++){
 //		EG_Window_AddWidget(window_ptr,
-//tabpage_ptr->child[i].widget_ptr);
+// tabpage_ptr->child[i].widget_ptr);
 //	}
 //
 //	return(EG_TRUE);

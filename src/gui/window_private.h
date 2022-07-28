@@ -14,11 +14,11 @@
 #include <config.h>
 #endif
 
+#include "gui/types.h"
 #include <SDL.h>
-#include <gui/types.h>
 
-#include <gui/widget.h>
-#include <gui/window.h>
+#include "gui/widget.h"
+#include "gui/window.h"
 
 /* Convenient macro to check for more obvious EG_Window struct pointer errors.
  */

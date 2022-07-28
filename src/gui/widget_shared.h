@@ -19,18 +19,18 @@
 #include <config.h>
 #endif
 
-#include <gui/log.h>
-#include <gui/types.h>
+#include "gui/log.h"
+#include "gui/types.h"
 
 #include <SDL.h>
 
-#include <gui/functions.h>
+#include "gui/functions.h"
 
-#include <gui/widget.h>
-#include <gui/widget_private.h>
+#include "gui/widget.h"
+#include "gui/widget_private.h"
 
-#include <gui/window.h>
-#include <gui/window_private.h>
+#include "gui/window.h"
+#include "gui/window_private.h"
 
 /* Special stuff to make your code look more complicated than it needs to be.
  *

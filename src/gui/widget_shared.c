@@ -17,12 +17,12 @@
 #include <config.h>
 #endif
 
-#include <gui/widget_shared.h>
+#include "gui/widget_shared.h"
 
 /* Needed for additional debugging code below.
  */
 #ifdef EG_DEBUG
-#include <gui/sdl.h>
+#include "gui/sdl.h"
 #endif
 
 /* Generic callback implementations:
@@ -459,7 +459,7 @@ EG_BOOL EG_Shared_GetRenderingDetails(
   //
   ////	printf("DELAY\n");
   ////
-  ///printf("===============================================================\n");
+  /// printf("===============================================================\n");
   //
   ////	SDL_BlitSurface(ss, NULL, s, NULL);
   //	SDL_FreeSurface(ss);
@@ -566,10 +566,10 @@ EG_BOOL EG_Shared_GetEventDetails(
    */
 
   //	// [TODO] Try converting SDL_Events so they are relative to the window
-  //coordinates not the SDL_Surface ones. 	wa =
-  //EG_Widget_GetDimension(widget_ptr); 	wa.x +=
-  //EG_Window_GetXDisplacement(*window_ptr_ptr); 	wa.y +=
-  //EG_Window_GetYDisplacement(*window_ptr_ptr);
+  // coordinates not the SDL_Surface ones. 	wa =
+  // EG_Widget_GetDimension(widget_ptr); 	wa.x +=
+  // EG_Window_GetXDisplacement(*window_ptr_ptr); 	wa.y +=
+  // EG_Window_GetYDisplacement(*window_ptr_ptr);
   //
   //	x = event_ptr->button.x;
   //	y = event_ptr->button.y;

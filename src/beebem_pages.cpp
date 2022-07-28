@@ -1,8 +1,8 @@
 #include "beebem_pages.h"
 #include "attr.h"
 #include "beebwin.h"
+#include "gui/gui.h"
 #include "main.h"
-#include <gui/gui.h>
 
 #include "beebemrc.h"
 #include "beebwin.h"

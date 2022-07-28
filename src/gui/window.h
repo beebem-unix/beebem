@@ -14,10 +14,10 @@
 #include <config.h>
 #endif
 
+#include "gui/types.h"
 #include <SDL.h>
-#include <gui/types.h>
 
-#include <gui/widget.h>
+#include "gui/widget.h"
 
 /* Should not need this until window is a widget (I suck so much...)
  */

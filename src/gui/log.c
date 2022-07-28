@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <gui/log.h>
+#include "gui/log.h"
 
 // Verbosity levels 0 to 4.
 // (normal value would be around eLOG_WARN)
