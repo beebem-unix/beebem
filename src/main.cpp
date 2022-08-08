@@ -41,7 +41,7 @@
 #include "i86.h"
 #include "sasi.h"
 #include "scsi.h" // Dave: Needed for reset on break
-#include "sdl.h"
+#include "beebem_sdl.h"
 #include "serial.h"
 #include "sysvia.h"
 #include "teletext.h"
