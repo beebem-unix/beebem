@@ -9,7 +9,7 @@
 #endif
 
 #include "beebem_pages.h"
-#include "log.h"
+#include "gui/log.h"
 #include "sdl.h"
 
 #include <SDL.h>

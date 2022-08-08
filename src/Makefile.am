@@ -13,7 +13,7 @@ CXX = @CXX@ -Wno-deprecated-declarations -Wall -Werror -Wno-format-security -DDA
 CC = @CC@ -Wno-deprecated-declarations -Wall -Werror -Wno-format-security -DDATA_DIR=\"$(pkgdatadir)\"
 
 bin_PROGRAMS   = beebem
-beebem_SOURCES =main.cpp log.c sdl.cpp windows.cpp beebem_pages.cpp \
+beebem_SOURCES =main.cpp sdl.cpp windows.cpp beebem_pages.cpp \
 		beebem_pages_disks.cpp beebem_pages_disks.h \
 		beebem_pages.h fake_registry.c fake_registry.h \
 		user_config.c user_config.h \
@@ -26,7 +26,7 @@ beebem_SOURCES =main.cpp log.c sdl.cpp windows.cpp beebem_pages.cpp \
 		video.cpp z80.cpp z80_support.cpp z80dis.cpp i386dasm.cpp i86.cpp \
 		teletext.cpp \
 		\
-		main.h types.h log.h line.h sdl.h \
+		main.h types.h sdl.h \
 		hardware.h hardware.cpp \
 		windows.h \
 		6502core.h atodconv.h avi.h beebem.h \

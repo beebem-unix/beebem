@@ -27,8 +27,8 @@
 
 #include "beebem_pages.h"
 #include "beebwin.h"
-#include "line.h"
-#include "log.h"
+#include "gui/line.h"
+#include "gui/log.h"
 #include "main.h" // Remove this once command line stuff fixed
 #include "types.h"
 
