@@ -9,7 +9,7 @@
 #include "beebem_pages_disks.h"
 
 #include "gui/gui.h"
-#include "log.h"
+#include "gui/log.h"
 #include "sdl.h"
 
 #include <SDL.h>

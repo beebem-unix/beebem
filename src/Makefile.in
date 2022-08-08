@@ -104,20 +104,20 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_beebem_OBJECTS = main.$(OBJEXT) log.$(OBJEXT) sdl.$(OBJEXT) \
-	windows.$(OBJEXT) beebem_pages.$(OBJEXT) \
-	beebem_pages_disks.$(OBJEXT) fake_registry.$(OBJEXT) \
-	user_config.$(OBJEXT) serialdevices.$(OBJEXT) csw.$(OBJEXT) \
-	6502core.$(OBJEXT) atodconv.$(OBJEXT) avi.$(OBJEXT) \
-	beebmem.$(OBJEXT) beebsound.$(OBJEXT) beebwin.$(OBJEXT) \
-	cregistry.$(OBJEXT) debug.$(OBJEXT) disc1770.$(OBJEXT) \
-	disc8271.$(OBJEXT) econet.$(OBJEXT) sasi.$(OBJEXT) \
-	scsi.$(OBJEXT) serial.$(OBJEXT) speech.$(OBJEXT) \
-	sysvia.$(OBJEXT) tube.$(OBJEXT) uef.$(OBJEXT) \
-	uefstate.$(OBJEXT) userkybd.$(OBJEXT) uservia.$(OBJEXT) \
-	via.$(OBJEXT) video.$(OBJEXT) z80.$(OBJEXT) \
-	z80_support.$(OBJEXT) z80dis.$(OBJEXT) i386dasm.$(OBJEXT) \
-	i86.$(OBJEXT) teletext.$(OBJEXT) hardware.$(OBJEXT)
+am_beebem_OBJECTS = main.$(OBJEXT) sdl.$(OBJEXT) windows.$(OBJEXT) \
+	beebem_pages.$(OBJEXT) beebem_pages_disks.$(OBJEXT) \
+	fake_registry.$(OBJEXT) user_config.$(OBJEXT) \
+	serialdevices.$(OBJEXT) csw.$(OBJEXT) 6502core.$(OBJEXT) \
+	atodconv.$(OBJEXT) avi.$(OBJEXT) beebmem.$(OBJEXT) \
+	beebsound.$(OBJEXT) beebwin.$(OBJEXT) cregistry.$(OBJEXT) \
+	debug.$(OBJEXT) disc1770.$(OBJEXT) disc8271.$(OBJEXT) \
+	econet.$(OBJEXT) sasi.$(OBJEXT) scsi.$(OBJEXT) \
+	serial.$(OBJEXT) speech.$(OBJEXT) sysvia.$(OBJEXT) \
+	tube.$(OBJEXT) uef.$(OBJEXT) uefstate.$(OBJEXT) \
+	userkybd.$(OBJEXT) uservia.$(OBJEXT) via.$(OBJEXT) \
+	video.$(OBJEXT) z80.$(OBJEXT) z80_support.$(OBJEXT) \
+	z80dis.$(OBJEXT) i386dasm.$(OBJEXT) i86.$(OBJEXT) \
+	teletext.$(OBJEXT) hardware.$(OBJEXT)
 beebem_OBJECTS = $(am_beebem_OBJECTS)
 beebem_LDADD = $(LDADD)
 beebem_DEPENDENCIES = @top_srcdir@/src/gui/libeg.a
@@ -144,16 +144,16 @@ am__depfiles_remade = ./$(DEPDIR)/6502core.Po ./$(DEPDIR)/atodconv.Po \
 	./$(DEPDIR)/debug.Po ./$(DEPDIR)/disc1770.Po \
 	./$(DEPDIR)/disc8271.Po ./$(DEPDIR)/econet.Po \
 	./$(DEPDIR)/fake_registry.Po ./$(DEPDIR)/hardware.Po \
-	./$(DEPDIR)/i386dasm.Po ./$(DEPDIR)/i86.Po ./$(DEPDIR)/log.Po \
-	./$(DEPDIR)/main.Po ./$(DEPDIR)/sasi.Po ./$(DEPDIR)/scsi.Po \
-	./$(DEPDIR)/sdl.Po ./$(DEPDIR)/serial.Po \
-	./$(DEPDIR)/serialdevices.Po ./$(DEPDIR)/speech.Po \
-	./$(DEPDIR)/sysvia.Po ./$(DEPDIR)/teletext.Po \
-	./$(DEPDIR)/tube.Po ./$(DEPDIR)/uef.Po ./$(DEPDIR)/uefstate.Po \
-	./$(DEPDIR)/user_config.Po ./$(DEPDIR)/userkybd.Po \
-	./$(DEPDIR)/uservia.Po ./$(DEPDIR)/via.Po ./$(DEPDIR)/video.Po \
-	./$(DEPDIR)/windows.Po ./$(DEPDIR)/z80.Po \
-	./$(DEPDIR)/z80_support.Po ./$(DEPDIR)/z80dis.Po
+	./$(DEPDIR)/i386dasm.Po ./$(DEPDIR)/i86.Po ./$(DEPDIR)/main.Po \
+	./$(DEPDIR)/sasi.Po ./$(DEPDIR)/scsi.Po ./$(DEPDIR)/sdl.Po \
+	./$(DEPDIR)/serial.Po ./$(DEPDIR)/serialdevices.Po \
+	./$(DEPDIR)/speech.Po ./$(DEPDIR)/sysvia.Po \
+	./$(DEPDIR)/teletext.Po ./$(DEPDIR)/tube.Po ./$(DEPDIR)/uef.Po \
+	./$(DEPDIR)/uefstate.Po ./$(DEPDIR)/user_config.Po \
+	./$(DEPDIR)/userkybd.Po ./$(DEPDIR)/uservia.Po \
+	./$(DEPDIR)/via.Po ./$(DEPDIR)/video.Po ./$(DEPDIR)/windows.Po \
+	./$(DEPDIR)/z80.Po ./$(DEPDIR)/z80_support.Po \
+	./$(DEPDIR)/z80dis.Po
 am__mv = mv -f
 COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
@@ -365,7 +365,7 @@ top_srcdir = @top_srcdir@
 SUBDIRS = gui
 AM_CPPFLAGS = @GTK_CFLAGS@ -I@top_srcdir@/src/
 LDADD = @GTK_LIBS@ @top_srcdir@/src/gui/libeg.a
-beebem_SOURCES = main.cpp log.c sdl.cpp windows.cpp beebem_pages.cpp \
+beebem_SOURCES = main.cpp sdl.cpp windows.cpp beebem_pages.cpp \
 		beebem_pages_disks.cpp beebem_pages_disks.h \
 		beebem_pages.h fake_registry.c fake_registry.h \
 		user_config.c user_config.h \
@@ -378,7 +378,7 @@ beebem_SOURCES = main.cpp log.c sdl.cpp windows.cpp beebem_pages.cpp \
 		video.cpp z80.cpp z80_support.cpp z80dis.cpp i386dasm.cpp i86.cpp \
 		teletext.cpp \
 		\
-		main.h types.h log.h line.h sdl.h \
+		main.h types.h sdl.h \
 		hardware.h hardware.cpp \
 		windows.h \
 		6502core.h atodconv.h avi.h beebem.h \
@@ -497,7 +497,6 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/hardware.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/i386dasm.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/i86.Po@am__quote@ # am--include-marker
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/log.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/sasi.Po@am__quote@ # am--include-marker
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scsi.Po@am__quote@ # am--include-marker
@@ -771,7 +770,6 @@ distclean: distclean-recursive
 	-rm -f ./$(DEPDIR)/hardware.Po
 	-rm -f ./$(DEPDIR)/i386dasm.Po
 	-rm -f ./$(DEPDIR)/i86.Po
-	-rm -f ./$(DEPDIR)/log.Po
 	-rm -f ./$(DEPDIR)/main.Po
 	-rm -f ./$(DEPDIR)/sasi.Po
 	-rm -f ./$(DEPDIR)/scsi.Po
@@ -856,7 +854,6 @@ maintainer-clean: maintainer-clean-recursive
 	-rm -f ./$(DEPDIR)/hardware.Po
 	-rm -f ./$(DEPDIR)/i386dasm.Po
 	-rm -f ./$(DEPDIR)/i86.Po
-	-rm -f ./$(DEPDIR)/log.Po
 	-rm -f ./$(DEPDIR)/main.Po
 	-rm -f ./$(DEPDIR)/sasi.Po
 	-rm -f ./$(DEPDIR)/scsi.Po

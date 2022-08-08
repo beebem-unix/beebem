@@ -36,9 +36,9 @@
 #include "econet.h" //Rob
 #include "fake_registry.h"
 #include "gui/gui.h"
+#include "gui/line.h" // SDL Stuff
+#include "gui/log.h"
 #include "i86.h"
-#include "line.h" // SDL Stuff
-#include "log.h"
 #include "sasi.h"
 #include "scsi.h" // Dave: Needed for reset on break
 #include "sdl.h"
