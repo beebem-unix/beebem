@@ -1,4 +1,5 @@
-add_library(eg gui.h sdl.c sdl.h functions.c functions.h types.h
+add_library(eg gui.h sdl.c sdl.h
+  functions.c functions.h types.h
   log.h line.h log.c
   messagebox.c messagebox.h messagebox_private.h
   window.c window.h window_private.h
@@ -16,6 +17,6 @@ add_library(eg gui.h sdl.c sdl.h functions.c functions.h types.h
   progressbar.c progressbar.h progressbar_private.h)
 
 target_include_directories(eg PRIVATE ${CMAKE_SOURCE_DIR}/src)
-target_include_directories(eg PRIVATE ${SDL2_INCLUDE_DIRS})
-target_compile_definitions(eg PRIVATE -DDATA_DIR=${CMAKE_INSTALL_DATADIR})
-target_compile_options(eg PRIVATE -Wall -Werror -Wno-format-security -Wno-nonportable-include-path)
+target_include_directories(eg PRIVATE ${SDL_INCLUDE_DIRS})
+target_compile_definitions(eg PRIVATE -DDATA_DIR=${CMAKE_INSTALL_FULL_DATADIR})
+target_compile_options(eg PRIVATE -Wall -Werror -Wno-format-security)

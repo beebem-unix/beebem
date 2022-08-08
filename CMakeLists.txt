@@ -53,7 +53,7 @@ endif()
 
 add_definitions(-DWITH_UNIX_EXTRAS=1 -DREG_FILENAME=beebem.registry)
 
-find_package(SDL2 REQUIRED)
+find_package(SDL REQUIRED)
 message(STATUS "found SDL ${SDL_VERSION}")
 
 find_package(GTK2 REQUIRED)
