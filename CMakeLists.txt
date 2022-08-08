@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.23)
 project(beebem VERSION 0.0.13)
 
-option(BEEBEM_WITH_DEBUGGER "compile with additional logging" ON)
+option(BEEBEM_WITH_DEBUGGER "compile with additional logging" OFF)
 # TODO: Unix only
 option(BEEBEM_WITH_ECONET "compile with econet" ON)
-option(BEEBEM_REALTIME_SLIDER "compile with realtime slider on slide bar" OFF)
-option(BEEBEM_WELCOME_MESSAGE "compile with welcome message" OFF)
-option(BEEBEM_FULLSCREEN_FPS "enable full screen FPS indicator" OFF)
-option(BEEBEM_SYSTEM_CP "use system cp instead of C file copy" OFF)
-option(BEEBEM_FORCE_COLORMAP "force colormap for 8-bit displays" OFF)
+option(BEEBEM_DISABLE_REALTIME_SLIDER "compile without realtime slider on slide bar" ON)
+option(BEEBEM_DISABLE_WELCOME_MESSAGE "compile without welcome message" OFF)
+option(BEEBEM_ENABLE_FULLSCREEN_FPS "enable full screen FPS indicator" OFF)
+option(BEEBEM_ENABLE_SYSTEM_CP "use system cp instead of C file copy" OFF)
+option(BEEBEM_ENABLE_FORCE_COLORMAP "force colormap for 8-bit displays" OFF)
 
 if (BEEBEM_WITH_DEBUGGER)
   message(STATUS "enabling debugger")
@@ -18,47 +18,33 @@ else()
   add_definitions(-DWITHOUT_LEVEL_INDICATOR=1, -DWITHOUT_SHENANIGANS=1)
 endif()
 
-if (BEEBEM_WITH_ECONET)
-  # TODO: conditional build perhaps
-  message(STATUS "enabling econet")
-  add_definitions(-DWITH_ECONET=1)
-endif()
-
-if (BEEBEM_REALTIME_SLIDER)
-else()
-  message(STATUS "disabling realtime slider")
-  add_definitions(-DWITHOUT_REALTIME_SLIDER=1)
-endif()
-
-if (BEEBEM_WELCOME_MESSAGE)
-else()
-  message(STATUS "disabling welcome message")
-  add_definitions(-DWITHOUT_WELCOME_MESSAGE=1)
-endif()
-
-if (BEEBEM_FULLSCREEN_FPS)
-  message(STATUS "enabling FPS in fullscreen")
-  add_definitions(-DWITH_FS_FPS=1)
-endif()
-
-if (BEEBEM_SYSTEM_CP)
-  message(STATUS "enabling system `cp`")
-  add_definitions(-DWITH_SYSTEM_CP=1)
-endif()
-
-if (BEEBEM_FORCE_COLORMAP)
-  message(STATUS "enabling forced colormap")
-  add_definitions(-DWITH_FORCED_CM=1)
-endif()
-
 add_definitions(-DWITH_UNIX_EXTRAS=1 -DREG_FILENAME=beebem.registry)
 
+include(CheckIncludeFile)
+CHECK_INCLUDE_FILE("inttypes.h" HAVE_INTTYPES_H)
+CHECK_INCLUDE_FILE("stdint.h" HAVE_STDINT_H)
+CHECK_INCLUDE_FILE("stdio.h" HAVE_STDIO_H)
+CHECK_INCLUDE_FILE("stdlib.h" HAVE_STDLIB_H)
+CHECK_INCLUDE_FILE("strings.h" HAVE_STRINGS_H)
+CHECK_INCLUDE_FILE("string.h" HAVE_STRING_H)
+CHECK_INCLUDE_FILE("sys/stat.h" HAVE_SYS_STAT_H)
+CHECK_INCLUDE_FILE("sys/types.h" HAVE_SYS_TYPES_H)
+CHECK_INCLUDE_FILE("unistd.h" HAVE_UNISTD_H)
+
+find_package(ZLIB)
+set(HAVE_LIBZ ZLIB_FOUND)
+if (ZLIB_FOUND)
+  set(HAVE_ZLIB_H 1)
+endif()
+
 find_package(SDL REQUIRED)
-message(STATUS "found SDL ${SDL_VERSION}")
 
 find_package(GTK2 REQUIRED)
-message(STATUS "found GTK2 ${GTK2_VERSION}")
+message(STATUS "found GTK2 version ${GTK2_VERSION}")
 include_directories(${GTK2_INCLUDE_DIRS})
+
+configure_file(config.h.in config.h @ONLY)
+add_definitions(-DHAVE_CONFIG_H)
 
 add_subdirectory(src)
 add_subdirectory(data)

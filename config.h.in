@@ -1,99 +1,77 @@
 /* config.h.in.  Generated from configure.ac by autoheader.  */
 
-/* "GUI debugging code" */
-#undef EG_DEBUG
-
 /* Define to 1 if you have the <inttypes.h> header file. */
-#undef HAVE_INTTYPES_H
+#cmakedefine01 HAVE_INTTYPES_H
 
 /* Define to 1 if you have the `z' library (-lz). */
-#undef HAVE_LIBZ
+#cmakedefine01 HAVE_LIBZ
 
 /* Define to 1 if you have the <stdint.h> header file. */
-#undef HAVE_STDINT_H
+#cmakedefine01 HAVE_STDINT_H
 
 /* Define to 1 if you have the <stdio.h> header file. */
-#undef HAVE_STDIO_H
+#cmakedefine01 HAVE_STDIO_H
 
 /* Define to 1 if you have the <stdlib.h> header file. */
-#undef HAVE_STDLIB_H
+#cmakedefine01 HAVE_STDLIB_H
 
 /* Define to 1 if you have the <strings.h> header file. */
-#undef HAVE_STRINGS_H
+#cmakedefine01 HAVE_STRINGS_H
 
 /* Define to 1 if you have the <string.h> header file. */
-#undef HAVE_STRING_H
+#cmakedefine01 HAVE_STRING_H
 
 /* Define to 1 if you have the <sys/stat.h> header file. */
-#undef HAVE_SYS_STAT_H
+#cmakedefine01 HAVE_SYS_STAT_H
 
 /* Define to 1 if you have the <sys/types.h> header file. */
-#undef HAVE_SYS_TYPES_H
+#cmakedefine01 HAVE_SYS_TYPES_H
 
 /* Define to 1 if you have the <unistd.h> header file. */
-#undef HAVE_UNISTD_H
+#cmakedefine01 HAVE_UNISTD_H
 
 /* Define to 1 if you have the <zlib.h> header file. */
-#undef HAVE_ZLIB_H
+#cmakedefine01 HAVE_ZLIB_H
 
 /* Name of package */
-#undef PACKAGE
+#cmakedefine PACKAGE "@CMAKE_PROJECT_NAME@"
 
 /* Define to the address where bug reports for this package should be sent. */
-#undef PACKAGE_BUGREPORT
+#cmakedefine PACKAGE_BUGREPORT "@PACKAGE_BUGREPORT@"
 
 /* Define to the full name of this package. */
-#undef PACKAGE_NAME
+#cmakedefine PACKAGE_NAME "@CMAKE_PROJECT_NAME@"
 
 /* Define to the full name and version of this package. */
-#undef PACKAGE_STRING
+#cmakedefine PACKAGE_STRING "@CMAKE_PROJECT_NAME@ @CMAKE_PROJECT_VERSION@"
 
 /* Define to the one symbol short name of this package. */
-#undef PACKAGE_TARNAME
+#cmakedefine PACKAGE_TARNAME "@CMAKE_PROJECT_NAME@"
 
 /* Define to the home page for this package. */
-#undef PACKAGE_URL
+#cmakedefine PACKAGE_URL "@PACKAGE_URL@"
 
 /* Define to the version of this package. */
-#undef PACKAGE_VERSION
-
-/* "Fake windows registry filename" */
-#undef REG_FILENAME
-
-/* Define to 1 if all of the C90 standard headers exist (not just the ones
-   required in a freestanding environment). This macro is provided for
-   backward compatibility; new code need not use it. */
-#undef STDC_HEADERS
+#cmakedefine PACKAGE_VERSION "@CMAKE_PROJECT_VERSION@"
 
 /* Version number of package */
-#undef VERSION
-
-/* "Disable level indicator" */
-#undef WITHOUT_LEVEL_INDICATOR
+#cmakedefine VERSION "@CMAKE_PROJECT_VERSION@"
 
 /* "without realtime slider" */
-#undef WITHOUT_REALTIME_SLIDER
-
-/* "Disable all __LINE__ shenanigans" */
-#undef WITHOUT_SHENANIGANS
+#cmakedefine01 WITHOUT_REALTIME_SLIDER @BEEBEM_DISABLE_REALTIME_SLIDER@
 
 /* "without annoying welcome message" */
-#undef WITHOUT_WELCOME_MESSAGE
-
-/* "with additional debugging" */
-#undef WITH_DEBUG_OUTPUT
+#cmakedefine01 WITHOUT_WELCOME_MESSAGE @BEEBEM_DISABLE_WELCOME_MESSAGE@
 
 /* "with econet support (UNIX only)" */
-#undef WITH_ECONET
+#cmakedefine01 WITH_ECONET @BEEBEM_WITH_ECONET@
 
 /* "With forced colormap for 8 bit displays" */
-#undef WITH_FORCED_CM
+#cmakedefine01 WITH_FORCED_CM @BEEBEM_ENABLE_FORCE_COLORMAP@
 
 /* "With Fullscreen FPS" */
-#undef WITH_FS_FPS
+#cmakedefine01 WITH_FS_FPS @BEEBEM_ENABLE_FULLSCREEN_FPS@
 
 /* "With system 'cp' command" */
-#undef WITH_SYSTEM_CP
+#cmakedefine01 WITH_SYSTEM_CP @BEEBEM_ENABLE_SYSTEM_CP@
 
-/* "Enable UNIX extras" */
-#undef WITH_UNIX_EXTRAS
