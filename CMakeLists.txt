@@ -34,7 +34,6 @@ find_package(SDL REQUIRED)
 
 find_package(GTK2 REQUIRED)
 message(STATUS "found GTK2 version ${GTK2_VERSION}")
-include_directories(${GTK2_INCLUDE_DIRS})
 
 add_subdirectory(src)
 add_subdirectory(data)
