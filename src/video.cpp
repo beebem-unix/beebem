@@ -59,7 +59,7 @@
 #endif
 
 //++
-#include "sdl.h"
+#include "beebem_sdl.h"
 #include "user_config.h"
 //<+
 

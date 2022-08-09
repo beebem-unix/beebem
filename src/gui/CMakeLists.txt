@@ -19,5 +19,4 @@ add_library(eg gui.h sdl.c sdl.h
 target_include_directories(eg PRIVATE ${CMAKE_BINARY_DIR})
 target_include_directories(eg PRIVATE ${CMAKE_SOURCE_DIR}/src)
 target_include_directories(eg PRIVATE ${SDL_INCLUDE_DIRS})
-target_compile_definitions(eg PRIVATE -DDATA_DIR=${CMAKE_INSTALL_FULL_DATADIR})
 target_compile_options(eg PRIVATE -Wall -Werror -Wno-format-security)

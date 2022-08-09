@@ -24,7 +24,6 @@ if (ZLIB_FOUND)
   target_include_directories(beebem PRIVATE ${ZLIB_INCLUDE_DIRS})
   target_link_libraries(beebem ${ZLIB_LIBRARIES})
 endif()
-target_compile_definitions(beebem PRIVATE -DDATA_DIR=${CMAKE_INSTALL_FULL_DATADIR})
 target_compile_options(beebem PRIVATE -Wno-deprecated-declarations -Wall -Werror -Wno-format-security)
 
 install(TARGETS beebem)
