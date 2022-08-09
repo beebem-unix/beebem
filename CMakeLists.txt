@@ -2,8 +2,7 @@ cmake_minimum_required(VERSION 3.23)
 project(beebem VERSION 0.0.13)
 
 option(BEEBEM_WITH_DEBUGGER "compile with additional logging" OFF)
-# TODO: Unix only
-option(BEEBEM_WITH_ECONET "compile with econet" ON)
+option(BEEBEM_ENABLE_ECONET "compile with econet" ON)
 option(BEEBEM_DISABLE_REALTIME_SLIDER "compile without realtime slider on slide bar" ON)
 option(BEEBEM_DISABLE_WELCOME_MESSAGE "compile without welcome message" OFF)
 option(BEEBEM_ENABLE_FULLSCREEN_FPS "enable full screen FPS indicator" OFF)
