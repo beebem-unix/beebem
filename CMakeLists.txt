@@ -9,8 +9,6 @@ option(BEEBEM_ENABLE_FULLSCREEN_FPS "enable full screen FPS indicator" OFF)
 option(BEEBEM_ENABLE_SYSTEM_CP "use system cp instead of C file copy" OFF)
 option(BEEBEM_ENABLE_FORCE_COLORMAP "force colormap for 8-bit displays" OFF)
 
-set(BEEBEM_TEST "foo")
-
 if (BEEBEM_WITH_DEBUGGER)
   message(STATUS "enabling debugger")
   add_definitions(-DWITH_DEBUG_OUTPUT=1 -DEG_DEBUG=1)
