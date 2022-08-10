@@ -23,7 +23,7 @@
 #include "config.h"
 #endif
 
-#include "sdl.h"
+#include "beebem_sdl.h"
 
 #include "beebem_pages.h"
 #include "beebwin.h"

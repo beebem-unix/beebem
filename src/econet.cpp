@@ -431,7 +431,7 @@ void ReadNetwork(void) {
   char value[80];
   char EcoNameBuf[256];
   char *EcoName = EcoNameBuf;
-  char info[200];
+  char info[256 + 64];
   unsigned int i;
   unsigned int j;
   unsigned int p;

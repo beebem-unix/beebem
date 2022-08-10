@@ -395,7 +395,7 @@ void Serial_Poll(void) {
         if (TxD > 0) {
           // Writing data
           if (!uef_putdata(TDR | UEF_DATA, TapeClock)) {
-            char errstr[256];
+            char errstr[256 + 32];
             sprintf(errstr, "Error writing to UEF file:\n  %s", UEFTapeName);
             MessageBox(GETHWND, errstr, "BeebEm", MB_ICONERROR | MB_OK);
             TapeControlStopRecording(true);
@@ -414,7 +414,7 @@ void Serial_Poll(void) {
         } else {
           // Tone
           if (!uef_putdata(UEF_HTONE, TapeClock)) {
-            char errstr[256];
+            char errstr[256 + 32];
             sprintf(errstr, "Error writing to UEF file:\n  %s", UEFTapeName);
             MessageBox(GETHWND, errstr, "BeebEm", MB_ICONERROR | MB_OK);
             TapeControlStopRecording(true);
@@ -1211,7 +1211,7 @@ void SaveSerialUEF(FILE *SUEF) {
 }
 
 void LoadSerialUEF(FILE *SUEF) {
-  char errstr[200];
+  char errstr[256 + 32];
   char FileName[256];
   int sp;
 

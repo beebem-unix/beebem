@@ -6302,8 +6302,8 @@ void BeebWin::QuickLoad() {
 }
 
 void BeebWin::QuickSave() {
-  char FileName1[_MAX_PATH];
-  char FileName2[_MAX_PATH];
+  char FileName1[_MAX_PATH + 1 + 23];
+  char FileName2[_MAX_PATH + 1 + 23];
   int i;
 
   // Bump old quicksave files down

@@ -66,7 +66,7 @@ extern char HardDriveEnabled;
 
 void SASIReset(void) {
   int i;
-  char buff[256];
+  char buff[256 + 12];
   //+>
   char pathbuff[256];
   //<+

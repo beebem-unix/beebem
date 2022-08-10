@@ -55,7 +55,7 @@ void TeleTextLog(const char *text, ...) {
 void TeleTextInit(void)
 
 {
-  char buff[256];
+  char buff[512 + 20];
 
   TeleTextStatus = 0xef;
 

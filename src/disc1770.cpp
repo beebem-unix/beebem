@@ -1006,8 +1006,8 @@ void Close1770Disc(char Drive) {
 }
 
 #define BPUT(a)                                                                \
-  fputc(a, NewImage);                                                          \
-  CheckSum = (CheckSum + a) & 255
+  fputc((a), NewImage);                                                          \
+  CheckSum = (CheckSum + (a)) & 255
 
 void CreateADFSImage(char *ImageName, unsigned char Drive, unsigned char Tracks,
                      HMENU dmenu) {
@@ -1024,8 +1024,9 @@ void CreateADFSImage(char *ImageName, unsigned char Drive, unsigned char Tracks,
     BPUT(7);
     BPUT(0);
     BPUT(0);
-    for (ent = 0; ent < 0xf9; ent++)
+    for (ent = 0; ent < 0xf9; ent++) {
       BPUT(0);
+    }
     BPUT(sectors & 255);
     BPUT((sectors >> 8) & 255);
     BPUT(0);              // Total sectors
@@ -1035,8 +1036,9 @@ void CreateADFSImage(char *ImageName, unsigned char Drive, unsigned char Tracks,
     BPUT((sectors - 7) & 255);
     BPUT(((sectors - 7) >> 8) & 255);
     BPUT(0); // Length of first free space
-    for (ent = 0; ent < 0xfb; ent++)
+    for (ent = 0; ent < 0xfb; ent++) {
       BPUT(0);
+    }
     BPUT(3);
     BPUT(CheckSum);
     // Root Catalogue - T0S2-T0S7
@@ -1048,12 +1050,14 @@ void CreateADFSImage(char *ImageName, unsigned char Drive, unsigned char Tracks,
     for (ent = 0; ent < 47; ent++) {
       int bcount;
       // 47 catalogue entries
-      for (bcount = 5; bcount < 0x1e; bcount++)
+      for (bcount = 5; bcount < 0x1e; bcount++) {
         BPUT(0);
+      }
       BPUT(ent);
     }
-    for (ent = 0x4cb; ent < 0x4fa; ent++)
+    for (ent = 0x4cb; ent < 0x4fa; ent++) {
       BPUT(0);
+    }
     BPUT(1);
     BPUT('H');
     BPUT('u');

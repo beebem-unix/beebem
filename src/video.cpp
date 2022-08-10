@@ -59,7 +59,7 @@
 #endif
 
 //++
-#include "sdl.h"
+#include "beebem_sdl.h"
 #include "user_config.h"
 //<+
 
@@ -1690,9 +1690,9 @@ static void VideoAddCursor(void) {
 
   if (VideoState.IsTeletext) {
     ScrAddr = CRTC_ScreenStartLow +
-              (((CRTC_ScreenStartHigh ^ 0x20) + 0x74 & 0xff) << 8);
+              ((((CRTC_ScreenStartHigh ^ 0x20) + 0x74) & 0xff) << 8);
     CurAddr =
-        CRTC_CursorPosLow + (((CRTC_CursorPosHigh ^ 0x20) + 0x74 & 0xff) << 8);
+        CRTC_CursorPosLow + ((((CRTC_CursorPosHigh ^ 0x20) + 0x74) & 0xff) << 8);
 
     CurStart = (CRTC_CursorStart & 0x1f) / 2;
     CurEnd = CRTC_CursorEnd;

@@ -111,7 +111,7 @@ void UserVIAWrite(int Address, int Value) {
     if (PrinterEnabled) {
       if (fputc(UserVIAState.ora, PrinterFileHandle) == EOF) {
         //--#ifdef WIN32
-        char errstr[200];
+        char errstr[256+36];
         sprintf(errstr, "Failed to write to printer file:\n  %s",
                 PrinterFileName);
         MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
@@ -510,7 +510,7 @@ void PrinterEnable(char *FileName) {
   PrinterFileHandle = fopen(FileName, "wb");
   if (PrinterFileHandle == NULL) {
     //--#ifdef WIN32
-    char errstr[200];
+    char errstr[256+32];
     sprintf(errstr, "Failed to open printer:\n  %s", PrinterFileName);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else

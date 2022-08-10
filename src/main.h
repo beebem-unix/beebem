@@ -33,7 +33,7 @@
 #include "beebwin.h"
 #include "gui/functions.h"
 #include "gui/gui.h"
-#include "sdl.h"
+#include "beebem_sdl.h"
 #include "windows.h"
 
 /* Fudge for command line --------
