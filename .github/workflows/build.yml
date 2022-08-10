@@ -1,43 +1,44 @@
 name: build
 
 on:
-  pull_request: {}
+  push: {}
 
 jobs:
-  name: ${{ matrix.os }}.${{ matrix.build_type }}.${{ matrix.flags }}
-  runs-on: ${{ matrix.os }}
-  strategy:
-    fail-fast: false
-    matrix:
-      os: [ubuntu-latest, macos-latest]
-      build_type: ['Release', 'Debug']
-      flags: ['on', 'off']
+  job:
+    name: ${{ matrix.os }}.${{ matrix.build_type }}.${{ matrix.flags }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        build_type: ['Release', 'Debug']
+        flags: ['on', 'off']
 
-  steps:
-    - uses: actions/checkout@v2
+    steps:
+      - uses: actions/checkout@v2
 
-    - name: create build environment
-      run: cmake -E make_directory ${{ runner.workspace }}/_build
+      - name: create build environment
+        run: cmake -E make_directory ${{ runner.workspace }}/_build
 
-    - name: cmake initial cache
-      run: touch compiler-cache.cmake
+      - name: cmake initial cache
+        run: touch compiler-cache.cmake
 
-    - name: configure cmake
-      shell: bash
-      working-directory: ${{ runner.workspace }}/_build
-      run: >
-        cmake -C ${{ github.workspace }}/compiler-cache.cmake
-        $GITHUB_WORKSPACE
-        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        -DBEEBEM_WITH_DEBUGGER=${{ matrix.flags }}
-        -DBEEBEM_ENABLE_ECONET=${{ matrix.flags }}
-        -DBEEBEM_DISABLE_REALTIME_SLIDER=${{ matrix.flags }}
-        -DBEEBEM_DISABLE_WELCOME_MESSAGE=${{ matrix.flags }}
-        -DBEEBEM_ENABLE_FULLSCREEN_FPS=${{ matrix.flags }}
-        -DBEEBEM_ENABLE_SYSTEM_CP=${{ matrix.flags }}
-        -DBEEBEM_ENABLE_FORCE_COLORMAP=${{ matrix.flags }}
+      - name: configure cmake
+        shell: bash
+        working-directory: ${{ runner.workspace }}/_build
+        run: >
+          cmake -C ${{ github.workspace }}/compiler-cache.cmake
+          $GITHUB_WORKSPACE
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          -DBEEBEM_WITH_DEBUGGER=${{ matrix.flags }}
+          -DBEEBEM_ENABLE_ECONET=${{ matrix.flags }}
+          -DBEEBEM_DISABLE_REALTIME_SLIDER=${{ matrix.flags }}
+          -DBEEBEM_DISABLE_WELCOME_MESSAGE=${{ matrix.flags }}
+          -DBEEBEM_ENABLE_FULLSCREEN_FPS=${{ matrix.flags }}
+          -DBEEBEM_ENABLE_SYSTEM_CP=${{ matrix.flags }}
+          -DBEEBEM_ENABLE_FORCE_COLORMAP=${{ matrix.flags }}
 
-    - name: build
-      shell: bash
-      working-directory: ${{ runner.workspace }}/_build
-      run: cmake --build . --config ${{ matrix.build_type }}
+      - name: build
+        shell: bash
+        working-directory: ${{ runner.workspace }}/_build
+        run: cmake --build . --config ${{ matrix.build_type }}
