@@ -1239,7 +1239,7 @@ void LoadSimpleDiscImage(char *FileName, int DriveNum, int HeadNum,
   FILE *infile = fopen(FileName, "rb");
   if (!infile) {
     //--#ifdef WIN32
-    char errstr[200];
+    char errstr[256 + 32];
     sprintf(errstr, "Could not open disc file:\n  %s", FileName);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
@@ -1306,7 +1306,7 @@ void LoadSimpleDSDiscImage(char *FileName, int DriveNum, int Tracks) {
 
   if (!infile) {
     //--#ifdef WIN32
-    char errstr[200];
+    char errstr[256+32];
     sprintf(errstr, "Could not open disc file:\n  %s", FileName);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else

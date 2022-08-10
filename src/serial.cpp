@@ -844,7 +844,7 @@ bool map_file(char *file_name) {
   int n;
   int data;
   int last_data;
-  int blk;
+  int blk = 0;
   int blk_num;
   char block[500];
   bool std_last_block = true;
