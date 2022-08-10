@@ -35,7 +35,7 @@
 #include <string.h>
 
 /* Used in message boxes */
-#define GETHWND (mainWin == NULL ? NULL : mainWin->GethWnd())
+#define GETHWND (mainWin == NULL ? 0 : mainWin->GethWnd())
 
 typedef union EightUChars {
   unsigned char data[8];

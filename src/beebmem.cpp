@@ -860,8 +860,8 @@ void BeebWriteMem(int Address, int Value) {
 
   // Rob: econet NMI mask
 #ifdef WITH_ECONET
-  if (EconetEnabled && ((MachineType != 3 && (Address & ~8) == 0xfe18) ||
-                        (MachineType == 3 && (Address & ~8) == 0xfe38))) {
+  if (EconetEnabled && ((MachineType != 3 && (Address & ~0x3) == 0xfe18) ||
+                        (MachineType == 3 && (Address & ~0x3) == 0xfe38))) {
     if (DebugEnabled)
       DebugDisplayTrace(DEBUG_ECONET, true, "Econet: INTOFF(w)");
     EconetNMIenabled = INTOFF;
