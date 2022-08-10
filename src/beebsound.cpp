@@ -89,7 +89,7 @@ char SoundExponentialVolume = 1;
 
 static int RelayLen[3] = {0, 398, 297}; // Relay samples
 int UseHostClock = 0;
-int Speech[3];
+int Speech[4];
 
 FILE *sndlog = NULL;
 
