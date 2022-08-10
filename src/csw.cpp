@@ -123,7 +123,8 @@ void LoadCSW(char *file) {
   csw_buff = (unsigned char *)malloc(csw_bufflen);
   sourcebuff = (unsigned char *)malloc(sourcesize);
 
-  fread(sourcebuff, 1, sourcesize, csw_file);
+  int readsize = fread(sourcebuff, 1, sourcesize, csw_file);
+  pDEBUG(dL "Read Size = %d.", dR, readsize);
   fclose(csw_file);
 
   uncompress(csw_buff, &csw_bufflen, sourcebuff, sourcesize);
