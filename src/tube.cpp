@@ -1952,8 +1952,9 @@ void Exec65C02Instruction(void) {
     TUBEFASTWRITE(IndYAddrModeHandler_Address(), Accumulator); /* STA */
     break;
   case 0x92:
-    if (TubeMachineType == 3)
+    if (TubeMachineType == 3) {
       TUBEFASTWRITE(ZPIndAddrModeHandler_Address(), Accumulator); /* STA */
+    }
     break;
   case 0x94:
     STYInstrHandler(ZeroPgXAddrModeHandler_Address());

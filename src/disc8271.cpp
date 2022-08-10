@@ -1385,7 +1385,7 @@ static void SaveTrackImage(int DriveNum, int HeadNum, int TrackNum) {
 
   if (!outfile) {
     //--#ifdef WIN32
-    char errstr[200];
+    char errstr[256 + 38];
     sprintf(errstr, "Could not open disc file for write:\n  %s",
             FileNames[DriveNum]);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
@@ -1426,7 +1426,7 @@ static void SaveTrackImage(int DriveNum, int HeadNum, int TrackNum) {
 
   if (!Success) {
     //--#ifdef WIN32
-    char errstr[200];
+    char errstr[256 + 32];
     sprintf(errstr, "Failed writing to disc file:\n  %s", FileNames[DriveNum]);
     MessageBox(GETHWND, errstr, "BBC Emulator", MB_OK | MB_ICONERROR);
     //--#else
