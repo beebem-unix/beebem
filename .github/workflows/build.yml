@@ -35,7 +35,10 @@ jobs:
         run: |
           brew install sdl gtk+
 
+      # TODO: build cleanly with modern g++ too
       - name: configure cmake
+        env:
+          CXX: 'clang++'
         shell: bash
         working-directory: ${{ runner.workspace }}/_build
         run: >
