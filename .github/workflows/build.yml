@@ -23,6 +23,18 @@ jobs:
       - name: cmake initial cache
         run: touch compiler-cache.cmake
 
+      - name: install_dependencies (ubuntu)
+        if: matrix.os == 'ubuntu-latest'
+        run: |
+          #sudo add-apt-repository -y "deb http://archive.ubuntu.com/ubuntu `lsb_release -sc` main universe restricted multiverse"
+          sudo apt-get update -y -qq
+          sudo apt-get install libsdl-dev libgtk-dev
+
+      - name: install_dependencies (macos)
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install sdl gtk+
+
       - name: configure cmake
         shell: bash
         working-directory: ${{ runner.workspace }}/_build
