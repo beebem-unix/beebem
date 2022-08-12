@@ -1095,6 +1095,10 @@ static EG_BOOL Make_Main(SDL_Surface *dst_ptr) {
 
   /* Keyboard menu
    */
+  // TODO: something got messed up here with the keyboard menu being disks, and
+  // the disk menu being disabled but the keyboard menu, and the keyboard menu
+  // creation being empty... check with windows version because remapping
+  // caps-lock would be great for OSX
   MENU_CALC_LOC(1, 3, 0);
   widget_ptr = EG_Button_Create("but_keyboard", col, EG_BUTTON_ALIGN_CENTER,
                                 "Discs", loc);
